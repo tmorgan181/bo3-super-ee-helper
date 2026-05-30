@@ -9,8 +9,180 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── ZNS green theme overrides ─────────────────────────────── */
+    :root {
+      --accent:        #2e7d32;
+      --accent-bright: #66bb6a;
+      --warning:       #8bc34a;
+      --success:       #558b2f;
+      --danger:        #bf360c;
+      --bg:            #080e08;
+      --bg-soft:       #0e160e;
+      --panel:         rgba(10, 18, 10, 0.93);
+      --panel-strong:  rgba(14, 24, 14, 0.97);
+      --panel-weak:    rgba(22, 36, 22, 0.72);
+      --border:        rgba(100, 160, 80, 0.22);
+      --border-strong: rgba(100, 160, 80, 0.5);
+      --text:          #e5eede;
+      --muted:         #87a07a;
+      --steel:         #5a6e58;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left,  rgba(46, 125, 50, 0.2),  transparent 24%),
+        radial-gradient(circle at 90% 20%,   rgba(139, 195, 74, 0.1), transparent 20%),
+        linear-gradient(180deg, #0d1a0d 0%, #080e08 55%, #040904 100%);
+    }
+
+    .hero {
+      background:
+        linear-gradient(180deg, rgba(20, 46, 20, 0.95), rgba(10, 20, 10, 0.97)),
+        linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.1));
+    }
+
+    .step-detail__hero {
+      background:
+        linear-gradient(180deg, rgba(20, 58, 20, 0.66), rgba(10, 24, 10, 0.45)),
+        linear-gradient(120deg, rgba(46, 125, 50, 0.18), transparent 42%);
+    }
+
+    .timeline-button.is-active {
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.22), rgba(139, 195, 74, 0.1));
+      border-color: var(--border-strong);
+    }
+
+    .hud-panel__plate {
+      background: linear-gradient(180deg, rgba(160, 210, 100, 0.92), rgba(80, 130, 40, 0.92));
+      color: #1a2e0a;
+      border-color: rgba(100, 160, 80, 0.32);
+    }
+
+    .action-button--success {
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.48), rgba(139, 195, 74, 0.22));
+    }
+
+    .action-button--primary {
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.36), rgba(139, 195, 74, 0.16));
+    }
+
+    .progress-bar__fill {
+      background: linear-gradient(90deg, var(--success), var(--warning));
+    }
+
+    /* ── Leaf decorations ──────────────────────────────────────── */
+    .leaf-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .leaf {
+      position: absolute;
+      opacity: 0.055;
+      background: #66bb6a;
+    }
+
+    /* large tropical leaf — top left */
+    .leaf--a {
+      width: 120px;
+      height: 220px;
+      top: -30px;
+      left: -20px;
+      border-radius: 50% 8% 50% 8%;
+      transform: rotate(28deg);
+    }
+
+    /* mid leaf — top right cluster */
+    .leaf--b {
+      width: 80px;
+      height: 160px;
+      top: 10px;
+      right: 60px;
+      border-radius: 50% 6% 50% 6%;
+      transform: rotate(-22deg);
+    }
+
+    .leaf--c {
+      width: 55px;
+      height: 110px;
+      top: -10px;
+      right: 20px;
+      border-radius: 50% 6% 50% 6%;
+      transform: rotate(-10deg);
+    }
+
+    /* bottom left vine tendril */
+    .leaf--d {
+      width: 60px;
+      height: 130px;
+      bottom: 60px;
+      left: 10px;
+      border-radius: 6% 50% 6% 50%;
+      transform: rotate(15deg);
+    }
+
+    .leaf--e {
+      width: 40px;
+      height: 90px;
+      bottom: 30px;
+      left: 50px;
+      border-radius: 6% 50% 6% 50%;
+      transform: rotate(40deg);
+    }
+
+    /* bottom right */
+    .leaf--f {
+      width: 90px;
+      height: 180px;
+      bottom: -20px;
+      right: 80px;
+      border-radius: 50% 8% 50% 8%;
+      transform: rotate(-35deg);
+    }
+
+    .leaf--g {
+      width: 50px;
+      height: 100px;
+      bottom: 40px;
+      right: 30px;
+      border-radius: 50% 6% 50% 6%;
+      transform: rotate(-18deg);
+    }
+
+    /* mid-page accent */
+    .leaf--h {
+      width: 35px;
+      height: 70px;
+      top: 45%;
+      left: 5px;
+      border-radius: 50% 6% 50% 6%;
+      transform: rotate(55deg);
+      opacity: 0.04;
+    }
+
+    .app-shell {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
 </head>
 <body>
+  <!-- Leaf layer sits behind everything -->
+  <div class="leaf-layer" aria-hidden="true">
+    <div class="leaf leaf--a"></div>
+    <div class="leaf leaf--b"></div>
+    <div class="leaf leaf--c"></div>
+    <div class="leaf leaf--d"></div>
+    <div class="leaf leaf--e"></div>
+    <div class="leaf leaf--f"></div>
+    <div class="leaf leaf--g"></div>
+    <div class="leaf leaf--h"></div>
+  </div>
+
   <div class="app-shell">
     <header class="hero">
       <div class="hero__main">
@@ -71,7 +243,7 @@
                 </div>
                 <button type="button" class="ghost-button ghost-button--small" id="clear-notes">Clear</button>
               </div>
-              <textarea id="run-notes" rows="5" placeholder="Bombs, reminders, routes."></textarea>
+              <textarea id="run-notes" rows="5" placeholder="Spore order, routes, timings."></textarea>
             </section>
           </div>
 
@@ -83,72 +255,72 @@
       </div>
 
       <aside class="hud-dock hud-dock--fixed">
-      <div class="hud-dock__header">
-        <div>
-          <p class="panel__eyebrow">Mission Inventory</p>
+        <div class="hud-dock__header">
+          <div>
+            <p class="panel__eyebrow">Mission Inventory</p>
+          </div>
+          <button type="button" class="ghost-button ghost-button--small" id="inventory-toggle-all">Collapse All</button>
         </div>
-        <button type="button" class="ghost-button ghost-button--small" id="inventory-toggle-all">Collapse All</button>
-      </div>
 
-      <div class="hud-grid hud-grid--stack">
-        <section class="hud-panel inventory-panel is-collapsed">
-          <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="buildables" aria-expanded="false">
-            <span>Buildables</span>
-            <span class="hud-panel__plate-meta">
-              <span class="tool-meta" id="buildable-count">0 / 0 marked</span>
-              <span class="hud-panel__chevron"></span>
-            </span>
-          </button>
-          <div class="inventory-panel__body" data-inventory-panel="buildables">
-            <p class="tool-copy">Shield parts and bunker assembly.</p>
-            <div id="buildables-grid" class="board-grid"></div>
-          </div>
-        </section>
+        <div class="hud-grid hud-grid--stack">
+          <section class="hud-panel inventory-panel is-collapsed">
+            <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="buildables" aria-expanded="false">
+              <span>KT-4 Components</span>
+              <span class="hud-panel__plate-meta">
+                <span class="tool-meta" id="buildable-count">0 / 0 marked</span>
+                <span class="hud-panel__chevron"></span>
+              </span>
+            </button>
+            <div class="inventory-panel__body" data-inventory-panel="buildables">
+              <p class="tool-copy">Wonder weapon parts and canister assembly.</p>
+              <div id="buildables-grid" class="board-grid"></div>
+            </div>
+          </section>
 
-        <section class="hud-panel inventory-panel is-collapsed">
-          <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="dragon-control" aria-expanded="false">
-            <span>Dragon Control</span>
-            <span class="hud-panel__plate-meta">
-              <span class="tool-meta" id="dragon-control-count">0 / 0 marked</span>
-              <span class="hud-panel__chevron"></span>
-            </span>
-          </button>
-          <div class="inventory-panel__body" data-inventory-panel="dragon-control">
-            <p class="tool-copy">Command cores and bunker feed.</p>
-            <div id="dragon-control-grid" class="board-grid"></div>
-          </div>
-        </section>
+          <section class="hud-panel inventory-panel is-collapsed">
+            <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="dragon-control" aria-expanded="false">
+              <span>Spore Canister</span>
+              <span class="hud-panel__plate-meta">
+                <span class="tool-meta" id="dragon-control-count"></span>
+                <span class="hud-panel__chevron"></span>
+              </span>
+            </button>
+            <div class="inventory-panel__body" data-inventory-panel="dragon-control">
+              <p class="tool-copy">Blue spore canister required for KT-4 craft.</p>
+              <div id="dragon-control-grid" class="board-grid"></div>
+            </div>
+          </section>
 
-        <section class="hud-panel inventory-panel is-collapsed">
-          <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="trophies" aria-expanded="false">
-            <span>Trophy Cabinet</span>
-            <span class="hud-panel__plate-meta">
-              <span class="tool-meta" id="trophy-count">0 / 6 collected</span>
-              <span class="hud-panel__chevron"></span>
-            </span>
-          </button>
-          <div class="inventory-panel__body" data-inventory-panel="trophies">
-            <p class="tool-copy">Six trophies with compact trigger reminders.</p>
-            <div id="trophy-grid" class="hud-items-grid"></div>
-          </div>
-        </section>
+          <section class="hud-panel inventory-panel is-collapsed">
+            <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="trophies" aria-expanded="false">
+              <span>Ritual Skulls</span>
+              <span class="hud-panel__plate-meta">
+                <span class="tool-meta" id="trophy-count">0 / 6 collected</span>
+                <span class="hud-panel__chevron"></span>
+              </span>
+            </button>
+            <div class="inventory-panel__body" data-inventory-panel="trophies">
+              <p class="tool-copy">Six skulls from special enemy kills.</p>
+              <div id="trophy-grid" class="hud-items-grid"></div>
+            </div>
+          </section>
 
-        <section class="hud-panel inventory-panel is-collapsed">
-          <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="artifacts" aria-expanded="false">
-            <span>Quest Artifacts</span>
-            <span class="hud-panel__plate-meta">
-              <span class="tool-meta" id="artifact-count">0 / 0 secured</span>
-              <span class="hud-panel__chevron"></span>
-            </span>
-          </button>
-          <div class="inventory-panel__body" data-inventory-panel="artifacts">
-            <p class="tool-copy">Critical progression items and where they come from.</p>
-            <div id="artifacts-grid" class="hud-items-grid"></div>
-          </div>
-        </section>
-      </div>
-    </aside>
-  </section>
+          <section class="hud-panel inventory-panel is-collapsed">
+            <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="artifacts" aria-expanded="false">
+              <span>Key Items</span>
+              <span class="hud-panel__plate-meta">
+                <span class="tool-meta" id="artifact-count">0 / 0 secured</span>
+                <span class="hud-panel__chevron"></span>
+              </span>
+            </button>
+            <div class="inventory-panel__body" data-inventory-panel="artifacts">
+              <p class="tool-copy">Critical quest items and ritual components.</p>
+              <div id="artifacts-grid" class="hud-items-grid"></div>
+            </div>
+          </section>
+        </div>
+      </aside>
+    </section>
   </div>
 
   <div class="modal-shell is-hidden" id="reset-modal" aria-hidden="true">
@@ -156,7 +328,7 @@
     <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="reset-modal-title">
       <p class="panel__eyebrow">Reset Run</p>
       <h2 id="reset-modal-title">Clear all tracked progress?</h2>
-      <p class="modal-copy">This will wipe step completion, notes, route markers, and inventory tracking.</p>
+      <p class="modal-copy">This will wipe step completion, notes, spore order, and inventory tracking.</p>
       <div class="modal-actions">
         <button type="button" class="ghost-button ghost-button--small" id="reset-cancel">Cancel</button>
         <button type="button" class="action-button action-button--primary ghost-button--small" id="reset-confirm">Reset Run</button>
@@ -164,6 +336,6 @@
     </section>
   </div>
 
-  <script src="app.js"></script>
+  <script src="zetsubou-app.js"></script>
 </body>
 </html>
