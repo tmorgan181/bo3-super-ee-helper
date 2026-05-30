@@ -7,7 +7,7 @@
   --border: rgba(191, 150, 109, 0.22);
   --border-strong: rgba(191, 150, 109, 0.5);
   --text: #f3e7d1;
-  --muted: #bea98d;
+  --muted: #d4bfa4;
   --accent: #c64d2f;
   --accent-bright: #eb7550;
   --steel: #6a7073;
@@ -501,6 +501,7 @@ label,
   justify-content: space-between;
   padding: 10px 11px;
   text-align: left;
+  position: relative;
   clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
 }
 
@@ -610,6 +611,7 @@ label,
   text-align: left;
   font: inherit;
   cursor: pointer;
+  flex: 1;
 }
 
 .timeline-button__actions {

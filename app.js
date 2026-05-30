@@ -12,205 +12,221 @@ const STEP_DATA = [
   {
     id: "power",
     title: "Turn On Power and Build Shield",
-    summary: "Open to power. Collect all shield parts. Build in bunker.",
+    summary: "Open the map, activate power, collect all three Guard of Fafnir parts, and build at the Operations Bunker.",
     category: "Setup",
     risk: "Low",
     tags: ["Required", "Early game"],
-    details: "Open to power. Collect all shield parts. Build in bunker.",
+    details: "Each shield part has three random spawn locations. Check all three spots per part as you open the map — they're on the route to power.",
     checkpoints: [
-      "Power switch is active.",
-      "Armory, Infirmary, Supply, Tank, Dragon, and Department routes are familiar.",
-      "Shield part routes are being watched while the map opens.",
-      "GobbleGum setup is agreed before the run speeds up."
+      "Power switch activated.",
+      "All three Guard of Fafnir parts collected.",
+      "Shield built at the Operations Bunker workbench.",
+      "Map routes and perk locations noted."
     ],
     subtasks: [
-      { title: "Open Route", detail: "Buy through spawn side, then right side to power." },
-      { title: "Shield Part 1", detail: "Chair next to Jugg, truck door, or bunker basement." },
-      { title: "Power", detail: "Turn power on." },
-      { title: "Shield Parts 2-3", detail: "Part 2: Infirmary bed, wine, or roof concrete. Part 3: Armory roof crate, wall, or perk-a-cola." },
-      { title: "Build Shield", detail: "Build in bunker." }
+      { title: "Open Route & Power", detail: "Buy through spawn toward the Operations Bunker, then continue to the power switch to activate it." },
+      { title: "Part 1 — Operations Bunker", detail: "Check the shelves in the Bunker basement lab, the shelves opposite the workbench, or on a truck on the street between the Department Store and Bunker." },
+      { title: "Part 2 — Infirmary", detail: "Check near the Stamin-Up machine, on a bed near the stairs, near a broken bookshelf, between boxes at the top of the stairs, or on the lower bunk beds." },
+      { title: "Part 3 — Armory", detail: "Check next to the Wunderfizz machine on the bottom level, on the wall by the doorway to Supply Depot, or on a crate on the top level." },
+      { title: "Build Shield", detail: "Bring all three parts to the lit wooden workbench with blueprints in the Operations Bunker to assemble the Guard of Fafnir." }
     ],
     hints: []
   },
   {
     id: "groph-modules",
     title: "Charge the Groph Modules",
-    summary: "Collect command cores. Finish Dragon, Supply, and Tank. Pull GKZ.",
+    summary: "Kill zombies for colored Code Cylinders, insert each into its matching module, defend the pod, collect the Network Circuit.",
     category: "Setup",
     risk: "Medium",
     tags: ["Required", "Defense"],
     prerequisites: ["power"],
-    details: "Collect command cores. Finish Dragon, Supply, and Tank modules. Pull GKZ.",
+    details: "Each of the three modules requires a matching Code Cylinder (dropped by zombies in that area) and a pod defense. Once all three circuits are collected, insert them into the Network Console at Dragon Command.",
     checkpoints: [
-      "Dragon Command module complete.",
-      "Supply Depot module complete.",
-      "Tank Factory module complete.",
-      "All three network circuits inserted into the bunker terminal."
+      "Red Code Cylinder inserted into Tank Factory module.",
+      "Blue Code Cylinder inserted into Supply Depot module.",
+      "Green Code Cylinder inserted into Dragon Command module.",
+      "All three pods defended and Network Circuits collected.",
+      "All three circuits placed in the Network Console at Dragon Command."
     ],
     subtasks: [
-      { title: "Command Cores", detail: "Collect the three command cores." },
-      { title: "Run Cylinders", detail: "Dragon normal. Supply trap next to terminal. Tank normal." },
-      { title: "GKZ", detail: "Hit box whenever possible." }
+      { title: "Collect Code Cylinders", detail: "Kill zombies in each area until a colored Code Cylinder drops. Red = Tank Factory, Blue = Supply Depot, Green = Dragon Command." },
+      { title: "Insert Cylinders", detail: "Take each cylinder to its matching colored Groph Module console and insert it. A beam of light marks where the pod will land." },
+      { title: "Defend the Pod", detail: "A Groph Pod drops from the sky at the marked location. Kill zombies that attack it for 30–90 seconds until it opens and reveals the Network Circuit." },
+      { title: "Network Console", detail: "After all three circuits are collected, insert them all into the Network Console at Dragon Command to unlock the dragon transport." }
     ],
     hints: []
   },
   {
     id: "dragon-strike",
-    title: "Ride the Dragon",
-    summary: "Use bunker terminal, fly from Supply, take egg, hit red light.",
+    title: "Ride the Dragon and Get Dragon Strike",
+    summary: "Ride the dragon from Dragon Command to the PaP bunker, then go to the Hatchery, retrieve the egg, survive the lockdown, and claim Dragon Strike.",
     category: "Unlock",
     risk: "High",
     tags: ["Required", "Lockdown"],
     prerequisites: ["groph-modules"],
-    details: "Use bunker terminal, fly from Supply, take the egg, and hit the red light.",
+    details: "Two things happen here: the dragon transport unlocks Pack-a-Punch access, and the Hatchery lockdown rewards Dragon Strike. Do PaP upgrades before triggering the lockdown.",
     checkpoints: [
-      "Dragon ride completed.",
+      "Dragon boarded at Dragon Command upper platform.",
+      "Pack-a-Punch bunker accessed — weapons upgraded.",
+      "Dragon Egg shot loose and picked up from Hatchery rafters.",
+      "Egg placed in Hatchery incubator and lockdown triggered.",
       "Hatchery lockdown survived.",
-      "Dragon Strike collected."
+      "Dragon Strike crystal interacted with — Dragon Strike claimed."
     ],
     subtasks: [
-      { title: "Bunker to Egg", detail: "Interact with bunker basement computer. Call dragon at Supply Depot." },
-      { title: "Egg Route", detail: "Shoot egg, grab it, sewer back, shoot the red light." }
+      { title: "Board Dragon at Dragon Command", detail: "After placing all 3 circuits in the Network Console, call and board the dragon at the upper platform in Dragon Command. It carries you to the PaP bunker entrance." },
+      { title: "Upgrade at Pack-a-Punch", detail: "Head downstairs in the bunker to access Pack-a-Punch. Upgrade your primary weapon before proceeding." },
+      { title: "Retrieve Egg from Hatchery", detail: "Go to the Hatchery. Locate the intact dragon egg hanging above the sewer grate in the basement. Shoot it to drop it, then pick it up." },
+      { title: "Trigger Lockdown", detail: "Bring the egg to the Hatchery and place it in the incubator in the center of the basement. This triggers a lockdown — kill zombies near the egg to charge it." },
+      { title: "Claim Dragon Strike", detail: "After the lockdown, go to the top floor of the Hatchery and interact with the glowing crystal to receive the Dragon Strike wonder weapon." }
     ],
     hints: []
   },
   {
     id: "egg-gauntlet",
     title: "Work the Dragon Egg",
-    summary: "Heat egg, clear napalm trial, run lockdown, incubate.",
+    summary: "Burn egg at nest, complete three kill trials, incubate in bunker, claim the Gauntlet of Siegfried.",
     category: "Quest item",
     risk: "High",
     tags: ["Required", "Quest item"],
     prerequisites: ["dragon-strike"],
-    details: "Heat the egg, complete the napalm trial, clear lockdown, then incubate.",
+    details: "Two mandatory full-round cooldowns are required — one after the nest burn, one after bunker incubation. Plan your round flow around them.",
     checkpoints: [
-      "Dragon egg collected.",
-      "Egg placed and warmed at the nest.",
-      "Three challenge board tasks completed.",
-      "Egg incubated and cooled.",
-      "Gauntlet of Siegfried claimed."
+      "Egg burned at Dragon's Nest — full round cooldown survived.",
+      "Napalm kills trial complete.",
+      "Penetrative kills trial complete.",
+      "Melee kills trial complete.",
+      "Egg incubated in PaP bunker — full round cooldown survived.",
+      "Gauntlet of Siegfried claimed from Belinski Square Challenge Board."
     ],
     subtasks: [
-      { title: "Dragon Fire", detail: "Place egg in fire. Recover after cooldown." },
-      { title: "Egg Trial", detail: "Kill Napalm Zombies." },
-      { title: "Tank Trophy", detail: "Use dragon shield fire attack at Tank Factory." },
-      { title: "Lockdown Prep", detail: "Call dragon and fly to Hatchery." },
-      { title: "Lockdown", detail: "Start lockdown. Use turret. Penetrative multi-kills with Hatchery MG42. Melee kills with Guard of Fafnir." },
-      { title: "Exit", detail: "Claim Dragon Strike controller. Incubate egg in basement. Kill Valkyrie near vent. Sewer out." }
+      { title: "Burn at Dragon's Nest", detail: "Bring the egg to the Dragon's Nest at the bottom of the steps into Dragon Command, right of the wooden signpost by the ruined tank. Let the dragon breathe fire on it. Survive a full round before retrieving it." },
+      { title: "Trial — Napalm Kills", detail: "Kill 8–10 zombies that have been set on fire by the dragon's breath. Lead zombies through the dragon fire path near Dragon Command." },
+      { title: "Trial — Penetrative Kills", detail: "Kill 8–10 zombies with shots that pierce through multiple targets in one bullet. The mounted MG42 on the top floor of the Hatchery works well, or a sniper that chains 2+ kills per shot." },
+      { title: "Trial — Melee Kills", detail: "Kill 8–10 zombies using melee. Use the knife, Bowie Knife, or the Guard of Fafnir's fireball melee attack." },
+      { title: "Incubate in Bunker", detail: "Bring the egg to the PaP bunker basement and place it in the intact incubator near the generator. Kill zombies nearby to charge it with souls, then survive a full round before collecting." },
+      { title: "Claim Gauntlet", detail: "Take the fully incubated egg to Belinski Square and place it on the leftmost Challenge Board to receive the Gauntlet of Siegfried specialist weapon." }
     ],
     hints: []
   },
   {
     id: "shield-trophies",
     title: "Collect Trophies",
-    summary: "Collect all six while setting up valves and gauntlet.",
-    category: "Support",
+    summary: "Find and collect all six hidden trophies across the map. Can be done in any order.",
+    category: "Collectibles",
     risk: "Medium",
     tags: ["Required", "Collectibles"],
     prerequisites: ["dragon-strike"],
-    details: "Collect all six trophies while setting up valves and gauntlet.",
+    details: "Trophies can be collected at any point after getting Dragon Strike and the Gauntlet. Knock out multiple in one route.",
     checkpoints: [
       "All six trophies collected."
     ],
     subtasks: [
-      { title: "Valve Track", detail: "Keep green and pink valve locations." },
-      { title: "Trophies", detail: "Dragon strike nuke. Laser trap. Statue outside power." },
-      { title: "Kronos Route", detail: "Fly to KRONOS." },
-      { title: "GKZ Pass", detail: "PaP GKZ. Grab egg. Sewer out." },
-      { title: "Safe Trophy", detail: "Release dragon, then use fist on bunker basement safe." },
-      { title: "Challenges", detail: "Go to power to start world challenges." }
+      { title: "Dragon Command — Mural Soldier", detail: "Shoot the trophy out of the right-hand soldier's grip on the Russian mural above the tank in Dragon Command." },
+      { title: "Tank Factory — Window", detail: "Near Double Tap. Blast the propped-open window with the Guard of Fafnir shield to knock the trophy loose." },
+      { title: "Sewer House — Toilet", detail: "In the sewer beneath the PaP house, shoot the red switch until it turns green. Go upstairs and collect the trophy from the clogged toilet." },
+      { title: "Supply Depot — Laser Trap", detail: "Activate the laser eye beam trap (1500 pts) inside Supply Depot. The trophy spawns where the laser hits the floor." },
+      { title: "Speed Cola — Puddle", detail: "Use Dragon Strike on the puddle of water below the Speed Cola perch. The trophy spawns at the impact point on the ground." },
+      { title: "Operations Bunker — Safe", detail: "Melee the safe next to the shield build table in the Operations Bunker using the Gauntlet of Siegfried fist attack to punch it open." }
     ],
     hints: []
   },
   {
     id: "valves",
     title: "Solve the Valve Network",
-    summary: "Kill Hatchery Valkyrie. Solve path. Pull cylinder. Enter KRONOS.",
+    summary: "Power the generator, identify the green and pink valves, use the solver to set all six, pull the Master Cylinder, and spell KRONOS for SOPHIA.",
     category: "Puzzle",
     risk: "High",
     tags: ["Required", "Puzzle"],
     prerequisites: ["egg-gauntlet", "shield-trophies"],
-    details: "Kill the Valkyrie at Hatchery, solve the path, pull the cylinder, and enter KRONOS.",
+    details: "The valve puzzle is randomized every game. Use kronorium.com/blackops3/gorodkrovi/ — input the green-light valve and the pink-cylinder valve to get the exact settings. Valves stay active for ~5 minutes before resetting.",
     checkpoints: [
-      "Generator powered in the Hatchery.",
-      "Start valve identified.",
-      "Route solved.",
-      "Master Command Cylinder collected."
+      "Generator in PaP bunker powered — Valkyrie killed nearby.",
+      "Green start valve and pink cylinder valve identified.",
+      "All six valves set correctly.",
+      "Master Cylinder pulled from the pink valve.",
+      "Master Cylinder inserted into SOPHIA's terminal.",
+      "KRONOS spelled by shooting the correct letters."
     ],
     subtasks: [
-      { title: "Generator", detail: "Kill Valkyrie near generator." },
-      { title: "Valve Read", detail: "Find green start and cylinder valve. Enter both into solver." },
-      { title: "Cylinder", detail: "Set valves, recover cylinder, insert into SOPHIA, spell KRONOS." }
+      { title: "Power the Generator", detail: "Kill a Valkyrie near the generator in the PaP bunker basement to power it and activate the valve network." },
+      { title: "Read the Valves", detail: "Walk the map to find which valve has a green light (start) and which has a pink cylinder trapped inside (destination). Note both locations." },
+      { title: "Solve with Tool", detail: "Input the green valve location and the pink cylinder valve location into the solver at kronorium.com/blackops3/gorodkrovi/ to get the correct setting for all six valves." },
+      { title: "Set All Six Valves", detail: "Go to each of the six valve locations (Armory, Department Store, Dragon Command, Supply Depot, Infirmary, Tank Factory) and set them per the solver output. You have ~5 minutes before they reset." },
+      { title: "Retrieve Master Cylinder", detail: "Go to the pink cylinder valve and pick up the Master Cylinder that has been released." },
+      { title: "Insert into SOPHIA and Spell KRONOS", detail: "Bring the Master Cylinder to SOPHIA in Dragon Command and insert it into her terminal. Shoot the letters on the board to spell K-R-O-N-O-S to progress." }
     ],
     hints: []
   },
   {
     id: "trials",
     title: "Complete SOPHIA's Trials",
-    summary: "Insert trophies and clear all six trials.",
+    summary: "Insert all six trophies at SOPHIA's terminal, then clear all six trials in random order (except Trial 6 which is always last).",
     category: "Trials",
     risk: "High",
     tags: ["Required", "Execution"],
     prerequisites: ["valves"],
-    details: "Insert trophies and clear all six trials.",
+    details: "Trials 1–5 appear in a random order. Trial 6 (the keycard download) is always the final trial. If you fail any trial, wait until the next round and press the green button again to retry.",
     checkpoints: [
-      "Trophies inserted.",
-      "Valkyrie escort cleared.",
-      "Nuke trial cleared.",
-      "Gersh trial cleared.",
-      "Module defense cleared.",
-      "Mangler escort cleared.",
-      "Download trial cleared."
+      "All six trophies inserted at SOPHIA's terminal.",
+      "Capture Gersh trial cleared.",
+      "Defuse the Bombs trial cleared.",
+      "Escort the Mangler trial cleared.",
+      "Escort the Valkyrie trial cleared.",
+      "Secure the Pod trial cleared.",
+      "Keycard Download trial cleared — Power Core obtained."
     ],
     subtasks: [
-      { title: "Start Trials", detail: "Insert trophies at the opposite terminal." },
-      { title: "Escort the Valkyrie", detail: "Spawn, Tank Factory, or Supply Depot. Escort and destroy at Power." },
-      { title: "Gersh Trial", detail: "Shoot the wisp three times." },
-      { title: "Module Defense", detail: "Kill in the yard, release the whelp for the trophy, then place it in SOPHIA." },
-      { title: "Escort the Mangler", detail: "Spawn, Tank Factory, or Supply Depot. Shoot arm off. Kite to Dragon Command. Bait onto platform." },
-      { title: "Download Trial", detail: "Teleport to lockdown, start download, hold the last Mangler, kill midway, hold the last Mangler again, kill at finish, take the card, sewer back, place it." },
-      { title: "Nuke Trial", detail: "Disable bombs in flash order." }
+      { title: "Insert Trophies", detail: "Bring all six collected trophies to SOPHIA's terminal in Dragon Command and insert them to start the trials." },
+      { title: "Trial — Capture Gersh", detail: "A yellow spark orb appears on the map. Shoot it continuously to make it move and speak. After it speaks 3 times, follow it back to Dragon Command where SOPHIA captures it with a teleporter pad." },
+      { title: "Trial — Defuse the Bombs", detail: "Check 935 control panels on walls to identify which are bombs. The correct defuse order displays on the large monitor. Defuse them across all six locations in order. WARNING: failing this trial instantly kills nearby players." },
+      { title: "Trial — Escort the Mangler", detail: "A friendly green-eyed Mangler spawns somewhere on the map (Spawn, Tank Factory, or Supply Depot). Do NOT kill it. Carefully escort it to the teleporter pad in Dragon Command." },
+      { title: "Trial — Escort the Valkyrie", detail: "A friendly green-eyed Valkyrie spawns in Belinski Square. It has 1 HP — avoid Electric Cherry and AoE weapons. Escort it safely to the teleporter pad in Dragon Command without killing it." },
+      { title: "Trial — Secure the Pod", detail: "A pod drops outside the map, marked by a green light on the monitor. Defend it from zombies. Use the Gauntlet of Siegfried to send the Whelp to retrieve the cargo, then grab it from where it lands and bring it back to SOPHIA." },
+      { title: "Trial — Keycard Download (Final)", detail: "Pick up the red keycard from the monitor opposite SOPHIA. Go to the Hatchery and insert it into the red-screened computer. Survive 4 waves of Manglers during the download. Pick up the keycard again, sewer back, insert it into SOPHIA's terminal — the Power Core is dispensed." }
     ],
     hints: []
   },
   {
     id: "keycard",
-    title: "Finish the Final Lockdown",
-    summary: "Take power core, release whelp, return to SOPHIA, enter boss fight.",
+    title: "Deliver the Power Core",
+    summary: "Use the Gauntlet Whelp to carry the Power Core to Nikolai 1.0 at spawn, then enter the boss arena.",
     category: "Final prep",
     risk: "High",
-    tags: ["Required", "Defense"],
+    tags: ["Required", "Boss prep"],
     prerequisites: ["trials"],
-    details: "Take the power core, release the whelp, return to SOPHIA, and enter boss fight.",
+    details: "After the keycard trial, SOPHIA dispenses the Power Core. Use the Gauntlet's Whelp to transport it — you cannot carry it directly.",
     checkpoints: [
-      "Keycard recovered.",
-      "Hatchery lockdown completed.",
-      "Power core claimed from SOPHIA."
+      "Power Core dispensed from SOPHIA.",
+      "Gauntlet Whelp used to carry Power Core.",
+      "Power Core delivered to Nikolai 1.0 at spawn.",
+      "Boss arena access triggered."
     ],
     subtasks: [
-      { title: "Power Core", detail: "Take power core from SOPHIA to spawn." },
-      { title: "Boss Entry", detail: "Release whelp. Return to SOPHIA. Interact and sewer to boss fight." }
+      { title: "Get the Power Core", detail: "After completing all six trials, the Power Core is ejected from SOPHIA's terminal in Dragon Command." },
+      { title: "Use the Whelp", detail: "Equip the Gauntlet of Siegfried and use it to summon the Whelp near the Power Core. The Whelp will pick it up and carry it." },
+      { title: "Deliver to Nikolai 1.0", detail: "Guide the Whelp carrying the Power Core to Nikolai 1.0, the friendly NPC located in Belinski Square (spawn area), to trigger the boss fight sequence." }
     ],
     hints: []
   },
   {
     id: "boss",
     title: "Defeat Nikolai",
-    summary: "Clear dragon phase, then break Nikolai's cockpit.",
+    summary: "Survive the dragon fire phase by shooting exposed weak points, then destroy the glowing weak points on Nikolai's mech.",
     category: "Boss",
     risk: "Very High",
     tags: ["Required", "Boss fight"],
     prerequisites: ["keycard"],
-    details: "Clear dragon phase, then break Nikolai's cockpit.",
+    details: "The boss has two distinct phases. Use the corner trenches during the dragon fire phase to avoid taking damage.",
     checkpoints: [
-      "Power core delivered.",
-      "Arena access triggered.",
       "Boss arena entered.",
-      "Nikolai defeated."
+      "All dragon weak points shot — dragon phase complete.",
+      "Nikolai's shoulder and chest weak points destroyed.",
+      "Easter egg complete — Love and War achievement unlocked."
     ],
     subtasks: [
-      { title: "Dragon Fight", detail: "Press button in center. Use shield on fire. Shoot weak points Nikolai opens. Use GKZ. Repeat three times." },
-      { title: "Nikolai Fight", detail: "Spam glowing sides of cockpit." }
+      { title: "Dragon Fire Phase", detail: "A large dragon breathes fire across the center of the arena. Take cover in the corner trenches. Watch for glowing yellow weak points appearing on the dragon's chest, sides, shoulders, and neck. All players focus fire on each weak point as it appears. Repeat across multiple fire cycles." },
+      { title: "Nikolai Mech Phase", detail: "After the dragon is sufficiently damaged, Nikolai engages in his mechanical suit. Target the glowing yellow weak points on both shoulders and under the glass cockpit on his chest. Avoid his turret fire, electric harpoon attacks, and R.A.P.S. deployments. Destroy all weak points to complete the Easter egg." }
     ],
     hints: []
   }
@@ -267,21 +283,20 @@ const BUILDABLE_GROUPS = [
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-egg", code: "A1", name: "Dragon Egg", meta: "Quest carrier item", hint: "Shot loose on the Hatchery sewer route.", shape: "egg" },
-  { id: "artifact-strike", code: "A2", name: "Dragon Strike", meta: "Hatchery lockdown reward", hint: "Earned after the Hatchery lockdown.", shape: "core" },
-  { id: "artifact-gauntlet", code: "A3", name: "Gauntlet", meta: "Siegfried specialist item", hint: "Claimed after the incubated egg cools down.", shape: "gauntlet" },
-  { id: "artifact-cylinder", code: "A4", name: "Master Cylinder", meta: "Valve step reward", hint: "Recovered from the completed valve network.", shape: "cylinder" },
-  { id: "artifact-keycard", code: "A5", name: "Keycard", meta: "Final lockdown item", hint: "Pulled from the trial terminal before the Hatchery lockdown.", shape: "keycard" },
-  { id: "artifact-core", code: "A6", name: "Power Core", meta: "Boss access item", hint: "Taken from SOPHIA after the final lockdown.", shape: "core" }
+  { id: "artifact-strike", code: "A1", name: "Dragon Strike", meta: "Wonder weapon", hint: "Interact with the glowing crystal on the top floor of the Hatchery after surviving the incubator lockdown.", shape: "core" },
+  { id: "artifact-gauntlet", code: "A2", name: "Gauntlet of Siegfried", meta: "Specialist weapon", hint: "Claimed from the leftmost Challenge Board in Belinski Square after placing the fully incubated Dragon Egg.", shape: "gauntlet" },
+  { id: "artifact-cylinder", code: "A3", name: "Master Cylinder", meta: "Valve network reward", hint: "Pulled from the pink-cylinder valve after solving the valve network puzzle.", shape: "cylinder" },
+  { id: "artifact-keycard", code: "A4", name: "Red Keycard", meta: "Trial 6 item", hint: "Picked up from the monitor opposite SOPHIA in Dragon Command to start the keycard download trial.", shape: "keycard" },
+  { id: "artifact-core", code: "A5", name: "Power Core", meta: "Boss access item", hint: "Dispensed by SOPHIA after completing all six trials. Carried to Nikolai 1.0 via the Gauntlet Whelp.", shape: "core" }
 ];
 
 const TROPHIES = [
-  { id: "trophy-1", code: "T1", name: "Supply Trap Cubby", meta: "Supply Depot", hint: "Open the trap cubby in Supply after activating it.", shape: "trophy" },
-  { id: "trophy-2", code: "T2", name: "Pack Toilet", meta: "Bunker", hint: "Check the toilet inside the Pack-a-Punch bunker.", shape: "trophy" },
-  { id: "trophy-3", code: "T3", name: "Statue Shot", meta: "Dragon Command", hint: "Shoot the small statue in Dragon Command.", shape: "trophy" },
-  { id: "trophy-4", code: "T4", name: "Puddle Strike", meta: "Supply Depot", hint: "Use Dragon Strike on the puddle by Supply.", shape: "trophy" },
-  { id: "trophy-5", code: "T5", name: "Safe Gauntlet", meta: "Bunker", hint: "Use the Gauntlet on the bunker safe.", shape: "trophy" },
-  { id: "trophy-6", code: "T6", name: "Pipe Flame", meta: "Tank Factory", hint: "Use shield flame on the Tank Factory pipe.", shape: "trophy" }
+  { id: "trophy-1", code: "T1", name: "Mural Soldier Trophy", meta: "Dragon Command", hint: "Shoot the trophy out of the hand of the soldier on the right side of the Russian mural, above a tank in Dragon Command.", shape: "trophy" },
+  { id: "trophy-2", code: "T2", name: "Tank Factory Window", meta: "Tank Factory", hint: "Near Double Tap. Blast the propped-open window with the Guard of Fafnir shield weapon to knock the trophy free.", shape: "trophy" },
+  { id: "trophy-3", code: "T3", name: "Sewer House Toilet", meta: "Sewer / PaP House", hint: "Shoot the red switch in the sewer beneath the PaP house to turn it green, then go upstairs and collect the trophy from the clogged toilet.", shape: "trophy" },
+  { id: "trophy-4", code: "T4", name: "Supply Depot Laser Trap", meta: "Supply Depot", hint: "Activate the laser eye beam trap (1500 pts) in Supply Depot — the trophy appears where the laser impacts the floor.", shape: "trophy" },
+  { id: "trophy-5", code: "T5", name: "Speed Cola Puddle", meta: "Speed Cola area", hint: "Use Dragon Strike on the puddle of water below the Speed Cola perch. The trophy spawns on the ground where the strike lands.", shape: "trophy" },
+  { id: "trophy-6", code: "T6", name: "Operations Bunker Safe", meta: "Operations Bunker", hint: "Use the Gauntlet of Siegfried melee attack to punch open the safe next to the shield build table in the Operations Bunker.", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -442,21 +457,20 @@ function renderSteps() {
     container.appendChild(card);
   });
 
-  container.querySelectorAll("[data-step-select]").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const stepId = event.currentTarget.getAttribute("data-step-select");
-      updateState((draft) => {
-        draft.selectedStepId = stepId;
-      });
-    });
-  });
-
   container.querySelectorAll("[data-step-complete]").forEach((button) => {
     button.addEventListener("click", (event) => {
+      event.stopPropagation();
       const stepId = event.currentTarget.getAttribute("data-step-complete");
       updateState((draft) => {
         draft.stepStatus[stepId] = !draft.stepStatus[stepId];
       });
+    });
+  });
+
+  container.querySelectorAll(".timeline-button").forEach((card) => {
+    card.addEventListener("click", () => {
+      const stepId = card.querySelector("[data-step-select]").getAttribute("data-step-select");
+      updateState((draft) => { draft.selectedStepId = stepId; });
     });
   });
 }

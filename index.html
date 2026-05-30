@@ -11,22 +11,34 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     body {
-      overflow: hidden;
       height: 100vh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(191, 150, 109, 0.6) rgba(255, 255, 255, 0.04);
       background:
         radial-gradient(ellipse at 25% 50%, rgba(198,77,47,0.12) 0%, transparent 42%),
         radial-gradient(ellipse at 75% 50%, rgba(46,125,50,0.12)  0%, transparent 42%),
         linear-gradient(180deg, #161008 0%, #0d0907 55%, #080605 100%);
     }
 
+    body::-webkit-scrollbar { width: 10px; }
+    body::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.03); }
+    body::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, rgba(211, 155, 61, 0.85), rgba(160, 100, 20, 0.8));
+      border: 2px solid rgba(12, 8, 4, 0.9);
+      border-radius: 999px;
+    }
+    body::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, rgba(245, 183, 50, 0.95), rgba(200, 134, 10, 0.9));
+    }
+
     /* ── Layout ─────────────────────────────────────────────────── */
     .sel {
       display: grid;
       grid-template-rows: auto 1fr;
-      height: 100vh;
+      min-height: 100vh;
       padding: 14px;
       gap: 14px;
-      overflow: hidden;
     }
 
     /* ── Header ─────────────────────────────────────────────────── */
@@ -95,10 +107,16 @@
     /* ── Map grid ────────────────────────────────────────────────── */
     .sel-maps {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       gap: 12px;
       min-height: 0;
     }
+
+    .tile {
+      min-height: 200px;
+    }
+
 
     /* ── Tile base ───────────────────────────────────────────────── */
     .tile {
@@ -249,12 +267,134 @@
       background: rgba(102,187,106,0.14);
     }
 
+    /* ── DE tile ─────────────────────────────────────────────────── */
+    .tile--de {
+      background:
+        radial-gradient(ellipse at 50% 35%, rgba(40, 53, 147, 0.24) 0%, transparent 55%),
+        linear-gradient(175deg, rgba(6, 8, 28, 1) 0%, rgba(4, 5, 18, 1) 100%);
+    }
+
+    .tile--de .tile__tag   { color: rgba(144, 202, 249, 0.75); }
+    .tile--de .tile__emblem svg { color: rgba(144, 202, 249, 0.9); }
+
+    .tile--de:hover {
+      border-color: rgba(92, 107, 192, 0.6);
+      box-shadow: inset 0 0 100px rgba(40, 53, 147, 0.08), 0 0 0 1px rgba(40, 53, 147, 0.1);
+    }
+    .tile--de:hover .tile__emblem svg {
+      transform: translateY(-8px) scale(1.05);
+      filter: drop-shadow(0 12px 28px rgba(92, 107, 192, 0.55));
+    }
+    .tile--de:hover .tile__cta {
+      border-color: rgba(92, 107, 192, 0.55);
+      background: rgba(92, 107, 192, 0.14);
+    }
+
+    /* ── SoE tile (gold/noir) ────────────────────────────────────── */
+    .tile--soe {
+      background:
+        radial-gradient(ellipse at 50% 35%, rgba(200, 134, 10, 0.22) 0%, transparent 55%),
+        linear-gradient(175deg, rgba(20, 12, 0, 1) 0%, rgba(12, 7, 0, 1) 100%);
+    }
+
+    .tile--soe .tile__tag   { color: rgba(245, 183, 50, 0.75); }
+    .tile--soe .tile__emblem svg { color: rgba(245, 183, 50, 0.9); }
+
+    .tile--soe:hover {
+      border-color: rgba(200, 134, 10, 0.6);
+      box-shadow: inset 0 0 100px rgba(200, 134, 10, 0.08), 0 0 0 1px rgba(200, 134, 10, 0.1);
+    }
+    .tile--soe:hover .tile__emblem svg {
+      transform: translateY(-8px) scale(1.05);
+      filter: drop-shadow(0 12px 28px rgba(245, 183, 50, 0.5));
+    }
+    .tile--soe:hover .tile__cta {
+      border-color: rgba(200, 134, 10, 0.55);
+      background: rgba(200, 134, 10, 0.14);
+    }
+
+    /* ── REV tile (deep purple) ──────────────────────────────────── */
+    .tile--rev {
+      grid-column: span 2;
+      flex-direction: row;
+      align-items: stretch;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(92, 27, 150, 0.28) 0%, transparent 55%),
+        linear-gradient(175deg, rgba(12, 6, 22, 1) 0%, rgba(7, 4, 14, 1) 100%);
+    }
+
+    .tile--rev .tile__emblem {
+      flex-shrink: 0;
+      width: 50%;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    .tile--rev .tile__info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px 28px;
+      text-align: left;
+      border-top: none;
+      border-left: 1px solid rgba(150, 70, 210, 0.15);
+    }
+
+    .tile--rev .tile__num {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+    }
+
+    .tile--rev .tile__tag   { color: rgba(206, 147, 216, 0.75); }
+    .tile--rev .tile__emblem svg { color: rgba(200, 140, 240, 0.9); }
+
+    .tile--rev:hover {
+      border-color: rgba(156, 61, 208, 0.6);
+      box-shadow: inset 0 0 140px rgba(92, 27, 150, 0.09), 0 0 0 1px rgba(92, 27, 150, 0.1);
+    }
+    .tile--rev:hover .tile__emblem svg {
+      transform: translateY(-4px) scale(1.04) rotate(12deg);
+      filter: drop-shadow(0 10px 32px rgba(156, 61, 208, 0.6));
+    }
+    .tile--rev:hover .tile__cta {
+      border-color: rgba(156, 61, 208, 0.55);
+      background: rgba(156, 61, 208, 0.14);
+    }
+
     .tile:hover .tile__cta-arrow { transform: translateX(4px); }
 
-    @media (max-width: 580px) {
+    /* ── Short viewport — compress info bars ─────────────────────── */
+    @media (max-height: 720px) {
+      .tile__info { padding: 10px 16px 12px; }
+      .tile__name { font-size: clamp(1.1rem, 1.8vw, 1.8rem); margin-bottom: 8px; }
+      .tile__cta  { padding: 5px 12px; font-size: 0.68rem; }
+      .tile__emblem { padding: 10px 0 6px; }
+      .sel { gap: 10px; padding: 10px; }
+      .sel-maps { gap: 8px; }
+      .sel-hd__title { font-size: clamp(1.2rem, 2.2vw, 2.2rem); }
+    }
+
+    /* ── Narrow viewport — two column then single ───────────────── */
+    @media (max-width: 760px) {
+      .sel-maps { grid-template-columns: 1fr 1fr; grid-template-rows: unset; }
+      .tile--rev { grid-column: 1 / -1; flex-direction: row; }
+    }
+
+    @media (max-width: 520px) {
       .sel-maps { grid-template-columns: 1fr; }
-      body { overflow-y: auto; height: auto; }
-      .sel { height: auto; overflow: visible; }
+      .tile--rev {
+        grid-column: unset;
+        flex-direction: column;
+        align-items: center;
+      }
+      .tile--rev .tile__emblem { width: 100%; align-self: unset; }
+      .tile--rev .tile__info   { align-items: center; text-align: center; padding-left: 20px; }
     }
   </style>
 </head>
@@ -273,9 +413,228 @@
 
     <div class="sel-maps">
 
+      <!-- ── Shadows of Evil ────────────────────────────────────────── -->
+      <a href="/soe" class="tile tile--soe">
+        <span class="tile__num" aria-hidden="true">01</span>
+
+        <div class="tile__emblem">
+          <!--
+            Apothicon Servant orb — bioluminescent sphere with organic
+            spiral veins converging on a central eye. 260×260 viewBox.
+          -->
+          <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg"
+               fill="currentColor" aria-label="Shadows of Evil Apothicon Servant emblem">
+
+            <!-- ── Orb body ── -->
+            <circle cx="130" cy="130" r="118" opacity="0.14"/>
+            <circle cx="130" cy="130" r="118" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.62"/>
+            <circle cx="130" cy="130" r="106" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.14"/>
+
+            <!-- ── Background concentric texture rings (offset toward eye) ── -->
+            <circle cx="118" cy="112" r="80" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.1"/>
+            <circle cx="118" cy="112" r="50" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.09"/>
+            <circle cx="118" cy="112" r="26" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.08"/>
+
+            <!-- ── Primary spiral veins (thick) ── -->
+            <!-- All veins curve consistently counter-clockwise as they spread outward -->
+
+            <!-- North arm -->
+            <path d="M 120 100 C 118 80  110 58  96 32"
+                  fill="none" stroke="currentColor" stroke-width="3"   stroke-linecap="round" opacity="0.72"/>
+            <!-- Branch off north arm -->
+            <path d="M 112 72 C 100 66  84  68  68 76"
+                  fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.44"/>
+
+            <!-- NE arm -->
+            <path d="M 128 98 C 142 78  162 58  190 40"
+                  fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.65"/>
+            <path d="M 132 96 C 150 78  172 64  200 54"
+                  fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.42"/>
+
+            <!-- East arm -->
+            <path d="M 136 110 C 160 106  186 100  222 96"
+                  fill="none" stroke="currentColor" stroke-width="3"   stroke-linecap="round" opacity="0.68"/>
+            <path d="M 136 118 C 162 118  190 120  224 124"
+                  fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+            <!-- Branch off east arm -->
+            <path d="M 184 102 C 194 90  206 82  216 70"
+                  fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.32"/>
+
+            <!-- SE arm -->
+            <path d="M 128 124 C 148 144  168 166  186 200"
+                  fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.65"/>
+            <path d="M 132 126 C 154 148  178 170  202 202"
+                  fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.4"/>
+
+            <!-- South arm -->
+            <path d="M 118 126 C 116 150  112 178  108 216"
+                  fill="none" stroke="currentColor" stroke-width="3"   stroke-linecap="round" opacity="0.7"/>
+            <path d="M 122 128 C 124 152  128 180  132 218"
+                  fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.42"/>
+            <!-- Branch off south arm -->
+            <path d="M 112 170 C 98  180  82  184  64 186"
+                  fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.32"/>
+
+            <!-- SW arm -->
+            <path d="M 108 120 C 86  136  62  156  38 182"
+                  fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.62"/>
+            <path d="M 106 116 C 82  130  58  146  32 164"
+                  fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.38"/>
+
+            <!-- West arm -->
+            <path d="M 102 110 C 78  106  52  100  20 96"
+                  fill="none" stroke="currentColor" stroke-width="3"   stroke-linecap="round" opacity="0.68"/>
+            <path d="M 102 116 C 76  118  50  120  18 124"
+                  fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+            <!-- Branch off west arm — curls up toward NW -->
+            <path d="M 56 104 C 48  90   44  74   46 56"
+                  fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.32"/>
+
+            <!-- NW arm -->
+            <path d="M 108 100 C 90  82   68  62   44 44"
+                  fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.62"/>
+
+            <!-- ── Secondary micro-veins (texture density) ── -->
+            <path d="M 124 104 C 128 88  136 72  148 52"
+                  fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
+            <path d="M 114 104 C 104 88  90  76  72  60"
+                  fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+            <path d="M 130 120 C 140 130  152 148  162 172"
+                  fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+            <path d="M 112 122 C 100 134  84  150  66 170"
+                  fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+
+            <!-- ── Central open circle with glow ── -->
+            <circle cx="118" cy="108" r="22" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.9"/>
+            <circle cx="118" cy="108" r="22" fill="none" stroke="currentColor" stroke-width="8" opacity="0.12"/>
+            <circle cx="118" cy="108" r="22" fill="none" stroke="currentColor" stroke-width="18" opacity="0.06"/>
+
+            <!-- ── Bioluminescent particle dots ── -->
+            <circle cx="86"  cy="48"  r="2.5" opacity="0.55"/>
+            <circle cx="164" cy="42"  r="2"   opacity="0.48"/>
+            <circle cx="206" cy="84"  r="2.5" opacity="0.52"/>
+            <circle cx="226" cy="146" r="2"   opacity="0.4"/>
+            <circle cx="198" cy="208" r="2.5" opacity="0.48"/>
+            <circle cx="136" cy="238" r="2"   opacity="0.42"/>
+            <circle cx="70"  cy="222" r="2.5" opacity="0.5"/>
+            <circle cx="32"  cy="158" r="2"   opacity="0.38"/>
+            <circle cx="34"  cy="84"  r="2.5" opacity="0.45"/>
+            <circle cx="54"  cy="38"  r="1.5" opacity="0.35"/>
+            <circle cx="192" cy="46"  r="1.5" opacity="0.35"/>
+            <circle cx="240" cy="118" r="1.5" opacity="0.3"/>
+            <circle cx="152" cy="244" r="1.5" opacity="0.3"/>
+
+          </svg>
+        </div>
+
+        <div class="tile__info">
+          <h2 class="tile__name">Shadows of Evil</h2>
+          <span class="tile__cta">Open Manual <span class="tile__cta-arrow">→</span></span>
+        </div>
+      </a>
+
+      <!-- ── Der Eisendrache ───────────────────────────────────────── -->
+      <a href="/dere" class="tile tile--de">
+        <span class="tile__num" aria-hidden="true">02</span>
+
+        <div class="tile__emblem">
+          <svg viewBox="0 0 270 280" xmlns="http://www.w3.org/2000/svg"
+               fill="currentColor" aria-label="Der Eisendrache castle and bow emblem">
+            <rect x="30" y="140" width="210" height="110" rx="2" opacity="0.6"/>
+            <path d="M 108 250 L 108 192 C 108 180 122 170 135 170 C 148 170 162 180 162 192 L 162 250 Z" fill="var(--bg, #06080f)"/>
+            <rect x="20"  y="90" width="50" height="160" rx="2"/>
+            <rect x="20"  y="74" width="12" height="22" rx="1"/>
+            <rect x="38"  y="74" width="12" height="22" rx="1"/>
+            <rect x="56"  y="74" width="12" height="22" rx="1"/>
+            <rect x="200" y="90" width="50" height="160" rx="2"/>
+            <rect x="200" y="74" width="12" height="22" rx="1"/>
+            <rect x="218" y="74" width="12" height="22" rx="1"/>
+            <rect x="236" y="74" width="12" height="22" rx="1"/>
+            <rect x="100" y="60" width="70" height="90" rx="2"/>
+            <rect x="100" y="44" width="12" height="22" rx="1"/>
+            <rect x="119" y="44" width="12" height="22" rx="1"/>
+            <rect x="138" y="44" width="12" height="22" rx="1"/>
+            <rect x="157" y="44" width="12" height="22" rx="1"/>
+            <path d="M 122 108 L 122 80 C 122 72 135 68 135 68 C 135 68 148 72 148 80 L 148 108 Z" fill="var(--bg, #06080f)" opacity="0.9"/>
+            <path d="M 135 16 C 94 32 74 68 76 110 C 76 148 96 176 135 192 C 174 176 194 148 194 110 C 196 68 176 32 135 16 Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+            <line x1="135" y1="16" x2="135" y2="192" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.55"/>
+            <line x1="90" y1="104" x2="175" y2="104" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+            <path d="M 175 104 L 165 98 L 165 110 Z" opacity="0.8"/>
+            <path d="M 90 104 L 98 98 L 100 104 L 98 110 Z" opacity="0.55"/>
+            <circle cx="135" cy="140" r="126" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.1"/>
+            <g opacity="0.2" stroke="currentColor" stroke-width="1.5" fill="none">
+              <rect x="127" y="30"  width="8" height="8" transform="rotate(45 131 34)"/>
+              <rect x="127" y="220" width="8" height="8" transform="rotate(45 131 224)"/>
+              <rect x="20"  y="132" width="8" height="8" transform="rotate(45 24 136)"/>
+              <rect x="242" y="132" width="8" height="8" transform="rotate(45 246 136)"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="tile__info">
+          <h2 class="tile__name">Der Eisendrache</h2>
+          <span class="tile__cta">Open Manual <span class="tile__cta-arrow">→</span></span>
+        </div>
+      </a>
+
+      <!-- ── Zetsubou No Shima ───────────────────────────────────── -->
+      <a href="/zetsubou" class="tile tile--zns">
+        <span class="tile__num" aria-hidden="true">03</span>
+
+        <div class="tile__emblem">
+          <svg viewBox="0 20 220 230" xmlns="http://www.w3.org/2000/svg"
+               fill="currentColor" aria-label="Zetsubou no Shima torii emblem">
+            <rect x="64"  y="96"  width="18" height="164" rx="2"/>
+            <rect x="138" y="96"  width="18" height="164" rx="2"/>
+            <rect x="54"  y="90"  width="38" height="11"  rx="1"/>
+            <rect x="128" y="90"  width="38" height="11"  rx="1"/>
+            <path d="M 12 58 C 110 40 110 40 208 58 L 208 78 C 110 60 110 60 12 78 Z"/>
+            <rect x="64"  y="114" width="92" height="13"  rx="1"/>
+            <path d="M 68 220 C 56 210 44 204 32 208 C 20 212 14 222 16 232" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M 52 212 C 46 200 44 186 50 174" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 50 192 C 40 188 28 192 20 202" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M 44 176 C 34 170 24 172 16 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 66 198 C 60 184 62 168 68 154 C 64 142 62 128 66 116" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+            <path d="M 152 220 C 164 210 176 204 188 208 C 200 212 206 222 204 232" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M 168 212 C 174 200 176 186 170 174" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 170 192 C 180 188 192 192 200 202" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M 176 176 C 186 170 196 172 204 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 154 198 C 160 184 158 168 152 154 C 156 142 158 128 154 116" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+            <ellipse cx="18"  cy="232" rx="12" ry="5.5" transform="rotate(-28 18 232)"  opacity="0.85"/>
+            <ellipse cx="28"  cy="202" rx="10" ry="4.5" transform="rotate(18 28 202)"   opacity="0.85"/>
+            <ellipse cx="16"  cy="182" rx="9"  ry="4"   transform="rotate(-12 16 182)"  opacity="0.75"/>
+            <ellipse cx="48"  cy="174" rx="11" ry="4.5" transform="rotate(25 48 174)"   opacity="0.8"/>
+            <ellipse cx="202" cy="232" rx="12" ry="5.5" transform="rotate(28 202 232)"  opacity="0.85"/>
+            <ellipse cx="192" cy="202" rx="10" ry="4.5" transform="rotate(-18 192 202)" opacity="0.85"/>
+            <ellipse cx="204" cy="182" rx="9"  ry="4"   transform="rotate(12 204 182)"  opacity="0.75"/>
+            <ellipse cx="172" cy="174" rx="11" ry="4.5" transform="rotate(-25 172 174)" opacity="0.8"/>
+            <path d="M 36 208 C 30 200 26 192 28 184 C 34 194 38 204 36 208 Z" opacity="0.7"/>
+            <path d="M 184 208 C 190 200 194 192 192 184 C 186 194 182 204 184 208 Z" opacity="0.7"/>
+            <circle cx="22"  cy="192" r="4.5" opacity="0.65"/>
+            <circle cx="34"  cy="186" r="3"   opacity="0.5"/>
+            <circle cx="14"  cy="198" r="2.5" opacity="0.4"/>
+            <circle cx="26"  cy="178" r="2"   opacity="0.35"/>
+            <circle cx="198" cy="192" r="4.5" opacity="0.65"/>
+            <circle cx="186" cy="186" r="3"   opacity="0.5"/>
+            <circle cx="206" cy="198" r="2.5" opacity="0.4"/>
+            <circle cx="194" cy="178" r="2"   opacity="0.35"/>
+            <circle cx="60"  cy="66"  r="2.5" opacity="0.4"/>
+            <circle cx="80"  cy="62"  r="2"   opacity="0.3"/>
+            <circle cx="160" cy="62"  r="2"   opacity="0.3"/>
+            <circle cx="178" cy="66"  r="2.5" opacity="0.4"/>
+            <ellipse cx="110" cy="260" rx="72" ry="8" fill="none" stroke="currentColor" stroke-width="1" opacity="0.15"/>
+          </svg>
+        </div>
+
+        <div class="tile__info">
+          <h2 class="tile__name">Zetsubou No Shima</h2>
+          <span class="tile__cta">Open Manual <span class="tile__cta-arrow">→</span></span>
+        </div>
+      </a>
+
       <!-- ── Gorod Krovi ─────────────────────────────────────────── -->
       <a href="/gorod" class="tile tile--gk">
-        <span class="tile__num" aria-hidden="true">01</span>
+        <span class="tile__num" aria-hidden="true">04</span>
 
         <div class="tile__emblem">
           <!--
@@ -417,101 +776,97 @@
         </div>
       </a>
 
-      <!-- ── Zetsubou No Shima ───────────────────────────────────── -->
-      <a href="/zetsubou" class="tile tile--zns">
-        <span class="tile__num" aria-hidden="true">02</span>
+      <!-- ── Revelations ─────────────────────────────────────────────── -->
+      <a href="/revelations" class="tile tile--rev">
+        <span class="tile__num" aria-hidden="true">05</span>
 
         <div class="tile__emblem">
           <!--
-            Torii gate with spore vines and leaf growth.
-            Drawn in a 220×280 viewBox.
+            Apothicon sun — radiating eye with cosmic ring and geometric arms.
+            300×300 viewBox.
           -->
-          <svg viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg"
-               fill="currentColor" aria-label="Zetsubou no Shima torii emblem">
+          <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"
+               fill="currentColor" aria-label="Revelations Apothicon sun emblem">
 
-            <!-- ── Torii: left post ── -->
-            <rect x="64"  y="96"  width="18" height="164" rx="2"/>
+            <!-- ── Outer cosmos ring ── -->
+            <circle cx="150" cy="150" r="138"
+                    fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.12"/>
+            <circle cx="150" cy="150" r="130"
+                    fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.18"/>
 
-            <!-- ── Torii: right post ── -->
-            <rect x="138" y="96"  width="18" height="164" rx="2"/>
+            <!-- ── Twelve sun rays ── -->
+            <g opacity="0.55">
+              <polygon points="150,12  155,90  145,90"/>
+              <polygon points="150,288 155,210 145,210"/>
+              <polygon points="12,150  90,155  90,145"/>
+              <polygon points="288,150 210,155 210,145"/>
+              <!-- Diagonal rays -->
+              <polygon points="56,56   118,116 111,122"/>
+              <polygon points="244,56  182,116 189,122"/>
+              <polygon points="56,244  118,184 111,178"/>
+              <polygon points="244,244 182,184 189,178"/>
+              <!-- Inter-cardinal rays (thinner) -->
+              <polygon points="103,17  143,100 137,102" opacity="0.7"/>
+              <polygon points="197,17  157,100 163,102" opacity="0.7"/>
+              <polygon points="283,103 200,143 198,137" opacity="0.7"/>
+              <polygon points="283,197 200,157 198,163" opacity="0.7"/>
+              <polygon points="197,283 157,200 163,198" opacity="0.7"/>
+              <polygon points="103,283 143,200 137,198" opacity="0.7"/>
+              <polygon points="17,197  100,157 102,163" opacity="0.7"/>
+              <polygon points="17,103  100,143 102,137" opacity="0.7"/>
+            </g>
 
-            <!-- ── Torii: upper shimaki caps ── -->
-            <rect x="54"  y="90"  width="38" height="11"  rx="1"/>
-            <rect x="128" y="90"  width="38" height="11"  rx="1"/>
+            <!-- ── Middle accent ring ── -->
+            <circle cx="150" cy="150" r="96"
+                    fill="none" stroke="currentColor" stroke-width="1" opacity="0.22"/>
 
-            <!-- ── Torii: kasagi (top beam, curved ends) ── -->
-            <path d="M 12 58 C 110 40 110 40 208 58 L 208 78 C 110 60 110 60 12 78 Z"/>
+            <!-- ── Inner geometric ring ── -->
+            <!-- Octagon -->
+            <path d="M 150 66  L 184 78  L 206 106 L 206 150
+                      L 206 194 L 184 222 L 150 234 L 116 222
+                      L 94 194  L 94 150  L 94 106  L 116 78 Z"
+                  fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
 
-            <!-- ── Torii: nuki (second cross-beam) ── -->
-            <rect x="64"  y="114" width="92" height="13"  rx="1"/>
+            <!-- ── Central eye ── -->
+            <path d="M 96 150 C 118 120 182 120 204 150 C 182 180 118 180 96 150 Z"
+                  opacity="0.85"/>
+            <!-- Iris circle -->
+            <circle cx="150" cy="150" r="22" fill="var(--bg, #100800)" opacity="0.95"/>
+            <!-- Pupil -->
+            <circle cx="150" cy="150" r="11" opacity="0.9"/>
+            <!-- Gleam -->
+            <circle cx="143" cy="144" r="4.5" fill="var(--bg, #100800)" opacity="0.6"/>
 
-            <!-- ── Left vine, main stem ── -->
-            <path d="M 68 220 C 56 210 44 204 32 208 C 20 212 14 222 16 232"
-                  fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M 52 212 C 46 200 44 186 50 174"
-                  fill="none" stroke="currentColor" stroke-width="3"   stroke-linecap="round"/>
-            <path d="M 50 192 C 40 188 28 192 20 202"
-                  fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M 44 176 C 34 170 24 172 16 180"
-                  fill="none" stroke="currentColor" stroke-width="2"   stroke-linecap="round"/>
-            <!-- Left vine climb up post -->
-            <path d="M 66 198 C 60 184 62 168 68 154 C 64 142 62 128 66 116"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+            <!-- ── Inner ring notch marks ── -->
+            <g opacity="0.4" stroke="currentColor" stroke-width="2">
+              <line x1="150" y1="54"  x2="150" y2="66"/>
+              <line x1="150" y1="234" x2="150" y2="246"/>
+              <line x1="54"  y1="150" x2="66"  y2="150"/>
+              <line x1="234" y1="150" x2="246" y2="150"/>
+              <line x1="82"  y1="82"  x2="90"  y2="90"/>
+              <line x1="210" y1="210" x2="218" y2="218"/>
+              <line x1="218" y1="82"  x2="210" y2="90"/>
+              <line x1="90"  y1="210" x2="82"  y2="218"/>
+            </g>
 
-            <!-- ── Right vine, main stem ── -->
-            <path d="M 152 220 C 164 210 176 204 188 208 C 200 212 206 222 204 232"
-                  fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M 168 212 C 174 200 176 186 170 174"
-                  fill="none" stroke="currentColor" stroke-width="3"   stroke-linecap="round"/>
-            <path d="M 170 192 C 180 188 192 192 200 202"
-                  fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M 176 176 C 186 170 196 172 204 180"
-                  fill="none" stroke="currentColor" stroke-width="2"   stroke-linecap="round"/>
-            <!-- Right vine climb up post -->
-            <path d="M 154 198 C 160 184 158 168 152 154 C 156 142 158 128 154 116"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-
-            <!-- ── Leaves (ellipses rotated around vines) ── -->
-            <ellipse cx="18"  cy="232" rx="12" ry="5.5" transform="rotate(-28 18 232)"  opacity="0.85"/>
-            <ellipse cx="28"  cy="202" rx="10" ry="4.5" transform="rotate(18 28 202)"   opacity="0.85"/>
-            <ellipse cx="16"  cy="182" rx="9"  ry="4"   transform="rotate(-12 16 182)"  opacity="0.75"/>
-            <ellipse cx="48"  cy="174" rx="11" ry="4.5" transform="rotate(25 48 174)"   opacity="0.8"/>
-
-            <ellipse cx="202" cy="232" rx="12" ry="5.5" transform="rotate(28 202 232)"  opacity="0.85"/>
-            <ellipse cx="192" cy="202" rx="10" ry="4.5" transform="rotate(-18 192 202)" opacity="0.85"/>
-            <ellipse cx="204" cy="182" rx="9"  ry="4"   transform="rotate(12 204 182)"  opacity="0.75"/>
-            <ellipse cx="172" cy="174" rx="11" ry="4.5" transform="rotate(-25 172 174)" opacity="0.8"/>
-
-            <!-- A few small pointed leaf tips -->
-            <path d="M 36 208 C 30 200 26 192 28 184 C 34 194 38 204 36 208 Z" opacity="0.7"/>
-            <path d="M 184 208 C 190 200 194 192 192 184 C 186 194 182 204 184 208 Z" opacity="0.7"/>
-
-            <!-- ── Spore clusters ── -->
-            <circle cx="22"  cy="192" r="4.5" opacity="0.65"/>
-            <circle cx="34"  cy="186" r="3"   opacity="0.5"/>
-            <circle cx="14"  cy="198" r="2.5" opacity="0.4"/>
-            <circle cx="26"  cy="178" r="2"   opacity="0.35"/>
-
-            <circle cx="198" cy="192" r="4.5" opacity="0.65"/>
-            <circle cx="186" cy="186" r="3"   opacity="0.5"/>
-            <circle cx="206" cy="198" r="2.5" opacity="0.4"/>
-            <circle cx="194" cy="178" r="2"   opacity="0.35"/>
-
-            <!-- Tiny spore dots on kasagi beam -->
-            <circle cx="60"  cy="66"  r="2.5" opacity="0.4"/>
-            <circle cx="80"  cy="62"  r="2"   opacity="0.3"/>
-            <circle cx="160" cy="62"  r="2"   opacity="0.3"/>
-            <circle cx="178" cy="66"  r="2.5" opacity="0.4"/>
-
-            <!-- ── Subtle ground ring ── -->
-            <ellipse cx="110" cy="260" rx="72" ry="8"
-                     fill="none" stroke="currentColor" stroke-width="1" opacity="0.15"/>
+            <!-- ── Corner rune dots ── -->
+            <g opacity="0.3">
+              <circle cx="150" cy="18"  r="3"/>
+              <circle cx="232" cy="36"  r="2.5"/>
+              <circle cx="282" cy="150" r="3"/>
+              <circle cx="232" cy="264" r="2.5"/>
+              <circle cx="150" cy="282" r="3"/>
+              <circle cx="68"  cy="264" r="2.5"/>
+              <circle cx="18"  cy="150" r="3"/>
+              <circle cx="68"  cy="36"  r="2.5"/>
+            </g>
 
           </svg>
         </div>
 
         <div class="tile__info">
-          <h2 class="tile__name">Zetsubou No Shima</h2>
+          <p class="tile__tag">Final Chapter</p>
+          <h2 class="tile__name">Revelations</h2>
           <span class="tile__cta">Open Manual <span class="tile__cta-arrow">→</span></span>
         </div>
       </a>

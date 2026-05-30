@@ -1,244 +1,225 @@
-const STORAGE_KEY = "bo3-super-ee-helper:zns:first-pass";
+const STORAGE_KEY = "bo3-super-ee-helper:de:first-pass";
 
 const RECOMMENDED_GOBBLEGUMS = [
   "Anywhere But Here",
-  "Kill Joy",
   "Perkaholic",
-  "Sword Flay",
-  "Aftertaste"
+  "Firing On All Cylinders",
+  "Aftertaste",
+  "Killing Time"
 ];
 
 const STEP_DATA = [
   {
     id: "power",
     title: "Restore Power",
-    summary: "Open the map, locate the power switch, and learn the three ritual sites.",
+    summary: "Activate the castle's power and unlock the main areas.",
     category: "Setup",
     risk: "Low",
     tags: ["Required", "Early game"],
-    details: "Open the map, locate the power switch, and learn the three ritual sites.",
+    details: "Navigate the castle exterior and interior to locate and activate the main power switch.",
     checkpoints: [
       "Power switch activated.",
-      "Spawn beach, lab, and waterfall areas are accessible.",
-      "Three spore ritual sites located.",
-      "GobbleGum loadout agreed before wave three."
+      "Castle interior areas unlocked.",
+      "Pack-a-Punch teleporter pad located.",
+      "Arrow upgrade bench found."
     ],
     subtasks: [
-      { title: "Open Routes", detail: "Buy through spawn side toward the lab complex." },
-      { title: "Power", detail: "Activate the power switch in the underground lab." },
-      { title: "Locate Rituals", detail: "Note the three active spore mound sites. They rotate each game." },
-      { title: "Perk Route", detail: "Identify Juggernog and Quick Revive locations." }
+      { title: "Open Routes", detail: "Buy through the courtyard toward the undercroft and upper ramparts." },
+      { title: "Power Switch", detail: "Activate the power in the undercroft beneath the castle." },
+      { title: "Wrath of the Ancients", detail: "Locate the bow wall-buy in the keep — you'll need it immediately." },
+      { title: "Perk Route", detail: "Note Juggernog, Mule Kick, and Quick Revive positions." }
     ],
     hints: []
   },
   {
-    id: "kt4-parts",
-    title: "Collect KT-4 Components",
-    summary: "Gather the three components hidden across the island.",
-    category: "Setup",
-    risk: "Medium",
-    tags: ["Required", "Buildable"],
-    prerequisites: ["power"],
-    details: "Gather the three KT-4 components from the lab, spider lair, and power areas.",
-    checkpoints: [
-      "Spore sample retrieved from the testing lab.",
-      "Battery cell found near the power room.",
-      "Test tube set recovered from the spider lair."
-    ],
-    subtasks: [
-      { title: "Spore Sample", detail: "Check the specimen shelf in the underground testing lab. Respawns each round." },
-      { title: "Battery Cell", detail: "Found on the generator platform near the power switch." },
-      { title: "Test Tube Set", detail: "Drops from killing a Banshee inside the spider lair." },
-      { title: "Blue Spore Canister", detail: "Shoot the blue spore mound above the power switch to collect the canister." }
-    ],
-    hints: []
-  },
-  {
-    id: "kt4-craft",
-    title: "Craft the KT-4",
-    summary: "Assemble the KT-4 at the lab workbench.",
+    id: "wota",
+    title: "Obtain Wrath of the Ancients",
+    summary: "Acquire the base wonder bow from the keep wall.",
     category: "Weapon",
     risk: "Low",
     tags: ["Required", "Weapon"],
-    prerequisites: ["kt4-parts"],
-    details: "Take all four components to the workbench in the underground lab and assemble the KT-4.",
+    prerequisites: ["power"],
+    details: "The Wrath of the Ancients is a wall-buy in the keep area. It is required for all four elemental bow upgrades.",
     checkpoints: [
-      "All three KT-4 components in inventory.",
-      "Blue spore canister collected.",
-      "KT-4 assembled at the lab workbench."
+      "Wrath of the Ancients purchased from wall.",
+      "Four dragon souls noted for upgrade paths."
     ],
     subtasks: [
-      { title: "Workbench", detail: "Find the assembly workbench in the main underground lab room." },
-      { title: "Craft", detail: "Interact to assemble. The KT-4 replaces your secondary slot." }
+      { title: "Purchase", detail: "Find the bow on the wall in the keep. Costs 1000 points." },
+      { title: "Ammo", detail: "Arrows are replenished by killing zombies. No ammo purchase needed." }
     ],
     hints: []
   },
   {
-    id: "spore-rituals",
-    title: "Spore Purification Rituals",
-    summary: "Complete all three spore mound rituals using the KT-4.",
-    category: "Ritual",
-    risk: "High",
-    tags: ["Required", "Ritual", "KT-4"],
-    prerequisites: ["kt4-craft"],
-    details: "Each of the three spore mound sites must be purified with the KT-4 in a set order. Note which site activates first.",
-    checkpoints: [
-      "First spore site purified.",
-      "Second spore site purified.",
-      "Third spore site purified.",
-      "All three ritual flames lit."
-    ],
-    subtasks: [
-      { title: "Identify Active Site", detail: "Watch for the glowing mound at round start. Shoot it with the KT-4." },
-      { title: "Defend the Mound", detail: "Hold the area while the purification completes. Spores will spawn." },
-      { title: "Collect Essence", detail: "Grab the ritual flame token before it despawns." },
-      { title: "Repeat x3", detail: "Each ritual activates at a different site. Track order with the spore tracker below." }
-    ],
-    hints: []
-  },
-  {
-    id: "skull-collect",
-    title: "Skull Collection",
-    summary: "Kill marked enemy types to collect the six ritual skulls.",
-    category: "Collectibles",
+    id: "bow-fire",
+    title: "Upgrade: Fire Bow",
+    summary: "Complete the fire dragon's soul trial to unlock the fire bow upgrade.",
+    category: "Upgrade",
     risk: "Medium",
-    tags: ["Required", "Collectibles"],
-    prerequisites: ["spore-rituals"],
-    details: "Specific enemy kills yield ritual skulls. Each skull type drops from a different enemy.",
+    tags: ["Required", "Upgrade", "Bow"],
+    prerequisites: ["wota"],
+    details: "Each dragon at the castle has an associated elemental bow upgrade. The fire dragon trial requires shooting specific braziers in order.",
     checkpoints: [
-      "Margwa skull collected.",
-      "Bomber skull collected.",
-      "Banshee skull collected.",
-      "Spore zombie skull collected.",
-      "Parasitic skull collected.",
-      "Keeper skull collected."
+      "Fire dragon activated.",
+      "Brazier sequence solved.",
+      "Fire bow upgrade collected."
     ],
     subtasks: [
-      { title: "Margwa", detail: "Kill a Margwa with the KT-4 charged shot to its open head." },
-      { title: "Bomber", detail: "Kill a Bomber while it is mid-charge." },
-      { title: "Banshee", detail: "Headshot a Banshee in the spider lair." },
-      { title: "Parasite", detail: "Kill a Parasite with melee while it is attached." },
-      { title: "Spore Zombie", detail: "Kill a spore-infected zombie while it is still in the plant." },
-      { title: "Keeper", detail: "Kill a Keeper near the waterfall shrine." }
+      { title: "Activate Dragon", detail: "Shoot the fire dragon statue with the base bow to begin the trial." },
+      { title: "Brazier Order", detail: "Shoot the four lit braziers around the courtyard in the order they flash." },
+      { title: "Collect Upgrade", detail: "The upgraded fire bow spawns at the altar near the fire dragon." }
     ],
     hints: []
   },
   {
-    id: "masamune",
-    title: "Upgrade to Masamune",
-    summary: "Complete the upgrade ritual to transform the KT-4 into the Masamune.",
-    category: "Weapon",
+    id: "bow-wolf",
+    title: "Upgrade: Wolf Bow",
+    summary: "Solve the wolf shadow puzzle and collect wolf bow souls.",
+    category: "Upgrade",
+    risk: "Medium",
+    tags: ["Required", "Upgrade", "Bow"],
+    prerequisites: ["wota"],
+    details: "The wolf bow upgrade requires casting wolf shadows on the chamber walls using mounted torches.",
+    checkpoints: [
+      "Wolf shadow puzzle solved.",
+      "Wolf souls collected from spectral wolves.",
+      "Wolf bow upgrade obtained."
+    ],
+    subtasks: [
+      { title: "Shadow Puzzle", detail: "In the round room near the undercroft, shoot the mounted torches to cast wolf shadow silhouettes matching the wall carvings." },
+      { title: "Spectral Wolves", detail: "After the puzzle, spectral wolves spawn. Kill them to collect wolf souls." },
+      { title: "Claim Upgrade", detail: "Return to the altar and interact to receive the wolf bow." }
+    ],
+    hints: []
+  },
+  {
+    id: "bow-void",
+    title: "Upgrade: Void Bow",
+    summary: "Collect void orbs across the map and charge them in the undercroft.",
+    category: "Upgrade",
+    risk: "Medium",
+    tags: ["Required", "Upgrade", "Bow"],
+    prerequisites: ["wota"],
+    details: "Void orbs must be shot off specific pedestals and redirected through the undercroft portal stones.",
+    checkpoints: [
+      "Three void orb locations found.",
+      "Orbs redirected through portal stones.",
+      "Void bow upgrade collected."
+    ],
+    subtasks: [
+      { title: "Orb Locations", detail: "Void orbs sit on glowing pedestals in the library, ramparts, and crypt." },
+      { title: "Redirect Orbs", detail: "Shoot each orb into the undercroft. Stand at the portal stone and shoot the orb toward it." },
+      { title: "Charge and Collect", detail: "Once all three are redirected, the void bow spawns at the undercroft altar." }
+    ],
+    hints: []
+  },
+  {
+    id: "bow-storm",
+    title: "Upgrade: Storm Bow",
+    summary: "Charge the storm orb through repeated lightning strikes.",
+    category: "Upgrade",
     risk: "High",
-    tags: ["Required", "Upgrade"],
-    prerequisites: ["skull-collect"],
-    details: "The Masamune upgrade requires placing all six skulls and completing a defense ritual at the waterfall shrine.",
+    tags: ["Required", "Upgrade", "Bow"],
+    prerequisites: ["wota"],
+    details: "The storm bow requires shooting a floating orb through a lightning storm sequence in the upper ramparts.",
     checkpoints: [
-      "All six skulls deposited at the shrine.",
-      "Waterfall ritual defense survived.",
-      "Masamune claimed from the shrine."
+      "Storm orb located.",
+      "Lightning sequence triggered three times.",
+      "Storm bow upgrade obtained."
     ],
     subtasks: [
-      { title: "Shrine Deposit", detail: "Take all six skulls to the waterfall shrine. Deposit in order displayed." },
-      { title: "Ritual Defense", detail: "A lockdown begins. Hold the shrine against three waves of infected zombies." },
-      { title: "Claim Masamune", detail: "Pick up the upgraded weapon from the altar after the lockdown clears." }
+      { title: "Locate Orb", detail: "The storm orb floats near the tallest tower. Use the base bow to interact with it." },
+      { title: "Lightning Triggers", detail: "Shoot the orb during each lightning flash. Requires three successful hits on separate rounds." },
+      { title: "Collect Upgrade", detail: "Storm bow spawns at the high tower altar after the third successful charge." }
     ],
     hints: []
   },
   {
-    id: "margwa-heart",
-    title: "Margwa Heart Ritual",
-    summary: "Lure and kill a Margwa at the altar. Extract and place its heart.",
+    id: "keeper-trial",
+    title: "Keeper Protector Trial",
+    summary: "Charge the four upgrade pedestals using the four elemental bows.",
     category: "Ritual",
     risk: "Very High",
-    tags: ["Required", "Boss kill"],
-    prerequisites: ["masamune"],
-    details: "A special Margwa spawns and must be led to the altar. Kill it there and extract the heart before it decays.",
+    tags: ["Required", "Boss prep"],
+    prerequisites: ["bow-fire", "bow-wolf", "bow-void", "bow-storm"],
+    details: "Each of the four bows must charge its corresponding pedestal in the keep. All four must be done before the boss ritual begins.",
     checkpoints: [
-      "Special Margwa appeared.",
-      "Margwa lured to the altar platform.",
-      "Margwa killed at the altar.",
-      "Margwa heart extracted.",
-      "Heart placed in the altar vessel."
+      "Fire pedestal charged.",
+      "Wolf pedestal charged.",
+      "Void pedestal charged.",
+      "Storm pedestal charged.",
+      "Keeper ritual ready."
     ],
     subtasks: [
-      { title: "Lure", detail: "Shoot the special Margwa (glowing orange core) toward the altar. Do not kill it away from the altar." },
-      { title: "Kill at Altar", detail: "Finish the Margwa on the platform. Use the Masamune charged shot for the final hit." },
-      { title: "Extract", detail: "Interact with the Margwa body to pull the heart. Timer starts immediately." },
-      { title: "Place", detail: "Run to the altar vessel and deposit the heart before the timer expires." }
+      { title: "Fire Pedestal", detail: "Shoot the fire pedestal near the dragon statue with the fire bow." },
+      { title: "Wolf Pedestal", detail: "Charge the wolf pedestal with the wolf bow near the round room." },
+      { title: "Void Pedestal", detail: "Fire the void bow at the void pedestal in the undercroft." },
+      { title: "Storm Pedestal", detail: "Charge the storm pedestal at the tallest tower with the storm bow." }
     ],
     hints: []
   },
   {
-    id: "final",
-    title: "Final Escape Sequence",
-    summary: "Activate the gate, survive the final ritual, escape the island.",
+    id: "rocket",
+    title: "Final Rocket Launch",
+    summary: "Launch the rocket and defeat the Panzersoldat boss to complete the easter egg.",
     category: "Final prep",
     risk: "Very High",
     tags: ["Required", "Execution"],
-    prerequisites: ["margwa-heart"],
-    details: "Activate the teleporter sequence, survive the final zombie onslaught, and escape Zetsubou no Shima.",
+    prerequisites: ["keeper-trial"],
+    details: "Activate the rocket launch sequence and defend through the final Panzersoldat encounter.",
     checkpoints: [
-      "Gate sigil activated.",
-      "Final ritual wave survived.",
-      "Teleporter charged.",
+      "Launch codes entered.",
+      "Rocket countdown survived.",
+      "Panzersoldat boss defeated.",
       "Easter egg complete."
     ],
     subtasks: [
-      { title: "Sigil Activation", detail: "Interact with the altar with the charged heart. All three flames must be lit." },
-      { title: "Final Defense", detail: "Hold the altar area through the last wave. Margwas and spore zombies spawn simultaneously." },
-      { title: "Teleport", detail: "All players interact with the teleporter gate to complete the easter egg." }
+      { title: "Enter Launch Codes", detail: "Interact with the control terminal in the keep after all pedestals are charged." },
+      { title: "Defend Countdown", detail: "Survive waves of zombies and Keepers during the launch countdown." },
+      { title: "Boss Fight", detail: "Defeat the empowered Panzersoldat. Use charged arrow shots for efficient damage." },
+      { title: "Completion", detail: "All players must be alive when the rocket launches to receive the easter egg cutscene." }
     ],
     hints: []
   }
 ];
 
-const SPORE_LOCATIONS = [
-  "Spawn Beach",
-  "Lab Testing",
-  "Spider Lair",
-  "Waterfall",
-  "Underground",
-  "Bunker East"
-];
-
 const BUILDABLE_GROUPS = [
   {
-    id: "kt4",
-    title: "KT-4",
-    description: "Lab-crafted wonder weapon",
+    id: "wota",
+    title: "Wrath of the Ancients",
+    description: "Base wonder bow — required for all upgrades",
     parts: [
-      { id: "kt4-spore", code: "K1", name: "Spore Sample", meta: "Testing lab shelf", hint: "Underground testing lab — specimen shelf on the east wall. Respawns each round.", shape: "egg" },
-      { id: "kt4-battery", code: "K2", name: "Battery Cell", meta: "Power room platform", hint: "Generator platform next to the main power switch.", shape: "circuit" },
-      { id: "kt4-tubes", code: "K3", name: "Test Tube Set", meta: "Spider lair drop", hint: "Banshee kill inside the spider lair. May take several attempts.", shape: "cylinder" }
+      { id: "wota-bow", code: "W1", name: "Wrath of the Ancients", meta: "Keep wall-buy", hint: "Wall-buy in the keep area. Costs 1000 points.", shape: "core" }
     ]
   },
   {
-    id: "spore-canister",
-    title: "Blue Spore Canister",
-    description: "Required for KT-4 assembly",
+    id: "bows",
+    title: "Elemental Bows",
+    description: "All four elemental bow upgrades",
     parts: [
-      { id: "canister-blue", code: "B1", name: "Blue Canister", meta: "Power room ceiling", hint: "Shoot the glowing blue spore mound above the power switch with any weapon.", shape: "core" },
-      { id: "canister-seal", code: "B2", name: "Seal the Sample", meta: "Lab workbench", hint: "Bring the canister and the three KT-4 parts to the workbench to seal and assemble.", shape: "core" }
+      { id: "bow-fire-u", code: "E1", name: "Fire Bow", meta: "Dragon brazier trial", hint: "Shoot the braziers in the flashing order to unlock.", shape: "core" },
+      { id: "bow-wolf-u", code: "E2", name: "Wolf Bow", meta: "Shadow puzzle + wolf souls", hint: "Cast wolf shadows using torches in the round room.", shape: "core" },
+      { id: "bow-void-u", code: "E3", name: "Void Bow", meta: "Void orb redirect", hint: "Redirect all three void orbs through the undercroft portal stones.", shape: "core" },
+      { id: "bow-storm-u", code: "E4", name: "Storm Bow", meta: "Lightning strike charge", hint: "Shoot the floating orb during three separate lightning flashes.", shape: "core" }
     ]
   }
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-kt4", code: "A1", name: "KT-4", meta: "Wonder weapon", hint: "Assembled at the underground lab workbench from three components.", shape: "cylinder" },
-  { id: "artifact-masamune", code: "A2", name: "Masamune", meta: "KT-4 upgrade", hint: "Claimed from the waterfall shrine after the skull deposit ritual.", shape: "core" },
-  { id: "artifact-heart", code: "A3", name: "Margwa Heart", meta: "Altar ritual item", hint: "Extracted from the special Margwa killed on the altar platform.", shape: "egg" },
-  { id: "artifact-flame1", code: "F1", name: "Flame Token I", meta: "First spore ritual", hint: "Dropped after completing the first spore mound purification.", shape: "core" },
-  { id: "artifact-flame2", code: "F2", name: "Flame Token II", meta: "Second spore ritual", hint: "Dropped after the second purification site is cleansed.", shape: "core" },
-  { id: "artifact-flame3", code: "F3", name: "Flame Token III", meta: "Third spore ritual", hint: "Dropped after all three purifications. Lights the final altar flame.", shape: "core" }
+  { id: "artifact-wota", code: "A1", name: "Wrath of the Ancients", meta: "Wonder bow", hint: "Purchased from the keep wall-buy for 1000 points.", shape: "core" },
+  { id: "artifact-fire", code: "A2", name: "Fire Bow Upgrade", meta: "Dragon trial", hint: "Awarded after completing the fire brazier sequence.", shape: "core" },
+  { id: "artifact-wolf", code: "A3", name: "Wolf Bow Upgrade", meta: "Shadow puzzle", hint: "Awarded after the spectral wolf kill sequence.", shape: "core" },
+  { id: "artifact-void", code: "A4", name: "Void Bow Upgrade", meta: "Orb redirect", hint: "Awarded after redirecting all void orbs through the undercroft.", shape: "core" },
+  { id: "artifact-storm", code: "A5", name: "Storm Bow Upgrade", meta: "Lightning charge", hint: "Awarded after three successful lightning orb shots.", shape: "core" }
 ];
 
 const TROPHIES = [
-  { id: "skull-margwa", code: "S1", name: "Margwa Skull", meta: "KT-4 headshot", hint: "Kill a Margwa with the KT-4 charged shot to its open head.", shape: "trophy" },
-  { id: "skull-bomber", code: "S2", name: "Bomber Skull", meta: "Mid-charge kill", hint: "Kill a Bomber while it is actively charging toward a player.", shape: "trophy" },
-  { id: "skull-banshee", code: "S3", name: "Banshee Skull", meta: "Spider lair headshot", hint: "Headshot a Banshee inside the spider lair corridor.", shape: "trophy" },
-  { id: "skull-parasite", code: "S4", name: "Parasite Skull", meta: "Melee while attached", hint: "Melee kill a Parasite while it is latched onto a player.", shape: "trophy" },
-  { id: "skull-spore", code: "S5", name: "Spore Skull", meta: "Kill in-plant", hint: "Kill a spore-infected zombie before it fully emerges from the plant.", shape: "trophy" },
-  { id: "skull-keeper", code: "S6", name: "Keeper Skull", meta: "Waterfall kill", hint: "Kill a Keeper near the waterfall shrine with the Masamune.", shape: "trophy" }
+  { id: "trophy-panzer", code: "T1", name: "Panzersoldat Gage Tag", meta: "Boss kill", hint: "Kill the Panzersoldat during the final rocket countdown.", shape: "trophy" },
+  { id: "trophy-keeper", code: "T2", name: "Keeper Soul Shard", meta: "Keeper kill with charged bow", hint: "Kill a Keeper using a fully charged elemental bow shot.", shape: "trophy" },
+  { id: "trophy-fire", code: "T3", name: "Brazier Ember", meta: "Fire trial drop", hint: "Drops after completing the fire brazier sequence.", shape: "trophy" },
+  { id: "trophy-wolf", code: "T4", name: "Wolf Fang", meta: "Spectral wolf kill", hint: "Drops from a spectral wolf during the wolf bow trial.", shape: "trophy" },
+  { id: "trophy-void", code: "T5", name: "Void Shard", meta: "Void orb collect", hint: "Appears after the third void orb is redirected into the undercroft.", shape: "trophy" },
+  { id: "trophy-storm", code: "T6", name: "Storm Rune", meta: "Lightning orb charge", hint: "Drops from the final lightning charge at the high tower.", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -251,7 +232,6 @@ const DEFAULT_STATE = {
     trophies: false,
     artifacts: false
   },
-  spores: [],
   buildables: Object.fromEntries(BUILDABLE_GROUPS.flatMap((group) => group.parts.map((part) => [part.id, false]))),
   artifacts: Object.fromEntries(ARTIFACTS.map((artifact) => [artifact.id, false])),
   trophies: Object.fromEntries(TROPHIES.map((trophy) => [trophy.id, false]))
@@ -279,10 +259,6 @@ function mergeState(saved) {
       next.inventoryExpanded[key] = Boolean(saved.inventoryExpanded[key]);
     });
   }
-  next.spores = Array.isArray(saved.spores)
-    ? saved.spores.filter((item) => SPORE_LOCATIONS.includes(item))
-    : next.spores;
-
   for (const step of STEP_DATA) {
     next.stepStatus[step.id] = Boolean(saved.stepStatus && saved.stepStatus[step.id]);
   }
@@ -338,7 +314,7 @@ function renderHero() {
   const progress = Math.round((completed / STEP_DATA.length) * 100);
   const progressTip = completed === STEP_DATA.length
     ? "Quest marked complete."
-    : "Track whichever objectives are active for the run.";
+    : "Track bow upgrades and keeper trials as you progress.";
 
   document.getElementById("progress-text").textContent = `${completed} / ${STEP_DATA.length} complete`;
   document.getElementById("progress-fill").style.width = `${progress}%`;
@@ -431,8 +407,6 @@ function renderActiveStep() {
         </ol>
       </section>
 
-      ${step.id === "spore-rituals" ? renderSporeTrackerSection() : ""}
-
       <footer class="step-detail__footer">
         <div class="step-detail__actions">
           <button type="button" class="action-button ${complete ? "" : "action-button--success"}" id="toggle-complete">
@@ -446,132 +420,44 @@ function renderActiveStep() {
   container.querySelector("#toggle-complete").addEventListener("click", () => {
     updateState((draft) => { draft.stepStatus[step.id] = !draft.stepStatus[step.id]; });
   });
-
-  if (step.id === "spore-rituals") {
-    bindSporeTrackerEvents(container);
-  }
 }
 
-function renderSporeTrackerSection() {
-  return `
-    <section class="step-detail__section utility-card">
-      <div class="utility-card__header">
-        <div>
-          <p class="panel__eyebrow">Ritual Step</p>
-          <h3>Spore Order Tracker</h3>
-        </div>
-        <button type="button" class="ghost-button ghost-button--small" id="clear-spores">Clear</button>
-      </div>
-      <p class="utility-text">Toggle spore sites in activation order. Sequence runs left to right.</p>
-      <div class="pill-grid" id="spore-location-buttons"></div>
-      <div class="bomb-sequence" id="spore-sequence-list"></div>
-    </section>
-  `;
-}
-
-function bindSporeTrackerEvents(container) {
-  const buttonContainer = container.querySelector("#spore-location-buttons");
-  const list = container.querySelector("#spore-sequence-list");
-
-  SPORE_LOCATIONS.forEach((location) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = `pill-button ${state.spores.includes(location) ? "is-added" : ""}`;
-    button.textContent = location;
-    button.addEventListener("click", () => {
-      updateState((draft) => {
-        const idx = draft.spores.indexOf(location);
-        if (idx === -1) {
-          if (draft.spores.length < 3) draft.spores.push(location);
-        } else {
-          draft.spores.splice(idx, 1);
-        }
-      });
-    });
-    buttonContainer.appendChild(button);
-  });
-
-  if (state.spores.length === 0) {
-    list.innerHTML = '<span class="empty-state">No spore order recorded yet.</span>';
-  } else {
-    state.spores.forEach((location, index) => {
-      if (index > 0) {
-        const arrow = document.createElement("span");
-        arrow.className = "bomb-sequence__arrow";
-        arrow.textContent = "→";
-        list.appendChild(arrow);
-      }
-      const step = document.createElement("span");
-      step.className = "bomb-sequence__step";
-      step.innerHTML = `<span class="bomb-sequence__num">${index + 1}</span>${location}`;
-      list.appendChild(step);
-    });
-  }
-
-  container.querySelector("#clear-spores").addEventListener("click", () => {
-    updateState((draft) => { draft.spores = []; });
-  });
-}
-
-function renderActiveUtility() {
-  // Utility area reserved for future ZNS-specific tools
-}
+function renderActiveUtility() {}
 
 function renderBuildables() {
-  const ktContainer = document.getElementById("buildables-grid");
-  const canisterContainer = document.getElementById("dragon-control-grid");
+  const buildContainer = document.getElementById("buildables-grid");
+  const bowContainer = document.getElementById("dragon-control-grid");
+  buildContainer.innerHTML = "";
+  bowContainer.innerHTML = "";
 
-  ktContainer.innerHTML = "";
-  canisterContainer.innerHTML = "";
+  const wotaGroup = BUILDABLE_GROUPS.find((g) => g.id === "wota");
+  const bowsGroup = BUILDABLE_GROUPS.find((g) => g.id === "bows");
 
-  const ktGroup = BUILDABLE_GROUPS.find((g) => g.id === "kt4");
-  const caniGroup = BUILDABLE_GROUPS.find((g) => g.id === "spore-canister");
-
-  if (ktGroup) {
+  [{ group: wotaGroup, el: buildContainer }, { group: bowsGroup, el: bowContainer }].forEach(({ group, el }) => {
+    if (!group) return;
     const wrap = document.createElement("div");
     wrap.className = "build-group";
-    const done = ktGroup.parts.filter((p) => state.buildables[p.id]).length;
+    const done = group.parts.filter((p) => state.buildables[p.id]).length;
     wrap.innerHTML = `
       <div class="build-group__header">
         <div>
-          <h3 class="build-group__title">${ktGroup.title}</h3>
-          <p class="build-group__progress">${done} / ${ktGroup.parts.length} collected</p>
+          <h3 class="build-group__title">${group.title}</h3>
+          <p class="build-group__progress">${done} / ${group.parts.length} collected</p>
         </div>
       </div>
       <div class="build-group__parts"></div>
     `;
     const partsEl = wrap.querySelector(".build-group__parts");
-    ktGroup.parts.forEach((part) => {
+    group.parts.forEach((part) => {
       partsEl.appendChild(makeBoardCard(part, "buildable", state.buildables[part.id]));
     });
-    ktContainer.appendChild(wrap);
-  }
-
-  if (caniGroup) {
-    const wrap = document.createElement("div");
-    wrap.className = "build-group";
-    const done = caniGroup.parts.filter((p) => state.buildables[p.id]).length;
-    wrap.innerHTML = `
-      <div class="build-group__header">
-        <div>
-          <h3 class="build-group__title">${caniGroup.title}</h3>
-          <p class="build-group__progress">${done} / ${caniGroup.parts.length} collected</p>
-        </div>
-      </div>
-      <div class="build-group__parts"></div>
-    `;
-    const partsEl = wrap.querySelector(".build-group__parts");
-    caniGroup.parts.forEach((part) => {
-      partsEl.appendChild(makeBoardCard(part, "buildable", state.buildables[part.id]));
-    });
-    canisterContainer.appendChild(wrap);
-  }
+    el.appendChild(wrap);
+  });
 
   const buildableCount = BUILDABLE_GROUPS.flatMap((g) => g.parts).filter((p) => state.buildables[p.id]).length;
   const buildableTotal = BUILDABLE_GROUPS.flatMap((g) => g.parts).length;
   document.getElementById("buildable-count").textContent = `${buildableCount} / ${buildableTotal} marked`;
   document.getElementById("dragon-control-count").textContent = "";
-
   bindBoardToggles("buildable", (id, checked, draft) => { draft.buildables[id] = checked; });
 }
 
