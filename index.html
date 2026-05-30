@@ -3,167 +3,208 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BO3 Super EE Helper</title>
+  <title>BO3 Super Easter Egg Helper</title>
   <link rel="icon" type="image/svg+xml" href="assets/easter-egg.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .selector-shell {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 32px 20px;
+    }
+
+    .selector-inner {
+      width: 100%;
+      max-width: 860px;
+      display: grid;
+      gap: 32px;
+    }
+
+    .selector-header {
+      text-align: center;
+    }
+
+    .selector-header .eyebrow {
+      margin-bottom: 8px;
+    }
+
+    .selector-header h1 {
+      margin: 0;
+      font-family: "Oswald", sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 0.95;
+    }
+
+    .selector-header p {
+      margin: 12px auto 0;
+      max-width: 48ch;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .map-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 28px 24px 24px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .map-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      clip-path: inherit;
+      pointer-events: none;
+    }
+
+    .map-card:hover {
+      border-color: var(--border-strong);
+      background: var(--panel-strong);
+      transform: translateY(-2px);
+    }
+
+    .map-card__crest {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 52px;
+      aspect-ratio: 1;
+      border: 1px solid var(--border-strong);
+      background: radial-gradient(circle, rgba(198, 77, 47, 0.2), rgba(30, 18, 16, 0.9));
+      clip-path: polygon(16% 0, 84% 0, 100% 16%, 100% 84%, 84% 100%, 16% 100%, 0 84%, 0 16%);
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .map-card__crest-ring {
+      position: absolute;
+      inset: 7px;
+      border: 1px solid rgba(243, 231, 209, 0.12);
+      clip-path: inherit;
+    }
+
+    .map-card__label {
+      margin: 0 0 6px;
+      font-family: "Oswald", sans-serif;
+      font-size: clamp(1.3rem, 2vw, 1.75rem);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .map-card__sub {
+      margin: 0 0 16px;
+      color: var(--warning);
+      font-family: "Oswald", sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .map-card__desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.55;
+      flex: 1 1 auto;
+    }
+
+    .map-card__action {
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border: 1px solid var(--border-strong);
+      background: rgba(198, 77, 47, 0.12);
+      color: var(--text);
+      font-family: "Oswald", sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      align-self: flex-start;
+      transition: background 160ms ease, border-color 160ms ease;
+    }
+
+    .map-card:hover .map-card__action {
+      background: rgba(198, 77, 47, 0.24);
+      border-color: rgba(191, 150, 109, 0.7);
+    }
+
+    .map-card__action-arrow {
+      font-size: 0.9rem;
+      transition: transform 160ms ease;
+    }
+
+    .map-card:hover .map-card__action-arrow {
+      transform: translateX(3px);
+    }
+
+    @media (max-width: 600px) {
+      .map-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="app-shell">
-    <header class="hero">
-      <div class="hero__main">
-        <div class="hero__crest" aria-hidden="true">
-          <span class="hero__crest-mark">☭</span>
-          <span class="hero__crest-ring"></span>
-        </div>
+  <div class="selector-shell">
+    <div class="selector-inner">
 
-        <div class="hero__titleblock">
-          <p class="eyebrow">Black Ops 3 Super Easter Egg Helper</p>
-          <div class="hero__headline">
-            <h1>Gorod Krovi Field Manual</h1>
-            <button type="button" class="ghost-button hero__reset" id="reset-run">Reset Run</button>
+      <header class="selector-header">
+        <p class="eyebrow">Black Ops 3</p>
+        <h1>Super Easter Egg<br>Field Manuals</h1>
+        <p>Step-by-step quest trackers, valve solvers, and inventory tracking for each map in the BO3 Super Easter Egg chain.</p>
+      </header>
+
+      <div class="map-grid">
+
+        <a href="/gorod" class="map-card">
+          <div class="map-card__crest" aria-hidden="true">
+            ☭
+            <span class="map-card__crest-ring"></span>
           </div>
-        </div>
+          <p class="map-card__sub">Map 01 — Stalingrad Fracture</p>
+          <h2 class="map-card__label">Gorod Krovi</h2>
+          <p class="map-card__desc">Dragon egg incubation, Hatchery lockdown, valve puzzle, trophy hunting, and the full SOPHIA nuke trial.</p>
+          <span class="map-card__action">Open Manual <span class="map-card__action-arrow">→</span></span>
+        </a>
+
+        <a href="/zetsubou" class="map-card">
+          <div class="map-card__crest" aria-hidden="true">
+            ⛩
+            <span class="map-card__crest-ring"></span>
+          </div>
+          <p class="map-card__sub">Map 02 — Zetsubou No Shima</p>
+          <h2 class="map-card__label">Zetsubou no Shima</h2>
+          <p class="map-card__desc">Spider lair navigation, KT-4 weapon construction, spore rituals, and the island's full easter egg chain.</p>
+          <span class="map-card__action">Open Manual <span class="map-card__action-arrow">→</span></span>
+        </a>
+
       </div>
-
-      <div class="hero__stats">
-        <section class="stat-card">
-          <p class="stat-card__label">Theater</p>
-          <p class="stat-card__value">Stalingrad Fracture</p>
-          <p class="stat-card__meta">GK main quest</p>
-        </section>
-        <section class="stat-card stat-card--progress">
-          <p class="stat-card__label">Quest Progress</p>
-          <p class="stat-card__value" id="progress-text">0 / 0 complete</p>
-          <div class="progress-bar" aria-hidden="true">
-            <div class="progress-bar__fill" id="progress-fill"></div>
-          </div>
-          <p class="stat-card__meta" id="progress-tip"></p>
-        </section>
-        <section class="stat-card stat-card--loadout">
-          <p class="stat-card__label">Best GobbleGums</p>
-          <div class="loadout-row" id="gobblegum-loadout"></div>
-        </section>
-      </div>
-    </header>
-
-    <section class="workspace">
-      <div class="workspace__main">
-        <main class="layout">
-          <div class="layout__rail">
-            <aside class="panel panel--flow">
-              <div class="panel__header">
-                <div>
-                  <p class="panel__eyebrow">Quest Progress</p>
-                </div>
-              </div>
-              <div class="panel__body">
-                <div id="steps-list" class="steps-list"></div>
-              </div>
-            </aside>
-
-            <section class="panel panel--notes-inline">
-              <div class="panel__header">
-                <div>
-                  <h2>Run Notes</h2>
-                </div>
-                <button type="button" class="ghost-button ghost-button--small" id="clear-notes">Clear</button>
-              </div>
-              <textarea id="run-notes" rows="5" placeholder="Bombs, reminders, routes."></textarea>
-            </section>
-          </div>
-
-          <section class="panel--focus">
-            <div id="active-step"></div>
-            <div id="active-utility" class="focus-utility"></div>
-          </section>
-        </main>
-      </div>
-
-      <aside class="hud-dock hud-dock--fixed">
-      <div class="hud-dock__header">
-        <div>
-          <p class="panel__eyebrow">Mission Inventory</p>
-        </div>
-        <button type="button" class="ghost-button ghost-button--small" id="inventory-toggle-all">Collapse All</button>
-      </div>
-
-      <div class="hud-grid hud-grid--stack">
-        <section class="hud-panel inventory-panel is-collapsed">
-          <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="buildables" aria-expanded="false">
-            <span>Buildables</span>
-            <span class="hud-panel__plate-meta">
-              <span class="tool-meta" id="buildable-count">0 / 0 marked</span>
-              <span class="hud-panel__chevron"></span>
-            </span>
-          </button>
-          <div class="inventory-panel__body" data-inventory-panel="buildables">
-            <p class="tool-copy">Shield parts and bunker assembly.</p>
-            <div id="buildables-grid" class="board-grid"></div>
-          </div>
-        </section>
-
-        <section class="hud-panel inventory-panel is-collapsed">
-          <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="dragon-control" aria-expanded="false">
-            <span>Dragon Control</span>
-            <span class="hud-panel__plate-meta">
-              <span class="tool-meta" id="dragon-control-count">0 / 0 marked</span>
-              <span class="hud-panel__chevron"></span>
-            </span>
-          </button>
-          <div class="inventory-panel__body" data-inventory-panel="dragon-control">
-            <p class="tool-copy">Command cores and bunker feed.</p>
-            <div id="dragon-control-grid" class="board-grid"></div>
-          </div>
-        </section>
-
-        <section class="hud-panel inventory-panel is-collapsed">
-          <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="trophies" aria-expanded="false">
-            <span>Trophy Cabinet</span>
-            <span class="hud-panel__plate-meta">
-              <span class="tool-meta" id="trophy-count">0 / 6 collected</span>
-              <span class="hud-panel__chevron"></span>
-            </span>
-          </button>
-          <div class="inventory-panel__body" data-inventory-panel="trophies">
-            <p class="tool-copy">Six trophies with compact trigger reminders.</p>
-            <div id="trophy-grid" class="hud-items-grid"></div>
-          </div>
-        </section>
-
-        <section class="hud-panel inventory-panel is-collapsed">
-          <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="artifacts" aria-expanded="false">
-            <span>Quest Artifacts</span>
-            <span class="hud-panel__plate-meta">
-              <span class="tool-meta" id="artifact-count">0 / 0 secured</span>
-              <span class="hud-panel__chevron"></span>
-            </span>
-          </button>
-          <div class="inventory-panel__body" data-inventory-panel="artifacts">
-            <p class="tool-copy">Critical progression items and where they come from.</p>
-            <div id="artifacts-grid" class="hud-items-grid"></div>
-          </div>
-        </section>
-      </div>
-    </aside>
-  </section>
+    </div>
   </div>
-
-  <div class="modal-shell is-hidden" id="reset-modal" aria-hidden="true">
-    <div class="modal-backdrop" data-modal-close></div>
-    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="reset-modal-title">
-      <p class="panel__eyebrow">Reset Run</p>
-      <h2 id="reset-modal-title">Clear all tracked progress?</h2>
-      <p class="modal-copy">This will wipe step completion, notes, route markers, and inventory tracking.</p>
-      <div class="modal-actions">
-        <button type="button" class="ghost-button ghost-button--small" id="reset-cancel">Cancel</button>
-        <button type="button" class="action-button action-button--primary ghost-button--small" id="reset-confirm">Reset Run</button>
-      </div>
-    </section>
-  </div>
-
-  <script src="app.js"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@ app.get("/zetsubou", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.redirect("/gorod");
+  res.sendFile(path.join(ROOT, "index.html"));
 });
 
 app.listen(PORT, () => {
