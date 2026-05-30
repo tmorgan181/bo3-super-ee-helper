@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="shell" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f6d88c"/>
+      <stop offset="0.55" stop-color="#e2a147"/>
+      <stop offset="1" stop-color="#a84f29"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff6cf" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#fff6cf" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#170d0b"/>
+  <path d="M32 8c10.7 0 18 11.8 18 25.3C50 48 42.2 56 32 56S14 48 14 33.3C14 19.8 21.3 8 32 8Z" fill="url(#shell)"/>
+  <path d="M32 13.5c6.2 0 10.3 5.7 10.3 12.2 0 7.2-4.5 10.6-10.3 10.6s-10.3-3.4-10.3-10.6c0-6.5 4.1-12.2 10.3-12.2Z" fill="url(#glow)"/>
+  <path d="M21 24.5c6.7 3.2 15.2 3.1 21.8-.2" fill="none" stroke="#7a2619" stroke-linecap="round" stroke-width="4"/>
+  <path d="M20.5 33c7.2 3.6 15.8 3.5 23-.2" fill="none" stroke="#7a2619" stroke-linecap="round" stroke-width="4"/>
+  <path d="M23 42.5c5.7 2.6 12.5 2.5 18-.2" fill="none" stroke="#7a2619" stroke-linecap="round" stroke-width="4"/>
+  <path d="M26 17.5c1.8 1.2 4.2 1.2 6 0" fill="none" stroke="#7a2619" stroke-linecap="round" stroke-width="3.2"/>
+  <path d="M34 20.5c1.9 1.2 4.5 1.2 6.4-.1" fill="none" stroke="#7a2619" stroke-linecap="round" stroke-width="3.2"/>
+</svg>

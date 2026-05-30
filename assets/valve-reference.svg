@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Gorod Krovi Valve Reference</title>
+  <desc id="desc">Reference panel for Gorod Krovi valve locations, recreated from the supplied image with colored markers for Dragon Command, Armory, Supply Depot, Infirmary, Tank Factory, and Department Store.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d6922e"/>
+      <stop offset="100%" stop-color="#b85407"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4e2b05" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#2a1605" stop-opacity="0.97"/>
+    </linearGradient>
+    <linearGradient id="mapPaper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2d2a2"/>
+      <stop offset="100%" stop-color="#dca56a"/>
+    </linearGradient>
+    <pattern id="camouflage" width="220" height="180" patternUnits="userSpaceOnUse">
+      <rect width="220" height="180" fill="url(#bg)"/>
+      <path d="M0 30 Q60 0 100 40 T220 30 V120 Q170 170 110 150 T0 180 Z" fill="#d96700" opacity="0.85"/>
+      <path d="M30 0 L80 0 L120 50 L70 90 L20 40 Z" fill="#532400" opacity="0.7"/>
+      <path d="M150 110 L215 80 L220 145 L180 180 L110 165 Z" fill="#8d3600" opacity="0.7"/>
+    </pattern>
+    <filter id="paperShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="900" fill="url(#camouflage)"/>
+  <rect x="60" y="55" width="1280" height="790" rx="8" fill="url(#panel)" stroke="#000000" stroke-width="6"/>
+
+  <g filter="url(#paperShadow)">
+    <rect x="110" y="120" width="720" height="630" rx="4" fill="url(#mapPaper)" stroke="#1d1006" stroke-width="5"/>
+    <g stroke="#8a653f" stroke-width="1" opacity="0.35">
+      <path d="M110 160 H830 M110 205 H830 M110 250 H830 M110 295 H830 M110 340 H830 M110 385 H830 M110 430 H830 M110 475 H830 M110 520 H830 M110 565 H830 M110 610 H830 M110 655 H830 M110 700 H830"/>
+      <path d="M150 120 V750 M245 120 V750 M340 120 V750 M435 120 V750 M530 120 V750 M625 120 V750 M720 120 V750"/>
+    </g>
+
+    <g fill="#d6a06d" stroke="#7f5733" stroke-width="3" opacity="0.9">
+      <rect x="145" y="155" width="255" height="260"/>
+      <rect x="415" y="155" width="180" height="255"/>
+      <rect x="630" y="165" width="180" height="230"/>
+      <rect x="150" y="440" width="190" height="170"/>
+      <rect x="420" y="435" width="130" height="90"/>
+      <rect x="560" y="435" width="110" height="95"/>
+      <rect x="680" y="450" width="115" height="250"/>
+      <path d="M410 525 H650 L705 570 L705 640 L600 710 H470 L410 655 Z"/>
+    </g>
+
+    <g fill="none" stroke="#3b2615" stroke-width="5" opacity="0.75">
+      <path d="M175 408 H420"/>
+      <path d="M318 610 H555"/>
+      <path d="M560 640 L645 700"/>
+      <path d="M595 390 L660 465 L720 485"/>
+      <path d="M615 300 H720 V260 H805"/>
+      <path d="M450 420 V350 H560"/>
+    </g>
+
+    <g font-family="Georgia, serif" fill="#5d361f" opacity="0.9">
+      <text x="170" y="198" font-size="42">Stalingrad</text>
+      <text x="462" y="300" font-size="26">Dragon</text>
+      <text x="440" y="332" font-size="26">Command</text>
+      <text x="186" y="515" font-size="28">Tank</text>
+      <text x="168" y="548" font-size="28">Factory</text>
+      <text x="428" y="498" font-size="22">Infirmary</text>
+      <text x="575" y="495" font-size="22">Bunker</text>
+      <text x="695" y="520" font-size="26">Supply</text>
+      <text x="692" y="552" font-size="26">Depot</text>
+      <text x="492" y="630" font-size="28">Department</text>
+      <text x="516" y="663" font-size="28">Store</text>
+    </g>
+
+    <g stroke="#f6ead6" stroke-width="5">
+      <g transform="translate(535 225)">
+        <circle r="30" fill="#7e5f1d"/>
+        <circle r="24" fill="#a78a42"/>
+        <circle r="16" fill="#ff2336"/>
+      </g>
+      <g transform="translate(545 455)">
+        <circle r="30" fill="#7e5f1d"/>
+        <circle r="24" fill="#a78a42"/>
+        <circle r="16" fill="#ffa412"/>
+      </g>
+      <g transform="translate(725 500)">
+        <circle r="30" fill="#7e5f1d"/>
+        <circle r="24" fill="#a78a42"/>
+        <circle r="16" fill="#ffea00"/>
+      </g>
+      <g transform="translate(450 470)">
+        <circle r="30" fill="#7e5f1d"/>
+        <circle r="24" fill="#a78a42"/>
+        <circle r="16" fill="#0eb14a"/>
+      </g>
+      <g transform="translate(165 575)">
+        <circle r="30" fill="#7e5f1d"/>
+        <circle r="24" fill="#a78a42"/>
+        <circle r="16" fill="#22d7f7"/>
+      </g>
+      <g transform="translate(465 625)">
+        <circle r="30" fill="#7e5f1d"/>
+        <circle r="24" fill="#a78a42"/>
+        <circle r="16" fill="#7e19ff"/>
+      </g>
+    </g>
+  </g>
+
+  <g font-family="Georgia, serif" fill="#fff7eb">
+    <g transform="translate(905 210)">
+      <circle cx="0" cy="-12" r="9" fill="#ff2336"/>
+      <text x="18" y="0" font-size="50">Dragon Command</text>
+      <text x="0" y="38" font-size="22">Up stairs, turn right, opposite Sophia</text>
+    </g>
+    <g transform="translate(980 330)">
+      <circle cx="0" cy="-12" r="9" fill="#ffa412"/>
+      <text x="18" y="0" font-size="50">Armory</text>
+      <text x="0" y="38" font-size="22">Top floor, opposite 500 point bridge</text>
+    </g>
+    <g transform="translate(950 425)">
+      <circle cx="0" cy="-12" r="9" fill="#ffea00"/>
+      <text x="18" y="0" font-size="50">Supply Depot</text>
+      <text x="0" y="38" font-size="22">Ground floor, underneath balcony</text>
+    </g>
+    <g transform="translate(965 520)">
+      <circle cx="0" cy="-12" r="9" fill="#0eb14a"/>
+      <text x="18" y="0" font-size="50">Infirmary</text>
+      <text x="0" y="38" font-size="22">Middle level, tucked next to bunk bed</text>
+    </g>
+    <g transform="translate(955 615)">
+      <circle cx="0" cy="-12" r="9" fill="#22d7f7"/>
+      <text x="18" y="0" font-size="50">Tank Factory</text>
+      <text x="0" y="38" font-size="22">Ground floor, opposite metal walkways</text>
+    </g>
+    <g transform="translate(950 740)">
+      <circle cx="0" cy="-12" r="9" fill="#7e19ff"/>
+      <text x="18" y="0" font-size="50">Department Store</text>
+      <text x="0" y="38" font-size="22">Top floor, next to staircase</text>
+    </g>
+  </g>
+</svg>
