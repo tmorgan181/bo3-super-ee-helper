@@ -1,0 +1,17 @@
+{
+  "name": "bo3-super-ee-helper",
+  "version": "1.0.0",
+  "description": "First-pass local web helper for the Black Ops 3 Super Easter Egg journey, starting with **Gorod Krovi**.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
