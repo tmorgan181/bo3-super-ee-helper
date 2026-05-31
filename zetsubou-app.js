@@ -207,9 +207,9 @@ const BUILDABLE_GROUPS = [
     title: "KT-4",
     description: "Lab-crafted wonder weapon",
     parts: [
-      { id: "kt4-spore", code: "K1", name: "Spore Sample", meta: "Testing lab shelf", hint: "Underground testing lab — specimen shelf on the east wall. Respawns each round.", shape: "egg" },
-      { id: "kt4-battery", code: "K2", name: "Battery Cell", meta: "Power room platform", hint: "Generator platform next to the main power switch.", shape: "circuit" },
-      { id: "kt4-tubes", code: "K3", name: "Test Tube Set", meta: "Spider lair drop", hint: "Banshee kill inside the spider lair. May take several attempts.", shape: "cylinder" }
+      { id: "kt4-spore", code: "K1", name: "Spore Sample", meta: "Testing lab shelf", hint: "", shape: "egg" },
+      { id: "kt4-battery", code: "K2", name: "Battery Cell", meta: "Power room platform", hint: "", shape: "circuit" },
+      { id: "kt4-tubes", code: "K3", name: "Test Tube Set", meta: "Spider lair drop", hint: "", shape: "cylinder" }
     ]
   },
   {
@@ -217,28 +217,28 @@ const BUILDABLE_GROUPS = [
     title: "Blue Spore Canister",
     description: "Required for KT-4 assembly",
     parts: [
-      { id: "canister-blue", code: "B1", name: "Blue Canister", meta: "Power room ceiling", hint: "Shoot the glowing blue spore mound above the power switch with any weapon.", shape: "core" },
-      { id: "canister-seal", code: "B2", name: "Seal the Sample", meta: "Lab workbench", hint: "Bring the canister and the three KT-4 parts to the workbench to seal and assemble.", shape: "core" }
+      { id: "canister-blue", code: "B1", name: "Blue Canister", meta: "Power room ceiling", hint: "", shape: "core" },
+      { id: "canister-seal", code: "B2", name: "Seal the Sample", meta: "Lab workbench", hint: "", shape: "core" }
     ]
   }
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-kt4", code: "A1", name: "KT-4", meta: "Wonder weapon", hint: "Assembled at the underground lab workbench from three components.", shape: "cylinder" },
-  { id: "artifact-masamune", code: "A2", name: "Masamune", meta: "KT-4 upgrade", hint: "Claimed from the waterfall shrine after the skull deposit ritual.", shape: "core" },
-  { id: "artifact-heart", code: "A3", name: "Margwa Heart", meta: "Altar ritual item", hint: "Extracted from the special Margwa killed on the altar platform.", shape: "egg" },
-  { id: "artifact-flame1", code: "F1", name: "Flame Token I", meta: "First spore ritual", hint: "Dropped after completing the first spore mound purification.", shape: "core" },
-  { id: "artifact-flame2", code: "F2", name: "Flame Token II", meta: "Second spore ritual", hint: "Dropped after the second purification site is cleansed.", shape: "core" },
-  { id: "artifact-flame3", code: "F3", name: "Flame Token III", meta: "Third spore ritual", hint: "Dropped after all three purifications. Lights the final altar flame.", shape: "core" }
+  { id: "artifact-kt4", code: "A1", name: "KT-4", meta: "Wonder weapon", hint: "", shape: "cylinder" },
+  { id: "artifact-masamune", code: "A2", name: "Masamune", meta: "KT-4 upgrade", hint: "", shape: "core" },
+  { id: "artifact-heart", code: "A3", name: "Margwa Heart", meta: "Altar ritual item", hint: "", shape: "egg" },
+  { id: "artifact-flame1", code: "F1", name: "Flame Token I", meta: "First spore ritual", hint: "", shape: "core" },
+  { id: "artifact-flame2", code: "F2", name: "Flame Token II", meta: "Second spore ritual", hint: "", shape: "core" },
+  { id: "artifact-flame3", code: "F3", name: "Flame Token III", meta: "Third spore ritual", hint: "", shape: "core" }
 ];
 
 const TROPHIES = [
-  { id: "skull-margwa", code: "S1", name: "Margwa Skull", meta: "KT-4 headshot", hint: "Kill a Margwa with the KT-4 charged shot to its open head.", shape: "trophy" },
-  { id: "skull-bomber", code: "S2", name: "Bomber Skull", meta: "Mid-charge kill", hint: "Kill a Bomber while it is actively charging toward a player.", shape: "trophy" },
-  { id: "skull-banshee", code: "S3", name: "Banshee Skull", meta: "Spider lair headshot", hint: "Headshot a Banshee inside the spider lair corridor.", shape: "trophy" },
-  { id: "skull-parasite", code: "S4", name: "Parasite Skull", meta: "Melee while attached", hint: "Melee kill a Parasite while it is latched onto a player.", shape: "trophy" },
-  { id: "skull-spore", code: "S5", name: "Spore Skull", meta: "Kill in-plant", hint: "Kill a spore-infected zombie before it fully emerges from the plant.", shape: "trophy" },
-  { id: "skull-keeper", code: "S6", name: "Keeper Skull", meta: "Waterfall kill", hint: "Kill a Keeper near the waterfall shrine with the Masamune.", shape: "trophy" }
+  { id: "skull-margwa", code: "S1", name: "Margwa Skull", meta: "KT-4 headshot", hint: "", shape: "trophy" },
+  { id: "skull-bomber", code: "S2", name: "Bomber Skull", meta: "Mid-charge kill", hint: "", shape: "trophy" },
+  { id: "skull-banshee", code: "S3", name: "Banshee Skull", meta: "Spider lair headshot", hint: "", shape: "trophy" },
+  { id: "skull-parasite", code: "S4", name: "Parasite Skull", meta: "Melee while attached", hint: "", shape: "trophy" },
+  { id: "skull-spore", code: "S5", name: "Spore Skull", meta: "Kill in-plant", hint: "", shape: "trophy" },
+  { id: "skull-keeper", code: "S6", name: "Keeper Skull", meta: "Waterfall kill", hint: "", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -571,6 +571,10 @@ function renderBuildables() {
   const buildableTotal = BUILDABLE_GROUPS.flatMap((g) => g.parts).length;
   document.getElementById("buildable-count").textContent = `${buildableCount} / ${buildableTotal} marked`;
   document.getElementById("dragon-control-count").textContent = "";
+  document.querySelector('[data-inventory-toggle="buildables"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', BUILDABLE_GROUPS[0].parts.every(p => state.buildables[p.id]));
+  if (BUILDABLE_GROUPS[1]) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', BUILDABLE_GROUPS[1].parts.every(p => state.buildables[p.id]));
 
   bindBoardToggles("buildable", (id, checked, draft) => { draft.buildables[id] = checked; });
 }
@@ -583,6 +587,8 @@ function renderArtifacts() {
   });
   const count = ARTIFACTS.filter((a) => state.artifacts[a.id]).length;
   document.getElementById("artifact-count").textContent = `${count} / ${ARTIFACTS.length} secured`;
+  document.querySelector('[data-inventory-toggle="artifacts"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', ARTIFACTS.every(a => state.artifacts[a.id]));
   bindBoardToggles("artifact", (id, checked, draft) => { draft.artifacts[id] = checked; });
 }
 
@@ -594,6 +600,8 @@ function renderTrophies() {
   });
   const count = TROPHIES.filter((t) => state.trophies[t.id]).length;
   document.getElementById("trophy-count").textContent = `${count} / ${TROPHIES.length} collected`;
+  document.querySelector('[data-inventory-toggle="trophies"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', TROPHIES.every(t => state.trophies[t.id]));
   bindBoardToggles("trophy", (id, checked, draft) => { draft.trophies[id] = checked; });
 }
 

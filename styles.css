@@ -1151,6 +1151,17 @@ label,
   display: none;
 }
 
+.inventory-panel.is-complete .hud-panel__plate {
+  background: linear-gradient(180deg, rgba(190, 225, 120, 0.9), rgba(100, 155, 40, 0.88)) !important;
+  color: #0c1a03 !important;
+  border-color: rgba(141, 159, 70, 0.55) !important;
+}
+
+.inventory-panel.is-complete {
+  border-color: rgba(141, 159, 70, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(180, 210, 80, 0.06);
+}
+
 .inventory-panel:not(.is-collapsed) .hud-panel__toggle .hud-panel__chevron::before {
   transform: rotate(180deg);
 }

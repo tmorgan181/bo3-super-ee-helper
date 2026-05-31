@@ -189,7 +189,7 @@ const BUILDABLE_GROUPS = [
     title: "Wrath of the Ancients",
     description: "Base wonder bow — required for all upgrades",
     parts: [
-      { id: "wota-bow", code: "W1", name: "Wrath of the Ancients", meta: "Keep wall-buy", hint: "Wall-buy in the keep area. Costs 1000 points.", shape: "core" }
+      { id: "wota-bow", code: "W1", name: "Wrath of the Ancients", meta: "Keep wall-buy", hint: "", shape: "core" }
     ]
   },
   {
@@ -197,29 +197,29 @@ const BUILDABLE_GROUPS = [
     title: "Elemental Bows",
     description: "All four elemental bow upgrades",
     parts: [
-      { id: "bow-fire-u", code: "E1", name: "Fire Bow", meta: "Dragon brazier trial", hint: "Shoot the braziers in the flashing order to unlock.", shape: "core" },
-      { id: "bow-wolf-u", code: "E2", name: "Wolf Bow", meta: "Shadow puzzle + wolf souls", hint: "Cast wolf shadows using torches in the round room.", shape: "core" },
-      { id: "bow-void-u", code: "E3", name: "Void Bow", meta: "Void orb redirect", hint: "Redirect all three void orbs through the undercroft portal stones.", shape: "core" },
-      { id: "bow-storm-u", code: "E4", name: "Storm Bow", meta: "Lightning strike charge", hint: "Shoot the floating orb during three separate lightning flashes.", shape: "core" }
+      { id: "bow-fire-u", code: "E1", name: "Fire Bow", meta: "Dragon brazier trial", hint: "", shape: "core" },
+      { id: "bow-wolf-u", code: "E2", name: "Wolf Bow", meta: "Shadow puzzle + wolf souls", hint: "", shape: "core" },
+      { id: "bow-void-u", code: "E3", name: "Void Bow", meta: "Void orb redirect", hint: "", shape: "core" },
+      { id: "bow-storm-u", code: "E4", name: "Storm Bow", meta: "Lightning strike charge", hint: "", shape: "core" }
     ]
   }
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-wota", code: "A1", name: "Wrath of the Ancients", meta: "Wonder bow", hint: "Purchased from the keep wall-buy for 1000 points.", shape: "core" },
-  { id: "artifact-fire", code: "A2", name: "Fire Bow Upgrade", meta: "Dragon trial", hint: "Awarded after completing the fire brazier sequence.", shape: "core" },
-  { id: "artifact-wolf", code: "A3", name: "Wolf Bow Upgrade", meta: "Shadow puzzle", hint: "Awarded after the spectral wolf kill sequence.", shape: "core" },
-  { id: "artifact-void", code: "A4", name: "Void Bow Upgrade", meta: "Orb redirect", hint: "Awarded after redirecting all void orbs through the undercroft.", shape: "core" },
-  { id: "artifact-storm", code: "A5", name: "Storm Bow Upgrade", meta: "Lightning charge", hint: "Awarded after three successful lightning orb shots.", shape: "core" }
+  { id: "artifact-wota", code: "A1", name: "Wrath of the Ancients", meta: "Wonder bow", hint: "", shape: "core" },
+  { id: "artifact-fire", code: "A2", name: "Fire Bow Upgrade", meta: "Dragon trial", hint: "", shape: "core" },
+  { id: "artifact-wolf", code: "A3", name: "Wolf Bow Upgrade", meta: "Shadow puzzle", hint: "", shape: "core" },
+  { id: "artifact-void", code: "A4", name: "Void Bow Upgrade", meta: "Orb redirect", hint: "", shape: "core" },
+  { id: "artifact-storm", code: "A5", name: "Storm Bow Upgrade", meta: "Lightning charge", hint: "", shape: "core" }
 ];
 
 const TROPHIES = [
-  { id: "trophy-panzer", code: "T1", name: "Panzersoldat Gage Tag", meta: "Boss kill", hint: "Kill the Panzersoldat during the final rocket countdown.", shape: "trophy" },
-  { id: "trophy-keeper", code: "T2", name: "Keeper Soul Shard", meta: "Keeper kill with charged bow", hint: "Kill a Keeper using a fully charged elemental bow shot.", shape: "trophy" },
-  { id: "trophy-fire", code: "T3", name: "Brazier Ember", meta: "Fire trial drop", hint: "Drops after completing the fire brazier sequence.", shape: "trophy" },
-  { id: "trophy-wolf", code: "T4", name: "Wolf Fang", meta: "Spectral wolf kill", hint: "Drops from a spectral wolf during the wolf bow trial.", shape: "trophy" },
-  { id: "trophy-void", code: "T5", name: "Void Shard", meta: "Void orb collect", hint: "Appears after the third void orb is redirected into the undercroft.", shape: "trophy" },
-  { id: "trophy-storm", code: "T6", name: "Storm Rune", meta: "Lightning orb charge", hint: "Drops from the final lightning charge at the high tower.", shape: "trophy" }
+  { id: "trophy-panzer", code: "T1", name: "Panzersoldat Gage Tag", meta: "Boss kill", hint: "", shape: "trophy" },
+  { id: "trophy-keeper", code: "T2", name: "Keeper Soul Shard", meta: "Keeper kill with charged bow", hint: "", shape: "trophy" },
+  { id: "trophy-fire", code: "T3", name: "Brazier Ember", meta: "Fire trial drop", hint: "", shape: "trophy" },
+  { id: "trophy-wolf", code: "T4", name: "Wolf Fang", meta: "Spectral wolf kill", hint: "", shape: "trophy" },
+  { id: "trophy-void", code: "T5", name: "Void Shard", meta: "Void orb collect", hint: "", shape: "trophy" },
+  { id: "trophy-storm", code: "T6", name: "Storm Rune", meta: "Lightning orb charge", hint: "", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -458,6 +458,10 @@ function renderBuildables() {
   const buildableTotal = BUILDABLE_GROUPS.flatMap((g) => g.parts).length;
   document.getElementById("buildable-count").textContent = `${buildableCount} / ${buildableTotal} marked`;
   document.getElementById("dragon-control-count").textContent = "";
+  document.querySelector('[data-inventory-toggle="buildables"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', BUILDABLE_GROUPS[0].parts.every(p => state.buildables[p.id]));
+  if (BUILDABLE_GROUPS[1]) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', BUILDABLE_GROUPS[1].parts.every(p => state.buildables[p.id]));
   bindBoardToggles("buildable", (id, checked, draft) => { draft.buildables[id] = checked; });
 }
 
@@ -469,6 +473,8 @@ function renderArtifacts() {
   });
   const count = ARTIFACTS.filter((a) => state.artifacts[a.id]).length;
   document.getElementById("artifact-count").textContent = `${count} / ${ARTIFACTS.length} secured`;
+  document.querySelector('[data-inventory-toggle="artifacts"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', ARTIFACTS.every(a => state.artifacts[a.id]));
   bindBoardToggles("artifact", (id, checked, draft) => { draft.artifacts[id] = checked; });
 }
 
@@ -480,6 +486,8 @@ function renderTrophies() {
   });
   const count = TROPHIES.filter((t) => state.trophies[t.id]).length;
   document.getElementById("trophy-count").textContent = `${count} / ${TROPHIES.length} collected`;
+  document.querySelector('[data-inventory-toggle="trophies"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', TROPHIES.every(t => state.trophies[t.id]));
   bindBoardToggles("trophy", (id, checked, draft) => { draft.trophies[id] = checked; });
 }
 

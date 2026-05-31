@@ -198,9 +198,9 @@ const BUILDABLE_GROUPS = [
     title: "Apothicon Servant",
     description: "Revelations wonder weapon — parts scattered across zones",
     parts: [
-      { id: "as-tentacle", code: "AS1", name: "Tentacle Module", meta: "Mob zone drop", hint: "Dropped by the large tentacle creature in the Mob of the Dead zone. Kill it with explosives.", shape: "egg" },
-      { id: "as-eye", code: "AS2", name: "Apothicon Eye", meta: "Shangri-La zone", hint: "Found in the jungle altar in the Shangri-La zone. Interact after killing 5 zombies nearby.", shape: "core" },
-      { id: "as-body", code: "AS3", name: "Servant Cavity", meta: "Origins excavation", hint: "Spawns on the dig site table in the Origins excavation zone.", shape: "cylinder" }
+      { id: "as-tentacle", code: "AS1", name: "Tentacle Module", meta: "Mob zone drop", hint: "", shape: "egg" },
+      { id: "as-eye", code: "AS2", name: "Apothicon Eye", meta: "Shangri-La zone", hint: "", shape: "core" },
+      { id: "as-body", code: "AS3", name: "Servant Cavity", meta: "Origins excavation", hint: "", shape: "cylinder" }
     ]
   },
   {
@@ -208,31 +208,31 @@ const BUILDABLE_GROUPS = [
     title: "Keeper Charge Fragments",
     description: "Power fragments used to upgrade Keeper statues",
     parts: [
-      { id: "kc-nacht", code: "KC1", name: "Nacht Fragment", meta: "Nacht growth destroy", hint: "Destroy the Apothicon growth at Nacht center.", shape: "core" },
-      { id: "kc-kino", code: "KC2", name: "Kino Fragment", meta: "Kino growth destroy", hint: "Destroy the growth behind the Kino theater stage.", shape: "core" },
-      { id: "kc-shangri", code: "KC3", name: "Shangri-La Fragment", meta: "Jungle growth destroy", hint: "Destroy the pulsing growth in the Shangri-La jungle canopy.", shape: "core" },
-      { id: "kc-mob", code: "KC4", name: "Mob Fragment", meta: "Bridge growth destroy", hint: "Destroy the growth underneath the Mob of the Dead bridge.", shape: "core" },
-      { id: "kc-origins", code: "KC5", name: "Origins Fragment", meta: "Trench growth destroy", hint: "Destroy the growth in the Origins excavation trench.", shape: "core" },
-      { id: "kc-dere", code: "KC6", name: "DE Fragment", meta: "Rampart growth destroy", hint: "Destroy the growth on the Der Eisendrache outer rampart.", shape: "core" }
+      { id: "kc-nacht", code: "KC1", name: "Nacht Fragment", meta: "Nacht growth destroy", hint: "", shape: "core" },
+      { id: "kc-kino", code: "KC2", name: "Kino Fragment", meta: "Kino growth destroy", hint: "", shape: "core" },
+      { id: "kc-shangri", code: "KC3", name: "Shangri-La Fragment", meta: "Jungle growth destroy", hint: "", shape: "core" },
+      { id: "kc-mob", code: "KC4", name: "Mob Fragment", meta: "Bridge growth destroy", hint: "", shape: "core" },
+      { id: "kc-origins", code: "KC5", name: "Origins Fragment", meta: "Trench growth destroy", hint: "", shape: "core" },
+      { id: "kc-dere", code: "KC6", name: "DE Fragment", meta: "Rampart growth destroy", hint: "", shape: "core" }
     ]
   }
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-servant", code: "A1", name: "Apothicon Servant", meta: "Wonder weapon", hint: "Assembled from three parts found in Mob, Shangri-La, and Origins zones.", shape: "core" },
-  { id: "artifact-key", code: "A2", name: "Summoning Key", meta: "Final ritual weapon", hint: "Fully charged by standing in each Keeper statue beam.", shape: "core" },
-  { id: "artifact-egg1", code: "E1", name: "Apothicon Egg I", meta: "Shangri-La foliage", hint: "Hidden in the Shangri-La jungle undergrowth.", shape: "egg" },
-  { id: "artifact-egg2", code: "E2", name: "Apothicon Egg II", meta: "Mob bridge overhang", hint: "Underneath the Mob of the Dead bridge structure.", shape: "egg" },
-  { id: "artifact-egg3", code: "E3", name: "Apothicon Egg III", meta: "DE rampart chest", hint: "Inside a chest on the Der Eisendrache outer rampart.", shape: "egg" }
+  { id: "artifact-servant", code: "A1", name: "Apothicon Servant", meta: "Wonder weapon", hint: "", shape: "core" },
+  { id: "artifact-key", code: "A2", name: "Summoning Key", meta: "Final ritual weapon", hint: "", shape: "core" },
+  { id: "artifact-egg1", code: "E1", name: "Apothicon Egg I", meta: "Shangri-La foliage", hint: "", shape: "egg" },
+  { id: "artifact-egg2", code: "E2", name: "Apothicon Egg II", meta: "Mob bridge overhang", hint: "", shape: "egg" },
+  { id: "artifact-egg3", code: "E3", name: "Apothicon Egg III", meta: "DE rampart chest", hint: "", shape: "egg" }
 ];
 
 const TROPHIES = [
-  { id: "trophy-margwa", code: "T1", name: "Margwa Core", meta: "Margwa kill in gauntlet", hint: "Kill a Margwa during Gauntlet Round 2 by targeting all three open heads.", shape: "trophy" },
-  { id: "trophy-keeper", code: "T2", name: "Keeper Relic", meta: "Keeper kill while charged", hint: "Kill a Keeper enemy while holding the charged Summoning Key.", shape: "trophy" },
-  { id: "trophy-shadow", code: "T3", name: "Shadow Shard", meta: "Shadowman phase 1", hint: "Drops after breaking the Shadowman's shield in phase 1.", shape: "trophy" },
-  { id: "trophy-growth", code: "T4", name: "Apothicon Spore", meta: "All six growths", hint: "Drops after destroying the sixth and final Apothicon growth.", shape: "trophy" },
-  { id: "trophy-gauntlet", code: "T5", name: "Gauntlet Token", meta: "Gauntlet completion", hint: "Awarded when all three rounds of the Gauntlet of Sorrow are survived.", shape: "trophy" },
-  { id: "trophy-servant", code: "T6", name: "Servant Crystal", meta: "Apothicon Servant kill streak", hint: "Kill 25 zombies in one round with the Apothicon Servant.", shape: "trophy" }
+  { id: "trophy-margwa", code: "T1", name: "Margwa Core", meta: "Margwa kill in gauntlet", hint: "", shape: "trophy" },
+  { id: "trophy-keeper", code: "T2", name: "Keeper Relic", meta: "Keeper kill while charged", hint: "", shape: "trophy" },
+  { id: "trophy-shadow", code: "T3", name: "Shadow Shard", meta: "Shadowman phase 1", hint: "", shape: "trophy" },
+  { id: "trophy-growth", code: "T4", name: "Apothicon Spore", meta: "All six growths", hint: "", shape: "trophy" },
+  { id: "trophy-gauntlet", code: "T5", name: "Gauntlet Token", meta: "Gauntlet completion", hint: "", shape: "trophy" },
+  { id: "trophy-servant", code: "T6", name: "Servant Crystal", meta: "Apothicon Servant kill streak", hint: "", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -465,6 +465,10 @@ function renderBuildables() {
   const buildableTotal = BUILDABLE_GROUPS.flatMap((g) => g.parts).length;
   document.getElementById("buildable-count").textContent = `${buildableCount} / ${buildableTotal} marked`;
   document.getElementById("dragon-control-count").textContent = "";
+  document.querySelector('[data-inventory-toggle="buildables"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', BUILDABLE_GROUPS[0].parts.every(p => state.buildables[p.id]));
+  if (BUILDABLE_GROUPS[1]) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', BUILDABLE_GROUPS[1].parts.every(p => state.buildables[p.id]));
   bindBoardToggles("buildable", (id, checked, draft) => { draft.buildables[id] = checked; });
 }
 
@@ -476,6 +480,8 @@ function renderArtifacts() {
   });
   const count = ARTIFACTS.filter((a) => state.artifacts[a.id]).length;
   document.getElementById("artifact-count").textContent = `${count} / ${ARTIFACTS.length} secured`;
+  document.querySelector('[data-inventory-toggle="artifacts"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', ARTIFACTS.every(a => state.artifacts[a.id]));
   bindBoardToggles("artifact", (id, checked, draft) => { draft.artifacts[id] = checked; });
 }
 
@@ -487,6 +493,8 @@ function renderTrophies() {
   });
   const count = TROPHIES.filter((t) => state.trophies[t.id]).length;
   document.getElementById("trophy-count").textContent = `${count} / ${TROPHIES.length} collected`;
+  document.querySelector('[data-inventory-toggle="trophies"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', TROPHIES.every(t => state.trophies[t.id]));
   bindBoardToggles("trophy", (id, checked, draft) => { draft.trophies[id] = checked; });
 }
 

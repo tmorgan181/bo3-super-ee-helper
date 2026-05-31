@@ -31,3 +31,16 @@ Then open [http://127.0.0.1:4173](http://127.0.0.1:4173).
 - [index.html](C:/Users/tmorg/Projects/BO3%20Super%20EE%20Helper/index.html)
 - [styles.css](C:/Users/tmorg/Projects/BO3%20Super%20EE%20Helper/styles.css)
 - [app.js](C:/Users/tmorg/Projects/BO3%20Super%20EE%20Helper/app.js)
+
+## GitHub Pages
+
+This repo is set up to deploy as a static GitHub Pages site through GitHub Actions.
+
+After you push it to GitHub:
+
+1. Open the repository on GitHub.
+2. Go to `Settings` -> `Pages`.
+3. Under `Source`, choose `GitHub Actions`.
+4. Push to `master` to trigger the `Deploy GitHub Pages` workflow.
+
+The homepage uses relative links so it works both locally and from a project Pages URL like `https://<username>.github.io/<repo-name>/`.

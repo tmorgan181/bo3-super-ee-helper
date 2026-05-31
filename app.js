@@ -57,28 +57,49 @@ const STEP_DATA = [
     hints: []
   },
   {
-    id: "dragon-strike",
-    title: "Ride the Dragon and Get Dragon Strike",
-    summary: "Ride the dragon from Dragon Command to the PaP bunker, then go to the Hatchery, retrieve the egg, survive the lockdown, and claim Dragon Strike.",
+    id: "ride-dragon",
+    title: "Ride the Dragon",
+    summary: "Board the dragon at Dragon Command and ride to the PaP bunker. Upgrade weapons before the Hatchery.",
     category: "Unlock",
-    risk: "High",
-    tags: ["Required", "Lockdown"],
+    risk: "Low",
+    tags: ["Required", "Unlock"],
     prerequisites: ["groph-modules"],
-    details: "Two things happen here: the dragon transport unlocks Pack-a-Punch access, and the Hatchery lockdown rewards Dragon Strike. Do PaP upgrades before triggering the lockdown.",
+    details: "After all three Network Circuits are placed in the Network Console, the dragon transport becomes available at Dragon Command's upper platform.",
     checkpoints: [
       "Dragon boarded at Dragon Command upper platform.",
-      "Pack-a-Punch bunker accessed — weapons upgraded.",
-      "Dragon Egg shot loose and picked up from Hatchery rafters.",
-      "Egg placed in Hatchery incubator and lockdown triggered.",
-      "Hatchery lockdown survived.",
-      "Dragon Strike crystal interacted with — Dragon Strike claimed."
+      "Pack-a-Punch bunker accessed.",
+      "Primary weapon upgraded at PaP."
     ],
     subtasks: [
-      { title: "Board Dragon at Dragon Command", detail: "After placing all 3 circuits in the Network Console, call and board the dragon at the upper platform in Dragon Command. It carries you to the PaP bunker entrance." },
-      { title: "Upgrade at Pack-a-Punch", detail: "Head downstairs in the bunker to access Pack-a-Punch. Upgrade your primary weapon before proceeding." },
-      { title: "Retrieve Egg from Hatchery", detail: "Go to the Hatchery. Locate the intact dragon egg hanging above the sewer grate in the basement. Shoot it to drop it, then pick it up." },
-      { title: "Trigger Lockdown", detail: "Bring the egg to the Hatchery and place it in the incubator in the center of the basement. This triggers a lockdown — kill zombies near the egg to charge it." },
-      { title: "Claim Dragon Strike", detail: "After the lockdown, go to the top floor of the Hatchery and interact with the glowing crystal to receive the Dragon Strike wonder weapon." }
+      { title: "Board Dragon at Dragon Command", detail: "Call and board the dragon at the upper platform in Dragon Command after placing all 3 circuits in the Network Console. It carries you to the PaP bunker entrance." },
+      { title: "Upgrade at Pack-a-Punch", detail: "Head downstairs in the bunker to access Pack-a-Punch. Upgrade your primary weapon before heading to the Hatchery." }
+    ],
+    hints: []
+  },
+  {
+    id: "shield-trophies",
+    title: "Collect Trophies",
+    summary: "Collect all six trophies across the map. Four can be grabbed now — two require items from later steps.",
+    category: "Collectibles",
+    risk: "Medium",
+    tags: ["Required", "Collectibles"],
+    prerequisites: ["ride-dragon"],
+    details: "Grab the first four trophies now while the map is open. The Speed Cola puddle trophy requires Dragon Strike (Step 7) and the Operations Bunker safe requires the Gauntlet of Siegfried (Step 5). Pick those up immediately after you unlock each item rather than making a dedicated run.",
+    checkpoints: [
+      "Dragon Command mural soldier trophy collected.",
+      "Tank Factory window trophy collected.",
+      "Sewer House toilet trophy collected.",
+      "Supply Depot laser trap trophy collected.",
+      "⚑ Speed Cola puddle trophy collected — requires Dragon Strike (Step 7).",
+      "⚑ Operations Bunker safe trophy collected — requires Gauntlet of Siegfried (Step 5)."
+    ],
+    subtasks: [
+      { title: "Dragon Command — Mural Soldier", detail: "Shoot the trophy out of the right-hand soldier's grip on the Russian mural above the tank in Dragon Command." },
+      { title: "Tank Factory — Window", detail: "Near Double Tap. Blast the propped-open window with the Guard of Fafnir shield to knock the trophy loose." },
+      { title: "Sewer House — Toilet", detail: "In the sewer beneath the PaP house, shoot the red switch until it turns green. Go upstairs and collect the trophy from the clogged toilet." },
+      { title: "Supply Depot — Laser Trap", detail: "Activate the laser eye beam trap (1500 pts) inside Supply Depot. The trophy spawns where the laser hits the floor." },
+      { title: "⚑ Operations Bunker — Safe (after Gauntlet)", detail: "After claiming the Gauntlet of Siegfried in Step 5, swing by the Operations Bunker and use the Gauntlet's fist melee to punch the safe open next to the shield workbench." },
+      { title: "⚑ Speed Cola — Puddle (after Dragon Strike)", detail: "After claiming Dragon Strike in Step 7, use it on the puddle of water below the Speed Cola perch. The trophy spawns at the impact point." }
     ],
     hints: []
   },
@@ -89,8 +110,8 @@ const STEP_DATA = [
     category: "Quest item",
     risk: "High",
     tags: ["Required", "Quest item"],
-    prerequisites: ["dragon-strike"],
-    details: "Two mandatory full-round cooldowns are required — one after the nest burn, one after bunker incubation. Plan your round flow around them.",
+    prerequisites: ["shield-trophies"],
+    details: "Two mandatory full-round cooldowns are built into this step — one after the nest burn, one after bunker incubation. Use these forced idle rounds productively: complete the three kill trials during normal round flow, and grab the Operations Bunker safe trophy immediately after claiming the Gauntlet.",
     checkpoints: [
       "Egg burned at Dragon's Nest — full round cooldown survived.",
       "Napalm kills trial complete.",
@@ -104,30 +125,8 @@ const STEP_DATA = [
       { title: "Trial — Napalm Kills", detail: "Kill 8–10 zombies that have been set on fire by the dragon's breath. Lead zombies through the dragon fire path near Dragon Command." },
       { title: "Trial — Penetrative Kills", detail: "Kill 8–10 zombies with shots that pierce through multiple targets in one bullet. The mounted MG42 on the top floor of the Hatchery works well, or a sniper that chains 2+ kills per shot." },
       { title: "Trial — Melee Kills", detail: "Kill 8–10 zombies using melee. Use the knife, Bowie Knife, or the Guard of Fafnir's fireball melee attack." },
-      { title: "Incubate in Bunker", detail: "Bring the egg to the PaP bunker basement and place it in the intact incubator near the generator. Kill zombies nearby to charge it with souls, then survive a full round before collecting." },
-      { title: "Claim Gauntlet", detail: "Take the fully incubated egg to Belinski Square and place it on the leftmost Challenge Board to receive the Gauntlet of Siegfried specialist weapon." }
-    ],
-    hints: []
-  },
-  {
-    id: "shield-trophies",
-    title: "Collect Trophies",
-    summary: "Find and collect all six hidden trophies across the map. Can be done in any order.",
-    category: "Collectibles",
-    risk: "Medium",
-    tags: ["Required", "Collectibles"],
-    prerequisites: ["dragon-strike"],
-    details: "Trophies can be collected at any point after getting Dragon Strike and the Gauntlet. Knock out multiple in one route.",
-    checkpoints: [
-      "All six trophies collected."
-    ],
-    subtasks: [
-      { title: "Dragon Command — Mural Soldier", detail: "Shoot the trophy out of the right-hand soldier's grip on the Russian mural above the tank in Dragon Command." },
-      { title: "Tank Factory — Window", detail: "Near Double Tap. Blast the propped-open window with the Guard of Fafnir shield to knock the trophy loose." },
-      { title: "Sewer House — Toilet", detail: "In the sewer beneath the PaP house, shoot the red switch until it turns green. Go upstairs and collect the trophy from the clogged toilet." },
-      { title: "Supply Depot — Laser Trap", detail: "Activate the laser eye beam trap (1500 pts) inside Supply Depot. The trophy spawns where the laser hits the floor." },
-      { title: "Speed Cola — Puddle", detail: "Use Dragon Strike on the puddle of water below the Speed Cola perch. The trophy spawns at the impact point on the ground." },
-      { title: "Operations Bunker — Safe", detail: "Melee the safe next to the shield build table in the Operations Bunker using the Gauntlet of Siegfried fist attack to punch it open." }
+      { title: "Incubate in Bunker", detail: "Bring the egg to the PaP bunker basement and place it in the intact incubator near the generator. Kill zombies nearby to charge it with souls, then survive a full round before collecting. Use this forced cooldown round to read valve locations or collect outstanding trophies." },
+      { title: "Claim Gauntlet", detail: "Take the fully incubated egg to Belinski Square and place it on the leftmost Challenge Board to receive the Gauntlet of Siegfried specialist weapon. Immediately swing by the Operations Bunker to collect the safe trophy while you have the Gauntlet." }
     ],
     hints: []
   },
@@ -138,7 +137,7 @@ const STEP_DATA = [
     category: "Puzzle",
     risk: "High",
     tags: ["Required", "Puzzle"],
-    prerequisites: ["egg-gauntlet", "shield-trophies"],
+    prerequisites: ["egg-gauntlet"],
     details: "The valve puzzle is randomized every game. Use kronorium.com/blackops3/gorodkrovi/ — input the green-light valve and the pink-cylinder valve to get the exact settings. Valves stay active for ~5 minutes before resetting.",
     checkpoints: [
       "Generator in PaP bunker powered — Valkyrie killed nearby.",
@@ -159,13 +158,35 @@ const STEP_DATA = [
     hints: []
   },
   {
+    id: "dragon-strike",
+    title: "Get Dragon Strike",
+    summary: "Retrieve the dragon egg from the Hatchery, place it in the incubator, survive the lockdown, and claim Dragon Strike.",
+    category: "Unlock",
+    risk: "High",
+    tags: ["Required", "Lockdown"],
+    prerequisites: ["valves"],
+    details: "Placing the egg in the Hatchery incubator immediately triggers a lockdown. Be prepared before placing it.",
+    checkpoints: [
+      "Dragon Egg shot loose and picked up from Hatchery rafters.",
+      "Egg placed in Hatchery incubator — lockdown triggered.",
+      "Hatchery lockdown survived.",
+      "Dragon Strike claimed from glowing crystal on Hatchery top floor."
+    ],
+    subtasks: [
+      { title: "Retrieve Egg", detail: "In the Hatchery basement, locate the intact dragon egg hanging above the sewer grate. Shoot it to drop it, then pick it up." },
+      { title: "Trigger Lockdown", detail: "Place the egg in the incubator in the center of the Hatchery basement. This immediately triggers a lockdown — kill zombies near the egg to charge it." },
+      { title: "Claim Dragon Strike", detail: "After the lockdown ends, go to the top floor of the Hatchery and interact with the glowing crystal to receive the Dragon Strike wonder weapon. Immediately head to the Speed Cola area and use Dragon Strike on the puddle to collect the final trophy." }
+    ],
+    hints: []
+  },
+  {
     id: "trials",
     title: "Complete SOPHIA's Trials",
     summary: "Insert all six trophies at SOPHIA's terminal, then clear all six trials in random order (except Trial 6 which is always last).",
     category: "Trials",
     risk: "High",
     tags: ["Required", "Execution"],
-    prerequisites: ["valves"],
+    prerequisites: ["dragon-strike"],
     details: "Trials 1–5 appear in a random order. Trial 6 (the keycard download) is always the final trial. If you fail any trial, wait until the next round and press the green button again to retry.",
     checkpoints: [
       "All six trophies inserted at SOPHIA's terminal.",
@@ -265,9 +286,9 @@ const BUILDABLE_GROUPS = [
     title: "Guard of Fafnir",
     description: "Dragon Shield assembly chain",
     parts: [
-      { id: "shield-frame", code: "S1", name: "Frame", meta: "First part", hint: "Chair next to Jugg • truck door • bunker basement", shape: "shield" },
-      { id: "shield-crest", code: "S2", name: "Crest", meta: "Second part", hint: "Infirmary bed • Infirmary wine • Infirmary roof concrete", shape: "shield" },
-      { id: "shield-harness", code: "S3", name: "Harness", meta: "Last part", hint: "Armory roof crate • Armory roof wall • Armory perk-a-cola", shape: "shield" }
+      { id: "shield-frame", code: "S1", name: "Frame", meta: "First part", hint: "", shape: "shield" },
+      { id: "shield-crest", code: "S2", name: "Crest", meta: "Second part", hint: "", shape: "shield" },
+      { id: "shield-harness", code: "S3", name: "Harness", meta: "Last part", hint: "", shape: "shield" }
     ]
   },
   {
@@ -275,28 +296,28 @@ const BUILDABLE_GROUPS = [
     title: "Dragon Control",
     description: "Command cores and bunker feed",
     parts: [
-      { id: "network-red", code: "N1", name: "Red Circuit", meta: "Dragon Command", hint: "Dropped from the completed Dragon Command module.", shape: "circuit" },
-      { id: "network-blue", code: "N2", name: "Blue Circuit", meta: "Supply Depot", hint: "Dropped from the completed Supply Depot module.", shape: "circuit" },
-      { id: "network-yellow", code: "N3", name: "Yellow Circuit", meta: "Tank Factory", hint: "Dropped from the completed Tank Factory module.", shape: "circuit" }
+      { id: "network-red", code: "N1", name: "Red Circuit", meta: "Dragon Command", hint: "", shape: "circuit" },
+      { id: "network-blue", code: "N2", name: "Blue Circuit", meta: "Supply Depot", hint: "", shape: "circuit" },
+      { id: "network-yellow", code: "N3", name: "Yellow Circuit", meta: "Tank Factory", hint: "", shape: "circuit" }
     ]
   }
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-strike", code: "A1", name: "Dragon Strike", meta: "Wonder weapon", hint: "Interact with the glowing crystal on the top floor of the Hatchery after surviving the incubator lockdown.", shape: "core" },
-  { id: "artifact-gauntlet", code: "A2", name: "Gauntlet of Siegfried", meta: "Specialist weapon", hint: "Claimed from the leftmost Challenge Board in Belinski Square after placing the fully incubated Dragon Egg.", shape: "gauntlet" },
-  { id: "artifact-cylinder", code: "A3", name: "Master Cylinder", meta: "Valve network reward", hint: "Pulled from the pink-cylinder valve after solving the valve network puzzle.", shape: "cylinder" },
-  { id: "artifact-keycard", code: "A4", name: "Red Keycard", meta: "Trial 6 item", hint: "Picked up from the monitor opposite SOPHIA in Dragon Command to start the keycard download trial.", shape: "keycard" },
-  { id: "artifact-core", code: "A5", name: "Power Core", meta: "Boss access item", hint: "Dispensed by SOPHIA after completing all six trials. Carried to Nikolai 1.0 via the Gauntlet Whelp.", shape: "core" }
+  { id: "artifact-strike", code: "A1", name: "Dragon Strike", meta: "Wonder weapon", hint: "", shape: "core" },
+  { id: "artifact-gauntlet", code: "A2", name: "Gauntlet of Siegfried", meta: "Specialist weapon", hint: "", shape: "gauntlet" },
+  { id: "artifact-cylinder", code: "A3", name: "Master Cylinder", meta: "Valve network reward", hint: "", shape: "cylinder" },
+  { id: "artifact-keycard", code: "A4", name: "Red Keycard", meta: "Trial 6 item", hint: "", shape: "keycard" },
+  { id: "artifact-core", code: "A5", name: "Power Core", meta: "Boss access item", hint: "", shape: "core" }
 ];
 
 const TROPHIES = [
-  { id: "trophy-1", code: "T1", name: "Mural Soldier Trophy", meta: "Dragon Command", hint: "Shoot the trophy out of the hand of the soldier on the right side of the Russian mural, above a tank in Dragon Command.", shape: "trophy" },
-  { id: "trophy-2", code: "T2", name: "Tank Factory Window", meta: "Tank Factory", hint: "Near Double Tap. Blast the propped-open window with the Guard of Fafnir shield weapon to knock the trophy free.", shape: "trophy" },
-  { id: "trophy-3", code: "T3", name: "Sewer House Toilet", meta: "Sewer / PaP House", hint: "Shoot the red switch in the sewer beneath the PaP house to turn it green, then go upstairs and collect the trophy from the clogged toilet.", shape: "trophy" },
-  { id: "trophy-4", code: "T4", name: "Supply Depot Laser Trap", meta: "Supply Depot", hint: "Activate the laser eye beam trap (1500 pts) in Supply Depot — the trophy appears where the laser impacts the floor.", shape: "trophy" },
-  { id: "trophy-5", code: "T5", name: "Speed Cola Puddle", meta: "Speed Cola area", hint: "Use Dragon Strike on the puddle of water below the Speed Cola perch. The trophy spawns on the ground where the strike lands.", shape: "trophy" },
-  { id: "trophy-6", code: "T6", name: "Operations Bunker Safe", meta: "Operations Bunker", hint: "Use the Gauntlet of Siegfried melee attack to punch open the safe next to the shield build table in the Operations Bunker.", shape: "trophy" }
+  { id: "trophy-1", code: "T1", name: "Mural Soldier Trophy", meta: "Dragon Command", hint: "", shape: "trophy" },
+  { id: "trophy-2", code: "T2", name: "Tank Factory Window", meta: "Tank Factory", hint: "", shape: "trophy" },
+  { id: "trophy-3", code: "T3", name: "Sewer House Toilet", meta: "Sewer / PaP House", hint: "", shape: "trophy" },
+  { id: "trophy-4", code: "T4", name: "Supply Depot Laser Trap", meta: "Supply Depot", hint: "", shape: "trophy" },
+  { id: "trophy-5", code: "T5", name: "Speed Cola Puddle", meta: "Speed Cola area", hint: "", shape: "trophy" },
+  { id: "trophy-6", code: "T6", name: "Operations Bunker Safe", meta: "Operations Bunker", hint: "", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -785,6 +806,10 @@ function renderBuildables() {
 
   document.getElementById("buildable-count").textContent = `${shieldCompleteCount} / ${shieldTotalCount} marked`;
   document.getElementById("dragon-control-count").textContent = `${dragonCompleteCount} / ${dragonTotalCount} marked`;
+  document.querySelector('[data-inventory-toggle="buildables"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', BUILDABLE_GROUPS[0].parts.every(p => state.buildables[p.id]));
+  if (BUILDABLE_GROUPS[1]) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', BUILDABLE_GROUPS[1].parts.every(p => state.buildables[p.id]));
   bindBoardToggles("buildable", (id, checked, draft) => {
     draft.buildables[id] = checked;
   });
@@ -803,6 +828,8 @@ function renderArtifacts() {
   });
 
   document.getElementById("artifact-count").textContent = `${count} / ${ARTIFACTS.length} secured`;
+  document.querySelector('[data-inventory-toggle="artifacts"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', ARTIFACTS.every(a => state.artifacts[a.id]));
   bindBoardToggles("artifact", (id, checked, draft) => {
     draft.artifacts[id] = checked;
   });
@@ -821,6 +848,8 @@ function renderTrophies() {
   });
 
   document.getElementById("trophy-count").textContent = `${count} / ${TROPHIES.length} collected`;
+  document.querySelector('[data-inventory-toggle="trophies"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', TROPHIES.every(t => state.trophies[t.id]));
   bindBoardToggles("trophy", (id, checked, draft) => {
     draft.trophies[id] = checked;
   });

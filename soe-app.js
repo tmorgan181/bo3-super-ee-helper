@@ -189,9 +189,9 @@ const BUILDABLE_GROUPS = [
     title: "Gateworm",
     description: "Ritual reward items used to unlock PaP",
     parts: [
-      { id: "gw-canal", code: "G1", name: "Canal Gateworm", meta: "Canal ritual reward", hint: "Awarded after completing the Canal district tentacle ritual.", shape: "egg" },
-      { id: "gw-waterfront", code: "G2", name: "Waterfront Gateworm", meta: "Waterfront ritual reward", hint: "Awarded after completing the Waterfront fire ritual.", shape: "egg" },
-      { id: "gw-footlight", code: "G3", name: "Footlight Gateworm", meta: "Footlight ritual reward", hint: "Awarded after completing the Footlight squid ritual.", shape: "egg" }
+      { id: "gw-canal", code: "G1", name: "Canal Gateworm", meta: "Canal ritual reward", hint: "", shape: "egg" },
+      { id: "gw-waterfront", code: "G2", name: "Waterfront Gateworm", meta: "Waterfront ritual reward", hint: "", shape: "egg" },
+      { id: "gw-footlight", code: "G3", name: "Footlight Gateworm", meta: "Footlight ritual reward", hint: "", shape: "egg" }
     ]
   },
   {
@@ -199,26 +199,26 @@ const BUILDABLE_GROUPS = [
     title: "Glyph Shards",
     description: "Three shards needed for the final summoning ritual",
     parts: [
-      { id: "glyph-1", code: "S1", name: "Glyph Shard I", meta: "Canal ritual drop", hint: "Drops from completing the Canal ritual seal.", shape: "core" },
-      { id: "glyph-2", code: "S2", name: "Glyph Shard II", meta: "Waterfront ritual drop", hint: "Drops from completing the Waterfront ritual seal.", shape: "core" },
-      { id: "glyph-3", code: "S3", name: "Glyph Shard III", meta: "Footlight ritual drop", hint: "Drops from completing the Footlight ritual seal.", shape: "core" }
+      { id: "glyph-1", code: "S1", name: "Glyph Shard I", meta: "Canal ritual drop", hint: "", shape: "core" },
+      { id: "glyph-2", code: "S2", name: "Glyph Shard II", meta: "Waterfront ritual drop", hint: "", shape: "core" },
+      { id: "glyph-3", code: "S3", name: "Glyph Shard III", meta: "Footlight ritual drop", hint: "", shape: "core" }
     ]
   }
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-key", code: "A1", name: "Summoning Key", meta: "Final ritual item", hint: "Used to break the Shadow Man's immunity shield in phase 1.", shape: "core" },
-  { id: "artifact-pap", code: "A2", name: "Pack-a-Punch Access", meta: "Post-ritual unlock", hint: "Portal opens in Junction after all three rituals complete.", shape: "core" },
-  { id: "artifact-protector", code: "A3", name: "Civil Protector", meta: "Junction defense robot", hint: "Summoned at the Junction station after all seals are broken.", shape: "cylinder" }
+  { id: "artifact-key", code: "A1", name: "Summoning Key", meta: "Final ritual item", hint: "", shape: "core" },
+  { id: "artifact-pap", code: "A2", name: "Pack-a-Punch Access", meta: "Post-ritual unlock", hint: "", shape: "core" },
+  { id: "artifact-protector", code: "A3", name: "Civil Protector", meta: "Junction defense robot", hint: "", shape: "cylinder" }
 ];
 
 const TROPHIES = [
-  { id: "trophy-margwa", code: "T1", name: "Margwa Trophy", meta: "Margwa kill", hint: "Kill a Margwa in the Junction while the Civil Protector is active.", shape: "trophy" },
-  { id: "trophy-beast", code: "T2", name: "Beast Skull", meta: "Beast Mode kill streak", hint: "Kill 10 zombies in a single Beast Mode activation.", shape: "trophy" },
-  { id: "trophy-ritual", code: "T3", name: "Ritual Seal Fragment", meta: "All three rituals", hint: "Drops after completing the third and final district ritual.", shape: "trophy" },
-  { id: "trophy-shadow", code: "T4", name: "Shadow Relic", meta: "Shadow Man kill", hint: "Drops from the Shadow Man after the final ritual defeat.", shape: "trophy" },
-  { id: "trophy-protector", code: "T5", name: "Protector Crest", meta: "Civil Protector max tier", hint: "Upgrade the Civil Protector to tier 4.", shape: "trophy" },
-  { id: "trophy-wisp", code: "T6", name: "Wisp Fragment", meta: "Wisp collection", hint: "Collect all six wisps floating in the PaP chamber.", shape: "trophy" }
+  { id: "trophy-margwa", code: "T1", name: "Margwa Trophy", meta: "Margwa kill", hint: "", shape: "trophy" },
+  { id: "trophy-beast", code: "T2", name: "Beast Skull", meta: "Beast Mode kill streak", hint: "", shape: "trophy" },
+  { id: "trophy-ritual", code: "T3", name: "Ritual Seal Fragment", meta: "All three rituals", hint: "", shape: "trophy" },
+  { id: "trophy-shadow", code: "T4", name: "Shadow Relic", meta: "Shadow Man kill", hint: "", shape: "trophy" },
+  { id: "trophy-protector", code: "T5", name: "Protector Crest", meta: "Civil Protector max tier", hint: "", shape: "trophy" },
+  { id: "trophy-wisp", code: "T6", name: "Wisp Fragment", meta: "Wisp collection", hint: "", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -451,6 +451,10 @@ function renderBuildables() {
   const buildableTotal = BUILDABLE_GROUPS.flatMap((g) => g.parts).length;
   document.getElementById("buildable-count").textContent = `${buildableCount} / ${buildableTotal} marked`;
   document.getElementById("dragon-control-count").textContent = "";
+  document.querySelector('[data-inventory-toggle="buildables"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', BUILDABLE_GROUPS[0].parts.every(p => state.buildables[p.id]));
+  if (BUILDABLE_GROUPS[1]) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', BUILDABLE_GROUPS[1].parts.every(p => state.buildables[p.id]));
   bindBoardToggles("buildable", (id, checked, draft) => { draft.buildables[id] = checked; });
 }
 
@@ -462,6 +466,8 @@ function renderArtifacts() {
   });
   const count = ARTIFACTS.filter((a) => state.artifacts[a.id]).length;
   document.getElementById("artifact-count").textContent = `${count} / ${ARTIFACTS.length} secured`;
+  document.querySelector('[data-inventory-toggle="artifacts"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', ARTIFACTS.every(a => state.artifacts[a.id]));
   bindBoardToggles("artifact", (id, checked, draft) => { draft.artifacts[id] = checked; });
 }
 
@@ -473,6 +479,8 @@ function renderTrophies() {
   });
   const count = TROPHIES.filter((t) => state.trophies[t.id]).length;
   document.getElementById("trophy-count").textContent = `${count} / ${TROPHIES.length} collected`;
+  document.querySelector('[data-inventory-toggle="trophies"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', TROPHIES.every(t => state.trophies[t.id]));
   bindBoardToggles("trophy", (id, checked, draft) => { draft.trophies[id] = checked; });
 }
 
