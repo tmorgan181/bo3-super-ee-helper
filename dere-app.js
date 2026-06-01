@@ -319,26 +319,25 @@ const STEP_DATA = [
 
 const BUILDABLE_GROUPS = [
   {
-    id: "wota",
-    title: "Core Gear",
-    description: "Main-quest weapons and Ragnarok assembly",
+    id: "shield",
+    title: "Rocket Shield",
+    description: "Shield parts and workshop build",
     parts: [
-      { id: "wota-bow", code: "G1", name: "Wrath of the Ancients", meta: "Earned from the three dragons", hint: "", shape: "core" },
-      { id: "dg4-panzer", code: "G2", name: "Ragnarok Part: Panzer", meta: "Dropped by first Panzer", hint: "", shape: "core" },
-      { id: "dg4-rocket", code: "G3", name: "Ragnarok Part: Rocket Test", meta: "Tunnel console after test fire", hint: "", shape: "core" },
-      { id: "dg4-flight", code: "G4", name: "Ragnarok Part: Wundersphere", meta: "Grab in midair after Death Ray use", hint: "", shape: "core" },
-      { id: "dg4-built", code: "G5", name: "Ragnarok DG-4", meta: "Built at the workbench", hint: "", shape: "core" }
+      { id: "shield-part-courtyard", code: "S1", name: "Shield Part: Courtyard", meta: "Spawn / courtyard route", hint: "", shape: "shield" },
+      { id: "shield-part-church", code: "S2", name: "Shield Part: Church", meta: "Church / lower hall route", hint: "", shape: "shield" },
+      { id: "shield-part-undercroft", code: "S3", name: "Shield Part: Undercroft", meta: "Pyramid / lower route", hint: "", shape: "shield" },
+      { id: "shield-built", code: "S4", name: "Rocket Shield", meta: "Built at a workbench", hint: "", shape: "shield" }
     ]
   },
   {
-    id: "bows",
-    title: "Elemental Bows",
-    description: "Track the upgraded bows your run needs",
+    id: "ragnarok",
+    title: "Ragnarok DG-4",
+    description: "Specialist parts and assembly",
     parts: [
-      { id: "bow-storm-u", code: "B1", name: "Storm Bow", meta: "Weather vane, urns, lightning quest", hint: "", shape: "core" },
-      { id: "bow-wolf-u", code: "B2", name: "Wolf Bow", meta: "Paintings, flag, wolf dig sites", hint: "", shape: "core" },
-      { id: "bow-void-u", code: "B3", name: "Void Bow", meta: "Purple ritual and six skulls", hint: "", shape: "core" },
-      { id: "bow-fire-u", code: "B4", name: "Fire Bow", meta: "Launch-pad circles and fireplaces", hint: "", shape: "core" }
+      { id: "dg4-panzer", code: "R1", name: "Ragnarok Part: Panzer", meta: "Dropped by first Panzer", hint: "", shape: "core" },
+      { id: "dg4-rocket", code: "R2", name: "Ragnarok Part: Rocket Test", meta: "Tunnel console after test fire", hint: "", shape: "core" },
+      { id: "dg4-flight", code: "R3", name: "Ragnarok Part: Wundersphere", meta: "Grab in midair after Death Ray use", hint: "", shape: "core" },
+      { id: "dg4-built", code: "R4", name: "Ragnarok DG-4", meta: "Built at the workbench", hint: "", shape: "core" }
     ]
   }
 ];
@@ -353,15 +352,6 @@ const ARTIFACTS = [
   { id: "artifact-key", code: "Q7", name: "Summoning Key", meta: "Collected after the boss", hint: "", shape: "core" }
 ];
 
-const TROPHIES = [
-  { id: "trophy-beacons", code: "C1", name: "Beacons Charged", meta: "All four teleporter rods lit", hint: "", shape: "trophy" },
-  { id: "trophy-wisps", code: "C2", name: "Wisp Round Clear", meta: "Four sparks shot in one round", hint: "", shape: "trophy" },
-  { id: "trophy-safe", code: "C3", name: "Safe Opened", meta: "Correct symbol code entered", hint: "", shape: "trophy" },
-  { id: "trophy-simon", code: "C4", name: "Both Terminals Cleared", meta: "Simon Says finished on both ends", hint: "", shape: "trophy" },
-  { id: "trophy-keeper", code: "C5", name: "Keeper Escort Complete", meta: "All four soul circles filled", hint: "", shape: "trophy" },
-  { id: "trophy-boss", code: "C6", name: "Keeper Boss Down", meta: "Corrupted keeper defeated", hint: "", shape: "trophy" }
-];
-
 const DEFAULT_STATE = {
   selectedStepId: STEP_DATA[0].id,
   stepStatus: Object.fromEntries(STEP_DATA.map((step) => [step.id, false])),
@@ -369,12 +359,10 @@ const DEFAULT_STATE = {
   inventoryExpanded: {
     buildables: false,
     "dragon-control": false,
-    trophies: false,
     artifacts: false
   },
   buildables: Object.fromEntries(BUILDABLE_GROUPS.flatMap((group) => group.parts.map((part) => [part.id, false]))),
-  artifacts: Object.fromEntries(ARTIFACTS.map((artifact) => [artifact.id, false])),
-  trophies: Object.fromEntries(TROPHIES.map((trophy) => [trophy.id, false]))
+  artifacts: Object.fromEntries(ARTIFACTS.map((artifact) => [artifact.id, false]))
 };
 
 let state = loadState();
@@ -410,9 +398,6 @@ function mergeState(saved) {
   for (const artifact of ARTIFACTS) {
     next.artifacts[artifact.id] = Boolean(saved.artifacts && saved.artifacts[artifact.id]);
   }
-  for (const trophy of TROPHIES) {
-    next.trophies[trophy.id] = Boolean(saved.trophies && saved.trophies[trophy.id]);
-  }
   return next;
 }
 
@@ -445,7 +430,6 @@ function render() {
   renderActiveUtility();
   renderBuildables();
   renderArtifacts();
-  renderTrophies();
   syncNotes();
 }
 
@@ -570,8 +554,8 @@ function renderBuildables() {
   buildContainer.innerHTML = "";
   bowContainer.innerHTML = "";
 
-  const wotaGroup = BUILDABLE_GROUPS.find((g) => g.id === "wota");
-  const bowsGroup = BUILDABLE_GROUPS.find((g) => g.id === "bows");
+  const wotaGroup = BUILDABLE_GROUPS.find((g) => g.id === "shield");
+  const bowsGroup = BUILDABLE_GROUPS.find((g) => g.id === "ragnarok");
 
   [{ group: wotaGroup, el: buildContainer }, { group: bowsGroup, el: bowContainer }].forEach(({ group, el }) => {
     if (!group) return;
@@ -594,10 +578,14 @@ function renderBuildables() {
     el.appendChild(wrap);
   });
 
-  const buildableCount = BUILDABLE_GROUPS.flatMap((g) => g.parts).filter((p) => state.buildables[p.id]).length;
-  const buildableTotal = BUILDABLE_GROUPS.flatMap((g) => g.parts).length;
+  const shieldParts = BUILDABLE_GROUPS[0]?.parts ?? [];
+  const ragnarokParts = BUILDABLE_GROUPS[1]?.parts ?? [];
+  const buildableCount = shieldParts.filter((p) => state.buildables[p.id]).length;
+  const buildableTotal = shieldParts.length;
+  const ragnarokCount = ragnarokParts.filter((p) => state.buildables[p.id]).length;
+  const ragnarokTotal = ragnarokParts.length;
   document.getElementById("buildable-count").textContent = `${buildableCount} / ${buildableTotal} marked`;
-  document.getElementById("dragon-control-count").textContent = "";
+  document.getElementById("dragon-control-count").textContent = `${ragnarokCount} / ${ragnarokTotal} marked`;
   document.querySelector('[data-inventory-toggle="buildables"]').closest('.inventory-panel')
     .classList.toggle('is-complete', BUILDABLE_GROUPS[0].parts.every(p => state.buildables[p.id]));
   if (BUILDABLE_GROUPS[1]) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
@@ -616,19 +604,6 @@ function renderArtifacts() {
   document.querySelector('[data-inventory-toggle="artifacts"]').closest('.inventory-panel')
     .classList.toggle('is-complete', ARTIFACTS.every(a => state.artifacts[a.id]));
   bindBoardToggles("artifact", (id, checked, draft) => { draft.artifacts[id] = checked; });
-}
-
-function renderTrophies() {
-  const container = document.getElementById("trophy-grid");
-  container.innerHTML = "";
-  TROPHIES.forEach((item) => {
-    container.appendChild(makeBoardCard(item, "trophy", state.trophies[item.id]));
-  });
-  const count = TROPHIES.filter((t) => state.trophies[t.id]).length;
-  document.getElementById("trophy-count").textContent = `${count} / ${TROPHIES.length} collected`;
-  document.querySelector('[data-inventory-toggle="trophies"]').closest('.inventory-panel')
-    .classList.toggle('is-complete', TROPHIES.every(t => state.trophies[t.id]));
-  bindBoardToggles("trophy", (id, checked, draft) => { draft.trophies[id] = checked; });
 }
 
 function makeBoardCard(item, kind, checked) {
@@ -662,8 +637,7 @@ function bindBoardToggles(kind, updater) {
       updateState((draft) => {
         let checked = false;
         if (kind === "buildable") checked = !draft.buildables[id];
-        else if (kind === "artifact") checked = !draft.artifacts[id];
-        else checked = !draft.trophies[id];
+        else checked = !draft.artifacts[id];
         updater(id, checked, draft);
       });
     });
