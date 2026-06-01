@@ -1,183 +1,317 @@
 const STORAGE_KEY = "bo3-super-ee-helper:de:first-pass";
 
 const RECOMMENDED_GOBBLEGUMS = [
-  "Anywhere But Here",
+  "Danger Closest",
+  "In Plain Sight",
   "Perkaholic",
-  "Firing On All Cylinders",
-  "Aftertaste",
-  "Killing Time"
+  "Near Death Experience",
+  "Cache Back"
 ];
 
 const STEP_DATA = [
   {
     id: "power",
     title: "Restore Power",
-    summary: "Activate the castle's power and unlock the main areas.",
+    summary: "Open the map, turn on power, and get the Undercroft online.",
     category: "Setup",
     risk: "Low",
     tags: ["Required", "Early game"],
-    details: "Navigate the castle exterior and interior to locate and activate the main power switch.",
+    details: "Your first priority is opening to the Undercroft, activating power, and getting the anti-gravity room usable for Pack-a-Punch access and later quest steps.",
     checkpoints: [
       "Power switch activated.",
-      "Castle interior areas unlocked.",
-      "Pack-a-Punch teleporter pad located.",
-      "Arrow upgrade bench found."
+      "Undercroft opened.",
+      "Death Ray reachable.",
+      "Pack-a-Punch route understood."
     ],
     subtasks: [
-      { title: "Open Routes", detail: "Buy through the courtyard toward the undercroft and upper ramparts." },
-      { title: "Power Switch", detail: "Activate the power in the undercroft beneath the castle." },
-      { title: "Wrath of the Ancients", detail: "Locate the bow wall-buy in the keep — you'll need it immediately." },
-      { title: "Perk Route", detail: "Note Juggernog, Mule Kick, and Quick Revive positions." }
+      { title: "Open the Castle", detail: "Buy through the courtyard and church path until you can reach the lower levels of the castle." },
+      { title: "Turn on Power", detail: "Activate the power switch in the Undercroft beneath the pyramid room." },
+      { title: "Enable Movement", detail: "Use or at least locate the Death Ray and the Wunderspheres because later steps depend on both." },
+      { title: "Prep Pack-a-Punch", detail: "Hit all four blue wall plates in the anti-gravity room when ready so the Pack-a-Punch path is available." }
     ],
     hints: []
   },
   {
-    id: "wota",
-    title: "Obtain Wrath of the Ancients",
-    summary: "Acquire the base wonder bow from the keep wall.",
+    id: "dragons",
+    title: "Feed Dragons and Claim the Base Bow",
+    summary: "Wake all three dragon statues and earn Wrath of the Ancients.",
     category: "Weapon",
-    risk: "Low",
-    tags: ["Required", "Weapon"],
+    risk: "Medium",
+    tags: ["Required", "Weapon", "Bow"],
     prerequisites: ["power"],
-    details: "The Wrath of the Ancients is a wall-buy in the keep area. It is required for all four elemental bow upgrades.",
+    details: "Der Eisendrache's base bow is earned by feeding all three stone dragons enough zombie souls, then claiming Wrath of the Ancients from the Undercroft altar.",
     checkpoints: [
-      "Wrath of the Ancients purchased from wall.",
-      "Four dragon souls noted for upgrade paths."
+      "All three dragons filled.",
+      "Wrath of the Ancients claimed.",
+      "Bow altar available for upgrades."
     ],
     subtasks: [
-      { title: "Purchase", detail: "Find the bow on the wall in the keep. Costs 1000 points." },
-      { title: "Ammo", detail: "Arrows are replenished by killing zombies. No ammo purchase needed." }
+      { title: "Find the Three Dragons", detail: "One is near Double Tap, one is by Speed Cola / church, and one is in the courtyard above the rocket shield bench." },
+      { title: "Feed Each Dragon", detail: "Get zombie kills beside a dragon until it crumbles and stops accepting souls." },
+      { title: "Claim Wrath of the Ancients", detail: "Return to the bow altar in the Undercroft and pick up the base bow." }
     ],
     hints: []
   },
   {
-    id: "bow-fire",
-    title: "Upgrade: Fire Bow",
-    summary: "Complete the fire dragon's soul trial to unlock the fire bow upgrade.",
+    id: "upgrade-bows",
+    title: "Upgrade the Bows You Actually Need",
+    summary: "Make the elemental bows required for your player count and lobby type.",
     category: "Upgrade",
     risk: "Medium",
     tags: ["Required", "Upgrade", "Bow"],
-    prerequisites: ["wota"],
-    details: "Each dragon at the castle has an associated elemental bow upgrade. The fire dragon trial requires shooting specific braziers in order.",
+    prerequisites: ["dragons"],
+    details: "The main quest only needs upgraded bows, not all four in every match. Ranked solo needs one upgraded bow. Ranked co-op generally needs one upgraded bow per player. Non-ranked private games require all four bows.",
     checkpoints: [
-      "Fire dragon activated.",
-      "Brazier sequence solved.",
-      "Fire bow upgrade collected."
+      "Required bow quests chosen.",
+      "At least one upgraded bow completed.",
+      "Extra bows upgraded if lobby rules need them."
     ],
     subtasks: [
-      { title: "Activate Dragon", detail: "Shoot the fire dragon statue with the base bow to begin the trial." },
-      { title: "Brazier Order", detail: "Shoot the four lit braziers around the courtyard in the order they flash." },
-      { title: "Collect Upgrade", detail: "The upgraded fire bow spawns at the altar near the fire dragon." }
+      { title: "Storm Bow", detail: "Shoot the weather vane, collect the arrow at the broken wall, charge urns, then finish the lightning quest at the pyramid." },
+      { title: "Wolf Bow", detail: "Hit the four paintings in order, grab the arrow, shoot the rocket-pad flag, escort the wolf to dig sites, then finish at the wolf box." },
+      { title: "Void Bow", detail: "Collect the purple quest item from the symbol wall, do the urn / symbol ritual, collect six skulls, then finish at the void box." },
+      { title: "Fire Bow", detail: "Start at the clock tower, hit the launch pad circles with the Wundersphere, light the fireplaces, then feed the fire circles and finish the forge." }
     ],
     hints: []
   },
   {
-    id: "bow-wolf",
-    title: "Upgrade: Wolf Bow",
-    summary: "Solve the wolf shadow puzzle and collect wolf bow souls.",
-    category: "Upgrade",
+    id: "ragnarok",
+    title: "Build Ragnarok DG-4",
+    summary: "Collect all three Ragnarok parts before the late quest and boss fight.",
+    category: "Buildable",
     risk: "Medium",
-    tags: ["Required", "Upgrade", "Bow"],
-    prerequisites: ["wota"],
-    details: "The wolf bow upgrade requires casting wolf shadows on the chamber walls using mounted torches.",
+    tags: ["Required", "Specialist"],
+    prerequisites: ["dragons"],
+    details: "Ragnarok DG-4 is mandatory. One part drops from the first Panzer, one comes from surviving the rocket test tunnel, and one is grabbed mid-flight from a Wundersphere after the Death Ray has been activated at least once.",
     checkpoints: [
-      "Wolf shadow puzzle solved.",
-      "Wolf souls collected from spectral wolves.",
-      "Wolf bow upgrade obtained."
+      "Panzer part collected.",
+      "Rocket test part collected.",
+      "Death Ray / Wundersphere part collected.",
+      "Ragnarok built at the workbench."
     ],
     subtasks: [
-      { title: "Shadow Puzzle", detail: "In the round room near the undercroft, shoot the mounted torches to cast wolf shadow silhouettes matching the wall carvings." },
-      { title: "Spectral Wolves", detail: "After the puzzle, spectral wolves spawn. Kill them to collect wolf souls." },
-      { title: "Claim Upgrade", detail: "Return to the altar and interact to receive the wolf bow." }
+      { title: "Kill the First Panzer", detail: "The first Panzersoldat drops one Ragnarok part when killed." },
+      { title: "Rocket Test Part", detail: "When the green lever behind the rocket becomes active, pull it, survive in the bunker, then hit the console by the teleporter before the lights go dark." },
+      { title: "Wundersphere Part", detail: "After using the Death Ray at least once, ride the Bastion Wundersphere routes and grab the floating part in midair." },
+      { title: "Assemble the DG-4", detail: "Build Ragnarok at the workbench once all three pieces are in hand." }
     ],
     hints: []
   },
   {
-    id: "bow-void",
-    title: "Upgrade: Void Bow",
-    summary: "Collect void orbs across the map and charge them in the undercroft.",
-    category: "Upgrade",
+    id: "beacons",
+    title: "Charge the Teleporter Beacons",
+    summary: "Swap back to the base bow and prime the teleporter step in the Undercroft.",
+    category: "Quest",
     risk: "Medium",
-    tags: ["Required", "Upgrade", "Bow"],
-    prerequisites: ["wota"],
-    details: "Void orbs must be shot off specific pedestals and redirected through the undercroft portal stones.",
+    tags: ["Required", "Main quest"],
+    prerequisites: ["upgrade-bows", "ragnarok"],
+    details: "When at least one upgraded bow is ready, return that upgraded bow to its altar, take back the base Wrath of the Ancients, and shoot the four glowing rods above the teleporter until all are charged.",
     checkpoints: [
-      "Three void orb locations found.",
-      "Orbs redirected through portal stones.",
-      "Void bow upgrade collected."
+      "Base bow reclaimed.",
+      "All four teleporter rods charged.",
+      "Margwa audio cue heard."
     ],
     subtasks: [
-      { title: "Orb Locations", detail: "Void orbs sit on glowing pedestals in the library, ramparts, and crypt." },
-      { title: "Redirect Orbs", detail: "Shoot each orb into the undercroft. Stand at the portal stone and shoot the orb toward it." },
-      { title: "Charge and Collect", detail: "Once all three are redirected, the void bow spawns at the undercroft altar." }
+      { title: "Swap Bows", detail: "Put your upgraded bow back in its altar and pull the plain Wrath of the Ancients from the knight tomb." },
+      { title: "Shoot the Rods", detail: "In the teleporter room above the pyramid, hit each electrified rod hanging above the teleporter." },
+      { title: "Listen for Success", detail: "Once all rods are lit correctly, the orange glow fades and you hear the progress audio cue." }
     ],
     hints: []
   },
   {
-    id: "bow-storm",
-    title: "Upgrade: Storm Bow",
-    summary: "Charge the storm orb through repeated lightning strikes.",
-    category: "Upgrade",
+    id: "wisps",
+    title: "Complete the Wisp Step",
+    summary: "Switch back to an upgraded bow and clear all four sparks in one round.",
+    category: "Quest",
     risk: "High",
-    tags: ["Required", "Upgrade", "Bow"],
-    prerequisites: ["wota"],
-    details: "The storm bow requires shooting a floating orb through a lightning storm sequence in the upper ramparts.",
+    tags: ["Required", "Timed"],
+    prerequisites: ["beacons"],
+    details: "A single sparking object appears at a time among eight possible map objects. You must shoot four wisps in one round, in time, with an upgraded bow only. A missed upgraded-bow shot or too much delay fails the attempt until next round.",
     checkpoints: [
-      "Storm orb located.",
-      "Lightning sequence triggered three times.",
-      "Storm bow upgrade obtained."
+      "Four wisps shot in one round.",
+      "Purple teleporter ready light active.",
+      "No failure audio cue triggered."
     ],
     subtasks: [
-      { title: "Locate Orb", detail: "The storm orb floats near the tallest tower. Use the base bow to interact with it." },
-      { title: "Lightning Triggers", detail: "Shoot the orb during each lightning flash. Requires three successful hits on separate rounds." },
-      { title: "Collect Upgrade", detail: "Storm bow spawns at the high tower altar after the third successful charge." }
+      { title: "Know the Eight Spawns", detail: "Check the Quick Revive phone, Double Tap truck tire, box above Double Tap, Samantha room globe, power-room phone pillar, barracks clock, church radio, and church fireplace clock." },
+      { title: "Use an Upgraded Bow", detail: "Only upgraded bows work here. Do not test-shot random spots, because a wrong upgraded-bow shot fails the step." },
+      { title: "Clear Four Wisps", detail: "Each correct hit triggers another Margwa growl. Finish all four before the timer expires." }
     ],
     hints: []
   },
   {
-    id: "keeper-trial",
-    title: "Keeper Protector Trial",
-    summary: "Charge the four upgrade pedestals using the four elemental bows.",
-    category: "Ritual",
+    id: "time-travel-1",
+    title: "First Time Travel",
+    summary: "Teleport to the past, collect the canister and fuse, and memorize the safe code.",
+    category: "Quest",
     risk: "Very High",
-    tags: ["Required", "Boss prep"],
-    prerequisites: ["bow-fire", "bow-wolf", "bow-void", "bow-storm"],
-    details: "Each of the four bows must charge its corresponding pedestal in the keep. All four must be done before the boss ritual begins.",
+    tags: ["Required", "Timed"],
+    prerequisites: ["wisps"],
+    details: "Once the teleporter light turns purple, all players must enter together. In the past, grab the glowing blue soul canister, collect the small fuse by the teleporter, and memorize the three safe symbols from top to bottom before being sent back.",
     checkpoints: [
-      "Fire pedestal charged.",
-      "Wolf pedestal charged.",
-      "Void pedestal charged.",
-      "Storm pedestal charged.",
-      "Keeper ritual ready."
+      "Blue canister collected.",
+      "Small fuse collected.",
+      "Safe symbols memorized in order."
     ],
     subtasks: [
-      { title: "Fire Pedestal", detail: "Shoot the fire pedestal near the dragon statue with the fire bow." },
-      { title: "Wolf Pedestal", detail: "Charge the wolf pedestal with the wolf bow near the round room." },
-      { title: "Void Pedestal", detail: "Fire the void bow at the void pedestal in the undercroft." },
-      { title: "Storm Pedestal", detail: "Charge the storm pedestal at the tallest tower with the storm bow." }
+      { title: "Enter Together", detail: "When the bottom teleporter light is purple, every player in the match needs to be inside before activating it." },
+      { title: "Grab Both Pickups", detail: "Take the glowing blue canister near Groph and the small fuse on the wooden crate beside the teleporter." },
+      { title: "Read the Safe", detail: "Watch Groph's safe and remember the three symbols exactly from top to bottom." }
     ],
     hints: []
   },
   {
-    id: "rocket",
-    title: "Final Rocket Launch",
-    summary: "Launch the rocket and defeat the Panzersoldat boss to complete the easter egg.",
-    category: "Final prep",
+    id: "safe",
+    title: "Open Groph's Safe",
+    summary: "Use the Death Ray in Protect mode and enter the safe symbols correctly.",
+    category: "Quest",
     risk: "Very High",
-    tags: ["Required", "Execution"],
-    prerequisites: ["keeper-trial"],
-    details: "Activate the rocket launch sequence and defend through the final Panzersoldat encounter.",
+    tags: ["Required", "Code"],
+    prerequisites: ["time-travel-1"],
+    details: "Back in the present, a Panzer usually spawns. Insert the small fuse at the Death Ray, switch it to Protect, and enter the three safe symbols at the terminal outside the Clock Tower. Then open the safe in the laboratory to collect the keycard and the pair of large fuses.",
     checkpoints: [
-      "Launch codes entered.",
-      "Rocket countdown survived.",
-      "Panzersoldat boss defeated.",
-      "Easter egg complete."
+      "Death Ray switched to Protect.",
+      "Clock tower terminal code accepted.",
+      "Safe opened.",
+      "Keycard and big fuses collected."
     ],
     subtasks: [
-      { title: "Enter Launch Codes", detail: "Interact with the control terminal in the keep after all pedestals are charged." },
-      { title: "Defend Countdown", detail: "Survive waves of zombies and Keepers during the launch countdown." },
-      { title: "Boss Fight", detail: "Defeat the empowered Panzersoldat. Use charged arrow shots for efficient damage." },
-      { title: "Completion", detail: "All players must be alive when the rocket launches to receive the easter egg cutscene." }
+      { title: "Handle the Return Panzer", detail: "Be ready for a forced Panzer spawn when the first time-travel trip ends." },
+      { title: "Power the Death Ray Step", detail: "Insert the small fuse on the Clock Tower side of the Death Ray and flip the lever so the machine is set to Protect." },
+      { title: "Input the Safe Code", detail: "Use the Clock Tower terminal and enter the three symbols in the exact top-to-bottom safe order." },
+      { title: "Loot the Safe", detail: "Run to the lab safe and grab the keycard plus both large fuses from the opened shelf." }
+    ],
+    hints: []
+  },
+  {
+    id: "sabotage",
+    title: "Simon Says and Rocket Sabotage",
+    summary: "Install the big fuses, beat both terminals, then grab the Vril Generator.",
+    category: "Quest",
+    risk: "High",
+    tags: ["Required", "Memory"],
+    prerequisites: ["safe"],
+    details: "Put the two large fuses into the Death Ray towers, set the Death Ray back to Destroy, and complete both Simon Says terminals. After both are cleared, press the green button at the back of the Death Ray to crash the rocket into the clock tower and spawn the Vril Generator in the courtyard snow.",
+    checkpoints: [
+      "Both big fuses installed.",
+      "Rocket pad terminal cleared.",
+      "Clock tower terminal cleared.",
+      "Vril Generator picked up."
+    ],
+    subtasks: [
+      { title: "Install the Big Fuses", detail: "Place one large fuse into each Death Ray tower where the vertical current is visible." },
+      { title: "Set Destroy Mode", detail: "Flip the Death Ray back to Destroy before starting the monitor puzzles." },
+      { title: "Beat Both Terminals", detail: "Clear the symbol memory game outside Clock Tower and on Rocket Pad. If you fail the second, redo both." },
+      { title: "Press the Green Button", detail: "Use the rear Death Ray button, then pick up the Vril Generator beside the crashed rocket in the Upper Courtyard." }
+    ],
+    hints: []
+  },
+  {
+    id: "time-travel-2",
+    title: "Second Time Travel and Tablet",
+    summary: "Repeat the wisp cycle, return to the past, and pull the Keeper tablet.",
+    category: "Quest",
+    risk: "High",
+    tags: ["Required", "Timed"],
+    prerequisites: ["sabotage"],
+    details: "Repeat the exact wisp process to reactivate the purple teleporter. Back in the past, use the keycard in the computer beside the Kronorium, then grab the stone tablet revealed near the blocked Undercroft doorway.",
+    checkpoints: [
+      "Wisps repeated successfully.",
+      "Keycard computer used.",
+      "Stone tablet collected."
+    ],
+    subtasks: [
+      { title: "Repeat the Wisp Route", detail: "Another full successful four-wisp round is required before you can revisit the past." },
+      { title: "Use the Keycard", detail: "In the past lab, insert the keycard into the computer to the left of the Kronorium." },
+      { title: "Take the Tablet", detail: "Grab the Keeper-marked stone tablet from the newly opened case by the blocked doorway." }
+    ],
+    hints: []
+  },
+  {
+    id: "keeper",
+    title: "Escort the Ghost Keeper",
+    summary: "Spawn the keeper, fill four soul circles, and place the tablet at Double Tap.",
+    category: "Quest",
+    risk: "Very High",
+    tags: ["Required", "Escort"],
+    prerequisites: ["time-travel-2"],
+    details: "Insert the Vril Generator into the knight tomb in the Family Crypt to spawn the ghost keeper. It will travel to four random stops. Stand in each white circle and get kills with the bow color shown on screen. At the Double Tap stop, you must place the stone tablet in the wall slot first.",
+    checkpoints: [
+      "Vril Generator placed.",
+      "Four keeper circles completed.",
+      "Tablet placed at Double Tap.",
+      "Keeper reaches the pyramid."
+    ],
+    subtasks: [
+      { title: "Spawn the Keeper", detail: "Place the Vril Generator in the crypt slab under the resting knight to start the escort." },
+      { title: "Match the Bow Color", detail: "Blue is Storm, teal is Wolf, orange is Fire, and purple is Void. Only the matching bow charges that circle in co-op." },
+      { title: "Remember the Double Tap Slot", detail: "At the Double Tap stop, interact with the wall slot beside the keeper to place the tablet before kills will count." },
+      { title: "Finish All Four Stops", detail: "Once every soul circle is filled, the keeper becomes corporeal and heads to the pyramid room." }
+    ],
+    hints: []
+  },
+  {
+    id: "mpd",
+    title: "Summon the MPD",
+    summary: "Let the keeper pull the MPD from the Moon, then insert the blue canister.",
+    category: "Boss prep",
+    risk: "High",
+    tags: ["Required", "Prep"],
+    prerequisites: ["keeper"],
+    details: "After the escort completes, the keeper teleports the MPD into the Undercroft. One corner is damaged and empty. Put the blue soul canister from your first time-travel trip into that empty corner to open the MPD and start the boss fight sequence.",
+    checkpoints: [
+      "Keeper cutscene triggered.",
+      "MPD arrives in the Undercroft.",
+      "Blue canister inserted."
+    ],
+    subtasks: [
+      { title: "Watch the Transition", detail: "Zombies briefly despawn while the keeper finishes the ritual at the pyramid." },
+      { title: "Find the Empty Corner", detail: "The MPD appears with one damaged corner missing its canister." },
+      { title: "Insert the Blue Canister", detail: "Place the soul canister from Step 7 to open the MPD and reveal the corrupted keeper." }
+    ],
+    hints: []
+  },
+  {
+    id: "boss",
+    title: "Defeat the Corrupted Keeper",
+    summary: "Use Ragnarok during the electric slam and burn each chest-damage phase cleanly.",
+    category: "Boss",
+    risk: "Very High",
+    tags: ["Required", "Boss fight"],
+    prerequisites: ["mpd"],
+    details: "During each damage cycle, wait for the keeper's electric ball / slam cue, plant Ragnarok under it, then hide behind a pillar and shoot the exposed chest weak point. Between damage phases, kill the waves of Panzersoldats and skeletons to advance the fight.",
+    checkpoints: [
+      "First chest damage phase completed.",
+      "Panzer wave cleared.",
+      "Final keeper phase completed."
+    ],
+    subtasks: [
+      { title: "Watch for the Electric Cue", detail: "When the keeper charges the arena-wide electric attack, run in and plant Ragnarok beneath it before taking cover." },
+      { title: "Use the Pillars", detail: "Blue pillars protect you from the sweeping electric attack while the keeper is trapped." },
+      { title: "Shoot the Chest", detail: "Unload into the glowing chest rift while it is exposed, then prepare for Panzer phases between damage rounds." },
+      { title: "Use Safer Loadouts", detail: "Danger Closest is especially strong here because it removes explosive self-damage and helps against Panzer pressure." }
+    ],
+    hints: []
+  },
+  {
+    id: "finish",
+    title: "Charge the Summoning Key and Finish",
+    summary: "Take the key to the Clock Tower terminal to trigger the ending cutscene.",
+    category: "Finale",
+    risk: "Medium",
+    tags: ["Required", "Complete"],
+    prerequisites: ["boss"],
+    details: "After the boss dies, grab the Summoning Key from the blue floor circle at the MPD and take it to the Clock Tower terminal used earlier for Simon Says. Interact to begin the final launch sequence and ending cutscene.",
+    checkpoints: [
+      "Summoning Key collected.",
+      "Clock Tower terminal charged.",
+      "Ending cutscene triggered.",
+      "Gateworm reward earned."
+    ],
+    subtasks: [
+      { title: "Pick Up the Key", detail: "Back at the MPD, interact with the blue imprint to spawn and collect the Summoning Key." },
+      { title: "Return to Clock Tower", detail: "Use the same terminal outside the Clock Tower that you used during the monitor puzzle step." },
+      { title: "Start the Finale", detail: "Place the key, watch the rockets hit the Moon, and let the cutscene finish for completion credit." }
     ],
     hints: []
   }
@@ -186,40 +320,46 @@ const STEP_DATA = [
 const BUILDABLE_GROUPS = [
   {
     id: "wota",
-    title: "Wrath of the Ancients",
-    description: "Base wonder bow — required for all upgrades",
+    title: "Core Gear",
+    description: "Main-quest weapons and Ragnarok assembly",
     parts: [
-      { id: "wota-bow", code: "W1", name: "Wrath of the Ancients", meta: "Keep wall-buy", hint: "", shape: "core" }
+      { id: "wota-bow", code: "G1", name: "Wrath of the Ancients", meta: "Earned from the three dragons", hint: "", shape: "core" },
+      { id: "dg4-panzer", code: "G2", name: "Ragnarok Part: Panzer", meta: "Dropped by first Panzer", hint: "", shape: "core" },
+      { id: "dg4-rocket", code: "G3", name: "Ragnarok Part: Rocket Test", meta: "Tunnel console after test fire", hint: "", shape: "core" },
+      { id: "dg4-flight", code: "G4", name: "Ragnarok Part: Wundersphere", meta: "Grab in midair after Death Ray use", hint: "", shape: "core" },
+      { id: "dg4-built", code: "G5", name: "Ragnarok DG-4", meta: "Built at the workbench", hint: "", shape: "core" }
     ]
   },
   {
     id: "bows",
     title: "Elemental Bows",
-    description: "All four elemental bow upgrades",
+    description: "Track the upgraded bows your run needs",
     parts: [
-      { id: "bow-fire-u", code: "E1", name: "Fire Bow", meta: "Dragon brazier trial", hint: "", shape: "core" },
-      { id: "bow-wolf-u", code: "E2", name: "Wolf Bow", meta: "Shadow puzzle + wolf souls", hint: "", shape: "core" },
-      { id: "bow-void-u", code: "E3", name: "Void Bow", meta: "Void orb redirect", hint: "", shape: "core" },
-      { id: "bow-storm-u", code: "E4", name: "Storm Bow", meta: "Lightning strike charge", hint: "", shape: "core" }
+      { id: "bow-storm-u", code: "B1", name: "Storm Bow", meta: "Weather vane, urns, lightning quest", hint: "", shape: "core" },
+      { id: "bow-wolf-u", code: "B2", name: "Wolf Bow", meta: "Paintings, flag, wolf dig sites", hint: "", shape: "core" },
+      { id: "bow-void-u", code: "B3", name: "Void Bow", meta: "Purple ritual and six skulls", hint: "", shape: "core" },
+      { id: "bow-fire-u", code: "B4", name: "Fire Bow", meta: "Launch-pad circles and fireplaces", hint: "", shape: "core" }
     ]
   }
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-wota", code: "A1", name: "Wrath of the Ancients", meta: "Wonder bow", hint: "", shape: "core" },
-  { id: "artifact-fire", code: "A2", name: "Fire Bow Upgrade", meta: "Dragon trial", hint: "", shape: "core" },
-  { id: "artifact-wolf", code: "A3", name: "Wolf Bow Upgrade", meta: "Shadow puzzle", hint: "", shape: "core" },
-  { id: "artifact-void", code: "A4", name: "Void Bow Upgrade", meta: "Orb redirect", hint: "", shape: "core" },
-  { id: "artifact-storm", code: "A5", name: "Storm Bow Upgrade", meta: "Lightning charge", hint: "", shape: "core" }
+  { id: "artifact-canister", code: "Q1", name: "Blue Soul Canister", meta: "Picked up in first time travel", hint: "", shape: "core" },
+  { id: "artifact-small-fuse", code: "Q2", name: "Small Death Ray Fuse", meta: "Past-lab pickup for Protect mode", hint: "", shape: "core" },
+  { id: "artifact-keycard", code: "Q3", name: "Keycard", meta: "Taken from Groph's safe", hint: "", shape: "core" },
+  { id: "artifact-big-fuses", code: "Q4", name: "Large Fuses", meta: "Safe reward for Simon Says step", hint: "", shape: "core" },
+  { id: "artifact-vril", code: "Q5", name: "Vril Generator", meta: "Picked up beside the crashed rocket", hint: "", shape: "core" },
+  { id: "artifact-tablet", code: "Q6", name: "Stone Tablet", meta: "Pulled from the past with the keycard", hint: "", shape: "core" },
+  { id: "artifact-key", code: "Q7", name: "Summoning Key", meta: "Collected after the boss", hint: "", shape: "core" }
 ];
 
 const TROPHIES = [
-  { id: "trophy-panzer", code: "T1", name: "Panzersoldat Gage Tag", meta: "Boss kill", hint: "", shape: "trophy" },
-  { id: "trophy-keeper", code: "T2", name: "Keeper Soul Shard", meta: "Keeper kill with charged bow", hint: "", shape: "trophy" },
-  { id: "trophy-fire", code: "T3", name: "Brazier Ember", meta: "Fire trial drop", hint: "", shape: "trophy" },
-  { id: "trophy-wolf", code: "T4", name: "Wolf Fang", meta: "Spectral wolf kill", hint: "", shape: "trophy" },
-  { id: "trophy-void", code: "T5", name: "Void Shard", meta: "Void orb collect", hint: "", shape: "trophy" },
-  { id: "trophy-storm", code: "T6", name: "Storm Rune", meta: "Lightning orb charge", hint: "", shape: "trophy" }
+  { id: "trophy-beacons", code: "C1", name: "Beacons Charged", meta: "All four teleporter rods lit", hint: "", shape: "trophy" },
+  { id: "trophy-wisps", code: "C2", name: "Wisp Round Clear", meta: "Four sparks shot in one round", hint: "", shape: "trophy" },
+  { id: "trophy-safe", code: "C3", name: "Safe Opened", meta: "Correct symbol code entered", hint: "", shape: "trophy" },
+  { id: "trophy-simon", code: "C4", name: "Both Terminals Cleared", meta: "Simon Says finished on both ends", hint: "", shape: "trophy" },
+  { id: "trophy-keeper", code: "C5", name: "Keeper Escort Complete", meta: "All four soul circles filled", hint: "", shape: "trophy" },
+  { id: "trophy-boss", code: "C6", name: "Keeper Boss Down", meta: "Corrupted keeper defeated", hint: "", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
