@@ -8,6 +8,13 @@ const RECOMMENDED_GOBBLEGUMS = [
   "Aftertaste"
 ];
 
+const RECOMMENDED_WEAPONS = [
+  { name: "Masamune", wonder: true },
+  { name: "Dingo" },
+  { name: "Haymaker 12" },
+  { name: "HVK-30" }
+];
+
 const STEP_DATA = [
   {
     id: "power",
@@ -345,6 +352,9 @@ function renderHero() {
   document.getElementById("progress-tip").textContent = progressTip;
   document.getElementById("gobblegum-loadout").innerHTML = RECOMMENDED_GOBBLEGUMS
     .map((gum) => `<span class="loadout-chip">${gum}</span>`)
+    .join("");
+  document.getElementById("weapon-loadout").innerHTML = RECOMMENDED_WEAPONS
+    .map((weapon) => `<span class="loadout-chip ${weapon.wonder ? "loadout-chip--wonder" : ""}">${weapon.name}</span>`)
     .join("");
 }
 

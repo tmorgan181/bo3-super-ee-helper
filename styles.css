@@ -219,7 +219,7 @@ body::after {
 
 .hero__stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 5px;
   min-width: 0;
   align-items: stretch;
@@ -290,6 +290,10 @@ label,
   gap: 4px;
 }
 
+.loadout-row--weapons {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .loadout-chip {
   display: inline-flex;
   align-items: center;
@@ -303,6 +307,12 @@ label,
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.loadout-chip--wonder {
+  border-color: rgba(211, 155, 61, 0.5);
+  background: linear-gradient(135deg, rgba(211, 155, 61, 0.28), rgba(255, 255, 255, 0.08));
+  color: var(--warning);
 }
 
 .hero .hero__reset {

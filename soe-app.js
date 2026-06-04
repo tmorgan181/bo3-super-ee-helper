@@ -8,31 +8,39 @@ const RECOMMENDED_GOBBLEGUMS = [
   "Immolation Liquidation"
 ];
 
+const RECOMMENDED_WEAPONS = [
+  { name: "Apothicon Servant", wonder: true },
+  { name: "Haymaker 12" },
+  { name: "KRM-262" },
+  { name: "Dingo" }
+];
+
 const STEP_DATA = [
   {
     id: "spawn-setup",
-    title: "Summoning Key And Ritual Setup",
-    summary: "Grab the Summoning Key, open the city, and collect the four ritual items.",
+    title: "Summoning Key, Fumigator, And Shield Setup",
+    summary: "Grab the Summoning Key, pick up a fumigator, and check all three Rocket Shield district spawns as you open the map.",
     category: "Setup",
     risk: "Medium",
     tags: ["Required", "Early game"],
-    details: "Start in spawn by entering Beast Mode, smashing the truck crate for the Summoning Key, and opening the ritual routes into Easy Street, Canal, Footlight, and Waterfront.",
+    details: "Use the Gorod-style approach here: tie the item hunt to your opening route so you collect the Summoning Key, lock down a fumigator, and clear each district's shield checks while the map is still compact.",
     checkpoints: [
       "Summoning Key collected.",
-      "Easy Street route opened.",
-      "District ritual items located.",
-      "All four ritual rooms reachable."
+      "Core route to the first districts opened.",
+      "Fumigator picked up.",
+      "Canal shield part checked.",
+      "Footlight shield part checked.",
+      "Waterfront shield part checked."
     ],
     subtasks: [
-      { title: "Grab The Key", detail: "Use Beast Mode in spawn, smash the crate on the truck, then collect the Summoning Key in human form." },
-      { title: "Open Ritual Paths", detail: "Use Beast Mode to unlock doors, stairs, and grapples that reach each ritual room and district." },
-      { title: "Collect Ritual Items", detail: "Pick up the Lawyer's Pen, Police Badge, Hair Piece, and Championship Belt after knocking their crates down in Beast Mode." },
-      { title: "Know The Rule", detail: "Shadows of Evil can be advanced solo up through trapping the Shadowman, but the true final completion still requires four players." }
+      { title: "Summoning Key", detail: "Use Beast Mode in spawn, smash the crate on the truck, then collect the Summoning Key in human form." },
+      { title: "Fumigator Spawns", detail: "Early fumigator spots are all around spawn and Junction: on the box in front of spawn by the Beast fountain, on the chair next to the Beast fountain, on the stand behind the GobbleGum machine near the fruit, on the far-left side near the broken Stamin-Up bottle, or on a crate near the Footlight entrance." },
+      { title: "Canal Shield Part", detail: "After opening the Canal perk side, check all three Canal shield spots: leaning against the wall on your right as you enter the Four Lions room, on the outside bridge rail toward the perk room, or directly across from the perk machine by the 1250 door." },
+      { title: "Footlight Shield Part", detail: "After opening the Footlight perk side, check next to the perk machine, leaning against the fence left of the perk, or on the chair in the stairs room right of the Mystery Box path." },
+      { title: "Waterfront Shield Part", detail: "After opening the Waterfront perk side, check at the top of the powered stairs, inside the perk room under the window across from the Beast fountain, or in the room with the ritual-item crate on the floor left of the outside door." },
+      { title: "Build Shield", detail: "Once all three parts are found, build the Rocket Shield at the workbench in Waterfront behind the gym, in Canals in front of the Ruby Rabbit, or in Footlight below the train station." }
     ],
-    hints: [
-      "Best early-round shortcut: one spawn Beast can smash the Summoning Key crate, zap the crane for Nero's item, open the upstairs stairs, and break the spawn door if you route it cleanly.",
-      "Do not over-open the map early. Keeping loops tight makes the first rituals, Margwa spawns, and later flag routes much easier to control."
-    ]
+    hints: []
   },
   {
     id: "rituals-pap",
@@ -44,6 +52,7 @@ const STEP_DATA = [
     prerequisites: ["spawn-setup"],
     details: "Each ritual uses the Summoning Key plus its district item. Survive the ritual, collect the Gateworm, then place all four Gateworms in the Rift to unlock Pack-a-Punch.",
     checkpoints: [
+      "District ritual items collected.",
       "Easy Street ritual complete.",
       "Canal ritual complete.",
       "Footlight ritual complete.",
@@ -51,15 +60,13 @@ const STEP_DATA = [
       "Pack-a-Punch unlocked."
     ],
     subtasks: [
+      { title: "Collect Ritual Items", detail: "Pick up the Lawyer's Pen, Police Badge, Hair Piece, and Championship Belt after knocking their crates down in Beast Mode." },
       { title: "Run Every Ritual", detail: "Easy Street uses the Lawyer's Pen, Canal uses the Police Badge, Footlight uses the Hair Piece, and Waterfront uses the Championship Belt." },
       { title: "Collect Gateworms", detail: "Take the Gateworm from each altar after the ritual finishes. Expect Margwas after later ritual completions." },
       { title: "Open The Rift", detail: "Use a Beast doorway into the underground Rift, then wait for the back wall to open in the subway area." },
       { title: "Unlock PaP", detail: "Place the four Gateworms on the pedestals, wall-run across, then place the Summoning Key on the altar to finish Pack-a-Punch access." }
     ],
-    hints: [
-      "If you can, finish the fourth ritual at the end of a round so the Margwa spawns into a cleaner map state.",
-      "Pack-a-Punch is worth opening as soon as possible because the hardest sections are flag defense and the Shadowman trap, not the early rituals."
-    ]
+    hints: []
   },
   {
     id: "apothicon-sword",
@@ -85,7 +92,7 @@ const STEP_DATA = [
     hints: [
       "Fast symbol method: use a 1-9 symbol cheat sheet and translate each train symbol into a number so you only remember three numbers instead of three shapes.",
       "You do not need to zap the symbols in district order. Hit the correct three symbols on the subway wall in one Beast activation.",
-      "If your team already knows the fixed wall layout, call out symbols by district and number before anyone drops into Beast Mode."
+      "Advanced community shortcut: some speedrun routes peek symbol windows during Beast movement instead of doing a full train read. I could verify community references to that shortcut, but not a clean primary-source route map, so keep the train as the default method unless your team already knows the peek lines."
     ]
   },
   {
@@ -109,10 +116,7 @@ const STEP_DATA = [
       { title: "Run The Red Circles", detail: "Place the Arch-Ovum at the four red ritual circles around the map, survive the encounter, and kill the spawned Margwa. Only one circle can be finished each round." },
       { title: "Claim The Sword Upgrade", detail: "Return the Arch-Ovum to the Keeper in your ritual room to receive the upgraded sword." }
     ],
-    hints: [
-      "This is much safer if every player gets their upgraded sword before rounds climb too high.",
-      "Leave one zombie when possible. The Arch-Ovum step is slower than it looks because only one red-circle ritual can be finished per round."
-    ]
+    hints: []
   },
   {
     id: "flag-step",
@@ -225,6 +229,16 @@ const STEP_DATA = [
 
 const BUILDABLE_GROUPS = [
   {
+    id: "shield",
+    title: "Rocket Shield",
+    description: "Three random district parts",
+    parts: [
+      { id: "shield-canal", code: "S1", name: "Canal Part", meta: "One of the three random Canal spawns", hint: "", shape: "core" },
+      { id: "shield-footlight", code: "S2", name: "Footlight Part", meta: "One of the three random Footlight spawns", hint: "", shape: "core" },
+      { id: "shield-waterfront", code: "S3", name: "Waterfront Part", meta: "One of the three random Waterfront spawns", hint: "", shape: "core" }
+    ]
+  },
+  {
     id: "gateworm",
     title: "Gateworms",
     description: "Four ritual reward items used to unlock Pack-a-Punch",
@@ -234,24 +248,21 @@ const BUILDABLE_GROUPS = [
       { id: "gw-footlight", code: "G3", name: "Footlight Gateworm", meta: "Hair Piece ritual reward", hint: "", shape: "egg" },
       { id: "gw-waterfront", code: "G4", name: "Waterfront Gateworm", meta: "Championship Belt ritual reward", hint: "", shape: "egg" }
     ]
-  },
-  {
-    id: "support",
-    title: "Support Gear",
-    description: "Optional but high-value tools for the hard sections",
-    parts: [
-      { id: "gear-shield", code: "S1", name: "Rocket Shield", meta: "Built from Canal, Footlight, and Waterfront parts", hint: "", shape: "core" },
-      { id: "gear-servant", code: "S2", name: "Apothicon Servant", meta: "Margwa Heart, Xenomatter, and Tentacle build", hint: "", shape: "core" },
-      { id: "gear-protector", code: "S3", name: "Civil Protector", meta: "Fuse box support for flags and revives", hint: "", shape: "core" }
-    ]
   }
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-key", code: "A1", name: "Summoning Key", meta: "Spawn pickup and ritual anchor", hint: "", shape: "core" },
-  { id: "artifact-egg", code: "A2", name: "Apothicon Egg", meta: "Charged through four statue soul boxes", hint: "", shape: "egg" },
-  { id: "artifact-sword", code: "A3", name: "Upgraded Swords", meta: "All players ready for book, flags, and boss", hint: "", shape: "core" },
-  { id: "artifact-flag", code: "A4", name: "Flag", meta: "Book step item for all four district routes", hint: "", shape: "cylinder" }
+  { id: "artifact-fumigator", code: "A1", name: "Fumigator", meta: "Needed for pods and servant setup", hint: "", shape: "core" },
+  { id: "artifact-key", code: "A2", name: "Summoning Key", meta: "Spawn pickup and ritual anchor", hint: "", shape: "core" },
+  { id: "artifact-egg", code: "A3", name: "Apothicon Egg", meta: "Charged through four statue soul boxes", hint: "", shape: "egg" },
+  { id: "artifact-sword", code: "A4", name: "Upgraded Swords", meta: "All players ready for book, flags, and boss", hint: "", shape: "core" },
+  { id: "artifact-flag", code: "A5", name: "Flag", meta: "Book step item for all four district routes", hint: "", shape: "cylinder" }
+];
+
+const TROPHIES = [
+  { id: "cop-canal", code: "C1", name: "Canal Fuse", meta: "One of the Civil Protector fuse spawns", hint: "", shape: "trophy" },
+  { id: "cop-footlight", code: "C2", name: "Footlight Fuse", meta: "One of the Civil Protector fuse spawns", hint: "", shape: "trophy" },
+  { id: "cop-waterfront", code: "C3", name: "Waterfront Fuse", meta: "One of the Civil Protector fuse spawns", hint: "", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -261,10 +272,12 @@ const DEFAULT_STATE = {
   inventoryExpanded: {
     buildables: false,
     "dragon-control": false,
+    trophies: false,
     artifacts: false
   },
   buildables: Object.fromEntries(BUILDABLE_GROUPS.flatMap((group) => group.parts.map((part) => [part.id, false]))),
-  artifacts: Object.fromEntries(ARTIFACTS.map((artifact) => [artifact.id, false]))
+  artifacts: Object.fromEntries(ARTIFACTS.map((artifact) => [artifact.id, false])),
+  trophies: Object.fromEntries(TROPHIES.map((trophy) => [trophy.id, false]))
 };
 
 let state = loadState();
@@ -300,6 +313,9 @@ function mergeState(saved) {
   for (const artifact of ARTIFACTS) {
     next.artifacts[artifact.id] = Boolean(saved.artifacts && saved.artifacts[artifact.id]);
   }
+  for (const trophy of TROPHIES) {
+    next.trophies[trophy.id] = Boolean(saved.trophies && saved.trophies[trophy.id]);
+  }
   return next;
 }
 
@@ -326,6 +342,7 @@ function render() {
   renderActiveUtility();
   renderBuildables();
   renderArtifacts();
+  renderTrophies();
   syncNotes();
 }
 
@@ -341,6 +358,9 @@ function renderHero() {
   document.getElementById("progress-tip").textContent = progressTip;
   document.getElementById("gobblegum-loadout").innerHTML = RECOMMENDED_GOBBLEGUMS
     .map((gum) => `<span class="loadout-chip">${gum}</span>`)
+    .join("");
+  document.getElementById("weapon-loadout").innerHTML = RECOMMENDED_WEAPONS
+    .map((weapon) => `<span class="loadout-chip ${weapon.wonder ? "loadout-chip--wonder" : ""}">${weapon.name}</span>`)
     .join("");
 }
 
@@ -406,14 +426,12 @@ function renderActiveStep() {
           <div>
             <p class="panel__eyebrow">Current Phase</p>
             <h2 class="step-detail__title">${step.title}</h2>
-            ${step.summary ? `<p class="step-detail__summary">${step.summary}</p>` : ""}
           </div>
           <div class="step-tags"></div>
         </div>
       </section>
 
       <section class="step-detail__section">
-        ${step.details ? `<p class="tool-copy">${step.details}</p>` : ""}
         <ol class="subtask-list detail-list">
           ${step.subtasks.map((subtask) => {
             const item = normalizeChecklistItem(subtask);
@@ -461,10 +479,10 @@ function renderBuildables() {
   buildContainer.innerHTML = "";
   glyphContainer.innerHTML = "";
 
+  const shieldGroup = BUILDABLE_GROUPS.find((g) => g.id === "shield");
   const gwGroup = BUILDABLE_GROUPS.find((g) => g.id === "gateworm");
-  const glGroup = BUILDABLE_GROUPS.find((g) => g.id === "support");
 
-  [{ group: gwGroup, el: buildContainer }, { group: glGroup, el: glyphContainer }].forEach(({ group, el }) => {
+  [{ group: shieldGroup, el: buildContainer }, { group: gwGroup, el: glyphContainer }].forEach(({ group, el }) => {
     if (!group) return;
     const wrap = document.createElement("div");
     wrap.className = "build-group";
@@ -473,7 +491,7 @@ function renderBuildables() {
       <div class="build-group__header">
         <div>
           <h3 class="build-group__title">${group.title}</h3>
-          <p class="build-group__progress">${done} / ${group.parts.length} ${group.id === "support" ? "built" : "collected"}</p>
+          <p class="build-group__progress">${done} / ${group.parts.length} ${group.id === "gateworm" ? "collected" : "built"}</p>
         </div>
       </div>
       <div class="build-group__parts"></div>
@@ -485,13 +503,14 @@ function renderBuildables() {
     el.appendChild(wrap);
   });
 
+  const shieldDone = shieldGroup.parts.filter((p) => state.buildables[p.id]).length;
   const gatewormDone = gwGroup.parts.filter((p) => state.buildables[p.id]).length;
-  document.getElementById("buildable-count").textContent = `${gatewormDone} / ${gwGroup.parts.length} secured`;
-  document.getElementById("dragon-control-count").textContent = `${glGroup.parts.filter((p) => state.buildables[p.id]).length} / ${glGroup.parts.length} built`;
+  document.getElementById("buildable-count").textContent = `${shieldDone} / ${shieldGroup.parts.length} built`;
+  document.getElementById("dragon-control-count").textContent = `${gatewormDone} / ${gwGroup.parts.length} secured`;
   document.querySelector('[data-inventory-toggle="buildables"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', shieldGroup.parts.every(p => state.buildables[p.id]));
+  if (gwGroup) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
     .classList.toggle('is-complete', gwGroup.parts.every(p => state.buildables[p.id]));
-  if (glGroup) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
-    .classList.toggle('is-complete', glGroup.parts.every(p => state.buildables[p.id]));
   bindBoardToggles("buildable", (id, checked, draft) => { draft.buildables[id] = checked; });
 }
 
@@ -506,6 +525,19 @@ function renderArtifacts() {
   document.querySelector('[data-inventory-toggle="artifacts"]').closest('.inventory-panel')
     .classList.toggle('is-complete', ARTIFACTS.every(a => state.artifacts[a.id]));
   bindBoardToggles("artifact", (id, checked, draft) => { draft.artifacts[id] = checked; });
+}
+
+function renderTrophies() {
+  const container = document.getElementById("trophy-grid");
+  container.innerHTML = "";
+  TROPHIES.forEach((item) => {
+    container.appendChild(makeBoardCard(item, "trophy", state.trophies[item.id]));
+  });
+  const count = TROPHIES.filter((t) => state.trophies[t.id]).length;
+  document.getElementById("trophy-count").textContent = `${count} / ${TROPHIES.length} built`;
+  document.querySelector('[data-inventory-toggle="trophies"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', TROPHIES.every(t => state.trophies[t.id]));
+  bindBoardToggles("trophy", (id, checked, draft) => { draft.trophies[id] = checked; });
 }
 
 function makeBoardCard(item, kind, checked) {
@@ -539,7 +571,8 @@ function bindBoardToggles(kind, updater) {
       updateState((draft) => {
         let checked = false;
         if (kind === "buildable") checked = !draft.buildables[id];
-        else checked = !draft.artifacts[id];
+        else if (kind === "artifact") checked = !draft.artifacts[id];
+        else checked = !draft.trophies[id];
         updater(id, checked, draft);
       });
     });

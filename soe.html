@@ -165,6 +165,10 @@
           <p class="stat-card__label">Best GobbleGums</p>
           <div class="loadout-row" id="gobblegum-loadout"></div>
         </section>
+        <section class="stat-card stat-card--loadout">
+          <p class="stat-card__label">Recommended Weapons</p>
+          <div class="loadout-row loadout-row--weapons" id="weapon-loadout"></div>
+        </section>
       </div>
     </header>
 
@@ -212,29 +216,43 @@
         <div class="hud-grid hud-grid--stack">
           <section class="hud-panel inventory-panel is-collapsed">
             <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="buildables" aria-expanded="false">
-              <span>Gateworms</span>
+              <span>Rocket Shield</span>
               <span class="hud-panel__plate-meta">
-                <span class="tool-meta" id="buildable-count">0 / 4 secured</span>
+                <span class="tool-meta" id="buildable-count">0 / 3 built</span>
                 <span class="hud-panel__chevron"></span>
               </span>
             </button>
             <div class="inventory-panel__body" data-inventory-panel="buildables">
-              <p class="tool-copy">Four gateworms from the four ritual completions.</p>
+              <p class="tool-copy">Three district parts for the Rocket Shield.</p>
               <div id="buildables-grid" class="board-grid"></div>
             </div>
           </section>
 
           <section class="hud-panel inventory-panel is-collapsed">
             <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="dragon-control" aria-expanded="false">
-              <span>Support Gear</span>
+              <span>Gateworms</span>
               <span class="hud-panel__plate-meta">
-                <span class="tool-meta" id="dragon-control-count">0 / 3 built</span>
+                <span class="tool-meta" id="dragon-control-count">0 / 4 secured</span>
                 <span class="hud-panel__chevron"></span>
               </span>
             </button>
             <div class="inventory-panel__body" data-inventory-panel="dragon-control">
-              <p class="tool-copy">Rocket Shield, Apothicon Servant, and Civil Protector.</p>
+              <p class="tool-copy">Four gateworms from the four ritual completions.</p>
               <div id="dragon-control-grid" class="board-grid"></div>
+            </div>
+          </section>
+
+          <section class="hud-panel inventory-panel is-collapsed">
+            <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="trophies" aria-expanded="false">
+              <span>Civil Protector</span>
+              <span class="hud-panel__plate-meta">
+                <span class="tool-meta" id="trophy-count">0 / 3 built</span>
+                <span class="hud-panel__chevron"></span>
+              </span>
+            </button>
+            <div class="inventory-panel__body" data-inventory-panel="trophies">
+              <p class="tool-copy">Three district fuses for the Civil Protector.</p>
+              <div id="trophy-grid" class="hud-items-grid"></div>
             </div>
           </section>
 
@@ -242,12 +260,12 @@
             <button type="button" class="hud-panel__plate hud-panel__toggle" data-inventory-toggle="artifacts" aria-expanded="false">
               <span>Quest Items</span>
               <span class="hud-panel__plate-meta">
-                <span class="tool-meta" id="artifact-count">0 / 4 secured</span>
+                <span class="tool-meta" id="artifact-count">0 / 5 secured</span>
                 <span class="hud-panel__chevron"></span>
               </span>
             </button>
             <div class="inventory-panel__body" data-inventory-panel="artifacts">
-              <p class="tool-copy">Summoning Key, egg, upgraded swords, and the flag.</p>
+              <p class="tool-copy">Summoning Key, fumigator, egg, upgraded swords, and the flag.</p>
               <div id="artifacts-grid" class="hud-items-grid"></div>
             </div>
           </section>

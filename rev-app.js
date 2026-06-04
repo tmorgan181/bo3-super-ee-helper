@@ -8,6 +8,13 @@ const RECOMMENDED_GOBBLEGUMS = [
   "Killing Time"
 ];
 
+const RECOMMENDED_WEAPONS = [
+  { name: "Apothicon Servant", wonder: true },
+  { name: "Thunder Gun" },
+  { name: "Dingo" },
+  { name: "Drakon" }
+];
+
 const STEP_DATA = [
   {
     id: "orientation",
@@ -328,6 +335,9 @@ function renderHero() {
   document.getElementById("progress-tip").textContent = progressTip;
   document.getElementById("gobblegum-loadout").innerHTML = RECOMMENDED_GOBBLEGUMS
     .map((gum) => `<span class="loadout-chip">${gum}</span>`)
+    .join("");
+  document.getElementById("weapon-loadout").innerHTML = RECOMMENDED_WEAPONS
+    .map((weapon) => `<span class="loadout-chip ${weapon.wonder ? "loadout-chip--wonder" : ""}">${weapon.name}</span>`)
     .join("");
 }
 
