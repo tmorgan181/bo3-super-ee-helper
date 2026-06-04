@@ -2,10 +2,10 @@ const STORAGE_KEY = "bo3-super-ee-helper:soe:first-pass";
 
 const RECOMMENDED_GOBBLEGUMS = [
   "Anywhere But Here",
-  "Perkaholic",
   "Fear in Headlights",
-  "Aftertaste",
-  "Alchemical Antithesis"
+  "Alchemical Antithesis",
+  "In Plain Sight",
+  "Immolation Liquidation"
 ];
 
 const STEP_DATA = [
@@ -29,7 +29,10 @@ const STEP_DATA = [
       { title: "Collect Ritual Items", detail: "Pick up the Lawyer's Pen, Police Badge, Hair Piece, and Championship Belt after knocking their crates down in Beast Mode." },
       { title: "Know The Rule", detail: "Shadows of Evil can be advanced solo up through trapping the Shadowman, but the true final completion still requires four players." }
     ],
-    hints: []
+    hints: [
+      "Best early-round shortcut: one spawn Beast can smash the Summoning Key crate, zap the crane for Nero's item, open the upstairs stairs, and break the spawn door if you route it cleanly.",
+      "Do not over-open the map early. Keeping loops tight makes the first rituals, Margwa spawns, and later flag routes much easier to control."
+    ]
   },
   {
     id: "rituals-pap",
@@ -53,7 +56,10 @@ const STEP_DATA = [
       { title: "Open The Rift", detail: "Use a Beast doorway into the underground Rift, then wait for the back wall to open in the subway area." },
       { title: "Unlock PaP", detail: "Place the four Gateworms on the pedestals, wall-run across, then place the Summoning Key on the altar to finish Pack-a-Punch access." }
     ],
-    hints: []
+    hints: [
+      "If you can, finish the fourth ritual at the end of a round so the Margwa spawns into a cleaner map state.",
+      "Pack-a-Punch is worth opening as soon as possible because the hardest sections are flag defense and the Shadowman trap, not the early rituals."
+    ]
   },
   {
     id: "apothicon-sword",
@@ -76,7 +82,11 @@ const STEP_DATA = [
       { title: "Charge The Egg", detail: "Place the egg on the four hidden statues in Rift, Canal, Footlight, and Waterfront, killing nearby zombies until each charge is complete." },
       { title: "Claim The Sword", detail: "Return the filled egg to the sword room and take the Apothicon Sword." }
     ],
-    hints: []
+    hints: [
+      "Fast symbol method: use a 1-9 symbol cheat sheet and translate each train symbol into a number so you only remember three numbers instead of three shapes.",
+      "You do not need to zap the symbols in district order. Hit the correct three symbols on the subway wall in one Beast activation.",
+      "If your team already knows the fixed wall layout, call out symbols by district and number before anyone drops into Beast Mode."
+    ]
   },
   {
     id: "upgraded-sword",
@@ -99,7 +109,10 @@ const STEP_DATA = [
       { title: "Run The Red Circles", detail: "Place the Arch-Ovum at the four red ritual circles around the map, survive the encounter, and kill the spawned Margwa. Only one circle can be finished each round." },
       { title: "Claim The Sword Upgrade", detail: "Return the Arch-Ovum to the Keeper in your ritual room to receive the upgraded sword." }
     ],
-    hints: []
+    hints: [
+      "This is much safer if every player gets their upgraded sword before rounds climb too high.",
+      "Leave one zombie when possible. The Arch-Ovum step is slower than it looks because only one red-circle ritual can be finished per round."
+    ]
   },
   {
     id: "flag-step",
@@ -122,7 +135,12 @@ const STEP_DATA = [
       { title: "Defend Every Stop", detail: "Protect the flag from Meatballs while Parasites harass the team. When the flag glows red, grab the Max Ammo and move deeper into the route." },
       { title: "Finish All Four Routes", detail: "Each district path ends at its ritual altar. Use the Civil Protector and Apothicon Servant if you have them." }
     ],
-    hints: []
+    hints: [
+      "The Rocket Shield is real on Shadows and is highly recommended here. Build it before the flag step if possible.",
+      "Best support setup: one player with Apothicon Servant protects the flag, everyone else watches Meatballs and instantly shoots the Shadowman when he appears.",
+      "Pre-position the team in the district before the carrier plants the flag. That cuts the most dangerous transition time out of the step.",
+      "Fear in Headlights makes the hardest flag plants dramatically safer if you have it."
+    ]
   },
   {
     id: "shadowman-fight",
@@ -145,7 +163,11 @@ const STEP_DATA = [
       { title: "Force The Capture", detail: "With enough fast damage, the Shadowman moves closer to the altar." },
       { title: "Trap Him", detail: "When he hovers above the altar, interact immediately to pull him into the Summoning Key." }
     ],
-    hints: []
+    hints: [
+      "Go in with fresh ammo and high-DPS weapons. Fast automatic damage matters more here than general-round comfort.",
+      "If the Shadowman starts charging his purple Summoning Key attack, get the Keepers reactivated immediately so the setup does not fall apart.",
+      "As soon as the shield breaks, everyone should commit to dragging him to the altar instead of splitting damage across the room."
+    ]
   },
   {
     id: "flaming-basins",
@@ -168,7 +190,10 @@ const STEP_DATA = [
       { title: "Recharge Beast", detail: "Basins now burn red and cannot be used until at least one Margwa dies." },
       { title: "Take Final Positions", detail: "Three players should be ready at Canal, Footlight, and Waterfront train stations, while the fourth prepares to work the center of the map." }
     ],
-    hints: []
+    hints: [
+      "Always know where your next white orb is before the red screen starts. The free cleanse at the ritual table is the easiest emergency reset.",
+      "Kill a Margwa near the part of the map you want to use next so the newly lit Beast basins help your rotation instead of forcing one."
+    ]
   },
   {
     id: "gateworm-finale",
@@ -191,7 +216,10 @@ const STEP_DATA = [
       { title: "Zap The Keepers", detail: "Before the train passes through the center, the middle player must zap all three Keepers around the Giant Gateworm." },
       { title: "Finish The EE", detail: "If the timing is correct, the passing train kills the Giant Gateworm and the final cutscene begins." }
     ],
-    hints: []
+    hints: [
+      "Use fixed roles: three rail players and one center Keeper player. Do not improvise this step mid-attempt.",
+      "The train caller should be the only player briefly leaving Beast to summon the train; everyone else stays on their assignment and spams their shocks."
+    ]
   }
 ];
 
@@ -208,33 +236,22 @@ const BUILDABLE_GROUPS = [
     ]
   },
   {
-    id: "glyphs",
-    title: "Sword Quest",
-    description: "Track the train-symbol and sword progression for your run",
+    id: "support",
+    title: "Support Gear",
+    description: "Optional but high-value tools for the hard sections",
     parts: [
-      { id: "sword-symbols", code: "S1", name: "Train Symbols", meta: "All three red cuneiform symbols noted", hint: "", shape: "core" },
-      { id: "sword-egg", code: "S2", name: "Apothicon Egg", meta: "Egg claimed from the sword wall", hint: "", shape: "core" },
-      { id: "sword-base", code: "S3", name: "Base Sword", meta: "Egg fully charged and sword collected", hint: "", shape: "core" },
-      { id: "sword-upgraded", code: "S4", name: "Upgraded Sword", meta: "Arch-Ovum trials complete", hint: "", shape: "core" }
+      { id: "gear-shield", code: "S1", name: "Rocket Shield", meta: "Built from Canal, Footlight, and Waterfront parts", hint: "", shape: "core" },
+      { id: "gear-servant", code: "S2", name: "Apothicon Servant", meta: "Margwa Heart, Xenomatter, and Tentacle build", hint: "", shape: "core" },
+      { id: "gear-protector", code: "S3", name: "Civil Protector", meta: "Fuse box support for flags and revives", hint: "", shape: "core" }
     ]
   }
 ];
 
 const ARTIFACTS = [
   { id: "artifact-key", code: "A1", name: "Summoning Key", meta: "Spawn pickup and ritual anchor", hint: "", shape: "core" },
-  { id: "artifact-pap", code: "A2", name: "Pack-a-Punch Access", meta: "Unlocked after placing all four Gateworms", hint: "", shape: "core" },
-  { id: "artifact-egg", code: "A3", name: "Apothicon Egg", meta: "Used to earn the sword", hint: "", shape: "egg" },
-  { id: "artifact-flag", code: "A4", name: "Flag", meta: "Escorted through every ritual route", hint: "", shape: "cylinder" },
-  { id: "artifact-protector", code: "A5", name: "Civil Protector", meta: "Built from fuses for support during defenses", hint: "", shape: "cylinder" }
-];
-
-const TROPHIES = [
-  { id: "trophy-rituals", code: "T1", name: "Four Rituals Cleared", meta: "Easy Street, Canal, Footlight, Waterfront", hint: "", shape: "trophy" },
-  { id: "trophy-swords", code: "T2", name: "Team Swords Ready", meta: "Every player has an upgraded sword", hint: "", shape: "trophy" },
-  { id: "trophy-flag", code: "T3", name: "Flag Route Complete", meta: "All escort defenses survived", hint: "", shape: "trophy" },
-  { id: "trophy-shadow", code: "T4", name: "Shadowman Trapped", meta: "Captured over the Pack-a-Punch altar", hint: "", shape: "trophy" },
-  { id: "trophy-basins", code: "T5", name: "Basins Recharged", meta: "Post-boss Beast setup ready", hint: "", shape: "trophy" },
-  { id: "trophy-gateworm", code: "T6", name: "Giant Gateworm Down", meta: "Final cutscene triggered", hint: "", shape: "trophy" }
+  { id: "artifact-egg", code: "A2", name: "Apothicon Egg", meta: "Charged through four statue soul boxes", hint: "", shape: "egg" },
+  { id: "artifact-sword", code: "A3", name: "Upgraded Swords", meta: "All players ready for book, flags, and boss", hint: "", shape: "core" },
+  { id: "artifact-flag", code: "A4", name: "Flag", meta: "Book step item for all four district routes", hint: "", shape: "cylinder" }
 ];
 
 const DEFAULT_STATE = {
@@ -244,12 +261,10 @@ const DEFAULT_STATE = {
   inventoryExpanded: {
     buildables: false,
     "dragon-control": false,
-    trophies: false,
     artifacts: false
   },
   buildables: Object.fromEntries(BUILDABLE_GROUPS.flatMap((group) => group.parts.map((part) => [part.id, false]))),
-  artifacts: Object.fromEntries(ARTIFACTS.map((artifact) => [artifact.id, false])),
-  trophies: Object.fromEntries(TROPHIES.map((trophy) => [trophy.id, false]))
+  artifacts: Object.fromEntries(ARTIFACTS.map((artifact) => [artifact.id, false]))
 };
 
 let state = loadState();
@@ -285,9 +300,6 @@ function mergeState(saved) {
   for (const artifact of ARTIFACTS) {
     next.artifacts[artifact.id] = Boolean(saved.artifacts && saved.artifacts[artifact.id]);
   }
-  for (const trophy of TROPHIES) {
-    next.trophies[trophy.id] = Boolean(saved.trophies && saved.trophies[trophy.id]);
-  }
   return next;
 }
 
@@ -314,7 +326,6 @@ function render() {
   renderActiveUtility();
   renderBuildables();
   renderArtifacts();
-  renderTrophies();
   syncNotes();
 }
 
@@ -395,12 +406,14 @@ function renderActiveStep() {
           <div>
             <p class="panel__eyebrow">Current Phase</p>
             <h2 class="step-detail__title">${step.title}</h2>
+            ${step.summary ? `<p class="step-detail__summary">${step.summary}</p>` : ""}
           </div>
           <div class="step-tags"></div>
         </div>
       </section>
 
       <section class="step-detail__section">
+        ${step.details ? `<p class="tool-copy">${step.details}</p>` : ""}
         <ol class="subtask-list detail-list">
           ${step.subtasks.map((subtask) => {
             const item = normalizeChecklistItem(subtask);
@@ -415,6 +428,15 @@ function renderActiveStep() {
           }).join("")}
         </ol>
       </section>
+
+      ${step.hints?.length ? `
+      <section class="step-detail__section">
+        <p class="panel__eyebrow">Quick Tips</p>
+        <ul class="detail-list">
+          ${step.hints.map((hint) => `<li><span class="checklist-copy__detail">${hint}</span></li>`).join("")}
+        </ul>
+      </section>
+      ` : ""}
 
       <footer class="step-detail__footer">
         <div class="step-detail__actions">
@@ -440,7 +462,7 @@ function renderBuildables() {
   glyphContainer.innerHTML = "";
 
   const gwGroup = BUILDABLE_GROUPS.find((g) => g.id === "gateworm");
-  const glGroup = BUILDABLE_GROUPS.find((g) => g.id === "glyphs");
+  const glGroup = BUILDABLE_GROUPS.find((g) => g.id === "support");
 
   [{ group: gwGroup, el: buildContainer }, { group: glGroup, el: glyphContainer }].forEach(({ group, el }) => {
     if (!group) return;
@@ -451,7 +473,7 @@ function renderBuildables() {
       <div class="build-group__header">
         <div>
           <h3 class="build-group__title">${group.title}</h3>
-          <p class="build-group__progress">${done} / ${group.parts.length} collected</p>
+          <p class="build-group__progress">${done} / ${group.parts.length} ${group.id === "support" ? "built" : "collected"}</p>
         </div>
       </div>
       <div class="build-group__parts"></div>
@@ -463,14 +485,13 @@ function renderBuildables() {
     el.appendChild(wrap);
   });
 
-  const buildableCount = BUILDABLE_GROUPS.flatMap((g) => g.parts).filter((p) => state.buildables[p.id]).length;
-  const buildableTotal = BUILDABLE_GROUPS.flatMap((g) => g.parts).length;
-  document.getElementById("buildable-count").textContent = `${buildableCount} / ${buildableTotal} marked`;
-  document.getElementById("dragon-control-count").textContent = "";
+  const gatewormDone = gwGroup.parts.filter((p) => state.buildables[p.id]).length;
+  document.getElementById("buildable-count").textContent = `${gatewormDone} / ${gwGroup.parts.length} secured`;
+  document.getElementById("dragon-control-count").textContent = `${glGroup.parts.filter((p) => state.buildables[p.id]).length} / ${glGroup.parts.length} built`;
   document.querySelector('[data-inventory-toggle="buildables"]').closest('.inventory-panel')
-    .classList.toggle('is-complete', BUILDABLE_GROUPS[0].parts.every(p => state.buildables[p.id]));
-  if (BUILDABLE_GROUPS[1]) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
-    .classList.toggle('is-complete', BUILDABLE_GROUPS[1].parts.every(p => state.buildables[p.id]));
+    .classList.toggle('is-complete', gwGroup.parts.every(p => state.buildables[p.id]));
+  if (glGroup) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', glGroup.parts.every(p => state.buildables[p.id]));
   bindBoardToggles("buildable", (id, checked, draft) => { draft.buildables[id] = checked; });
 }
 
@@ -485,19 +506,6 @@ function renderArtifacts() {
   document.querySelector('[data-inventory-toggle="artifacts"]').closest('.inventory-panel')
     .classList.toggle('is-complete', ARTIFACTS.every(a => state.artifacts[a.id]));
   bindBoardToggles("artifact", (id, checked, draft) => { draft.artifacts[id] = checked; });
-}
-
-function renderTrophies() {
-  const container = document.getElementById("trophy-grid");
-  container.innerHTML = "";
-  TROPHIES.forEach((item) => {
-    container.appendChild(makeBoardCard(item, "trophy", state.trophies[item.id]));
-  });
-  const count = TROPHIES.filter((t) => state.trophies[t.id]).length;
-  document.getElementById("trophy-count").textContent = `${count} / ${TROPHIES.length} collected`;
-  document.querySelector('[data-inventory-toggle="trophies"]').closest('.inventory-panel')
-    .classList.toggle('is-complete', TROPHIES.every(t => state.trophies[t.id]));
-  bindBoardToggles("trophy", (id, checked, draft) => { draft.trophies[id] = checked; });
 }
 
 function makeBoardCard(item, kind, checked) {
@@ -531,8 +539,7 @@ function bindBoardToggles(kind, updater) {
       updateState((draft) => {
         let checked = false;
         if (kind === "buildable") checked = !draft.buildables[id];
-        else if (kind === "artifact") checked = !draft.artifacts[id];
-        else checked = !draft.trophies[id];
+        else checked = !draft.artifacts[id];
         updater(id, checked, draft);
       });
     });
