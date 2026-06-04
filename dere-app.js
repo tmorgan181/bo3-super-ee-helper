@@ -358,7 +358,6 @@ const DEFAULT_STATE = {
   notes: "",
   inventoryExpanded: {
     buildables: false,
-    "dragon-control": false,
     artifacts: false
   },
   buildables: Object.fromEntries(BUILDABLE_GROUPS.flatMap((group) => group.parts.map((part) => [part.id, false]))),
@@ -550,14 +549,9 @@ function renderActiveUtility() {}
 
 function renderBuildables() {
   const buildContainer = document.getElementById("buildables-grid");
-  const bowContainer = document.getElementById("dragon-control-grid");
   buildContainer.innerHTML = "";
-  bowContainer.innerHTML = "";
 
-  const wotaGroup = BUILDABLE_GROUPS.find((g) => g.id === "shield");
-  const bowsGroup = BUILDABLE_GROUPS.find((g) => g.id === "ragnarok");
-
-  [{ group: wotaGroup, el: buildContainer }, { group: bowsGroup, el: bowContainer }].forEach(({ group, el }) => {
+  BUILDABLE_GROUPS.forEach((group) => {
     if (!group) return;
     const wrap = document.createElement("div");
     wrap.className = "build-group";
@@ -575,21 +569,15 @@ function renderBuildables() {
     group.parts.forEach((part) => {
       partsEl.appendChild(makeBoardCard(part, "buildable", state.buildables[part.id]));
     });
-    el.appendChild(wrap);
+    buildContainer.appendChild(wrap);
   });
 
-  const shieldParts = BUILDABLE_GROUPS[0]?.parts ?? [];
-  const ragnarokParts = BUILDABLE_GROUPS[1]?.parts ?? [];
-  const buildableCount = shieldParts.filter((p) => state.buildables[p.id]).length;
-  const buildableTotal = shieldParts.length;
-  const ragnarokCount = ragnarokParts.filter((p) => state.buildables[p.id]).length;
-  const ragnarokTotal = ragnarokParts.length;
+  const allParts = BUILDABLE_GROUPS.flatMap((group) => group.parts);
+  const buildableCount = allParts.filter((p) => state.buildables[p.id]).length;
+  const buildableTotal = allParts.length;
   document.getElementById("buildable-count").textContent = `${buildableCount} / ${buildableTotal} marked`;
-  document.getElementById("dragon-control-count").textContent = `${ragnarokCount} / ${ragnarokTotal} marked`;
   document.querySelector('[data-inventory-toggle="buildables"]').closest('.inventory-panel')
-    .classList.toggle('is-complete', BUILDABLE_GROUPS[0].parts.every(p => state.buildables[p.id]));
-  if (BUILDABLE_GROUPS[1]) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
-    .classList.toggle('is-complete', BUILDABLE_GROUPS[1].parts.every(p => state.buildables[p.id]));
+    .classList.toggle('is-complete', allParts.every((p) => state.buildables[p.id]));
   bindBoardToggles("buildable", (id, checked, draft) => { draft.buildables[id] = checked; });
 }
 
