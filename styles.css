@@ -145,6 +145,18 @@ body::after {
   clip-path: polygon(16% 0, 84% 0, 100% 16%, 100% 84%, 84% 100%, 16% 100%, 0 84%, 0 16%);
 }
 
+.hero__crest-link {
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.hero__crest-link:hover,
+.hero__crest-link:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--accent-bright);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 18px rgba(0, 0, 0, 0.22);
+}
+
 .hero__crest-mark {
   font-family: "Oswald", sans-serif;
   font-size: 1.05rem;

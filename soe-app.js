@@ -3,181 +3,193 @@ const STORAGE_KEY = "bo3-super-ee-helper:soe:first-pass";
 const RECOMMENDED_GOBBLEGUMS = [
   "Anywhere But Here",
   "Perkaholic",
-  "Beast Mode",
+  "Fear in Headlights",
   "Aftertaste",
-  "Kill Joy"
+  "Alchemical Antithesis"
 ];
 
 const STEP_DATA = [
   {
-    id: "orientation",
-    title: "Map Orientation",
-    summary: "Learn the four districts and the beast mode mechanics.",
+    id: "spawn-setup",
+    title: "Summoning Key And Ritual Setup",
+    summary: "Grab the Summoning Key, open the city, and collect the four ritual items.",
     category: "Setup",
-    risk: "Low",
+    risk: "Medium",
     tags: ["Required", "Early game"],
-    details: "Shadows of Evil is divided into four districts: Canal, Waterfront, Footlight, and Junction. Beast Mode is essential throughout the entire easter egg.",
+    details: "Start in spawn by entering Beast Mode, smashing the truck crate for the Summoning Key, and opening the ritual routes into Easy Street, Canal, Footlight, and Waterfront.",
     checkpoints: [
-      "Four districts identified.",
-      "Beast Mode activated at least once.",
-      "Pack-a-Punch room location learned.",
-      "GobbleGum loadout locked in."
+      "Summoning Key collected.",
+      "Easy Street route opened.",
+      "District ritual items located.",
+      "All four ritual rooms reachable."
     ],
     subtasks: [
-      { title: "Districts", detail: "Learn Canal (tentacle ritual), Waterfront (fire ritual), Footlight (fish ritual), Junction (central hub)." },
-      { title: "Beast Mode", detail: "Pick up a red gumball from a glowing pile to enter Beast Mode. Used to charge pylons, flip switches, and open doors." },
-      { title: "Perk Locations", detail: "Juggernog is in the Junction. Double Tap and Speed Cola are in districts." },
-      { title: "Pack-a-Punch", detail: "Requires completing all three rituals to unlock the portal to the PaP chamber." }
+      { title: "Grab The Key", detail: "Use Beast Mode in spawn, smash the crate on the truck, then collect the Summoning Key in human form." },
+      { title: "Open Ritual Paths", detail: "Use Beast Mode to unlock doors, stairs, and grapples that reach each ritual room and district." },
+      { title: "Collect Ritual Items", detail: "Pick up the Lawyer's Pen, Police Badge, Hair Piece, and Championship Belt after knocking their crates down in Beast Mode." },
+      { title: "Know The Rule", detail: "Shadows of Evil can be advanced solo up through trapping the Shadowman, but the true final completion still requires four players." }
     ],
     hints: []
   },
   {
-    id: "beast-pylons",
-    title: "Beast Mode Pylon Charging",
-    summary: "Charge all four district pylons using Beast Mode.",
-    category: "Setup",
-    risk: "Low",
-    tags: ["Required", "Beast Mode"],
-    prerequisites: ["orientation"],
-    details: "Each district has a pylon that must be charged using Beast Mode. This opens locked doors and enables ritual progress.",
+    id: "rituals-pap",
+    title: "All Four Rituals And Pack-a-Punch",
+    summary: "Finish Easy Street, Canal, Footlight, and Waterfront, then use the four gateworms in the Rift.",
+    category: "Quest",
+    risk: "High",
+    tags: ["Required", "Rituals"],
+    prerequisites: ["spawn-setup"],
+    details: "Each ritual uses the Summoning Key plus its district item. Survive the ritual, collect the Gateworm, then place all four Gateworms in the Rift to unlock Pack-a-Punch.",
     checkpoints: [
-      "Canal pylon charged.",
-      "Waterfront pylon charged.",
-      "Footlight pylon charged.",
-      "Junction pylon charged."
+      "Easy Street ritual complete.",
+      "Canal ritual complete.",
+      "Footlight ritual complete.",
+      "Waterfront ritual complete.",
+      "Pack-a-Punch unlocked."
     ],
     subtasks: [
-      { title: "Enter Beast Mode", detail: "Pick up the beast gumball. You have limited time — prioritize pylons." },
-      { title: "Charge Each Pylon", detail: "Sprint to each district pylon and hold interact. One per Beast Mode activation." },
-      { title: "Repeat", detail: "Each pylon requires a separate Beast Mode activation." }
+      { title: "Run Every Ritual", detail: "Easy Street uses the Lawyer's Pen, Canal uses the Police Badge, Footlight uses the Hair Piece, and Waterfront uses the Championship Belt." },
+      { title: "Collect Gateworms", detail: "Take the Gateworm from each altar after the ritual finishes. Expect Margwas after later ritual completions." },
+      { title: "Open The Rift", detail: "Use a Beast doorway into the underground Rift, then wait for the back wall to open in the subway area." },
+      { title: "Unlock PaP", detail: "Place the four Gateworms on the pedestals, wall-run across, then place the Summoning Key on the altar to finish Pack-a-Punch access." }
     ],
     hints: []
   },
   {
-    id: "ritual-canal",
-    title: "Canal District Ritual",
-    summary: "Complete the tentacle ritual by offering a zombie at the altar.",
-    category: "Ritual",
-    risk: "Medium",
-    tags: ["Required", "Ritual"],
-    prerequisites: ["beast-pylons"],
-    details: "Each district ritual requires drawing in a zombie near the altar and triggering the ritual sacrifice.",
+    id: "apothicon-sword",
+    title: "Apothicon Sword",
+    summary: "Ride the trains for symbols, reveal the sword room, then charge the egg at four hidden statues.",
+    category: "Quest",
+    risk: "High",
+    tags: ["Required", "Sword"],
+    prerequisites: ["rituals-pap"],
+    details: "Every player must complete the sword sequence. Learn the three red train symbols, zap the matching wall in the subway, claim the egg, and charge it at the four Cthulhu statues.",
     checkpoints: [
-      "Canal altar activated.",
-      "Zombie sacrificed at Canal altar.",
-      "Canal ritual seal broken."
+      "Three train symbols found.",
+      "Sword wall opened.",
+      "Apothicon Egg charged at four statues.",
+      "Base sword claimed."
     ],
     subtasks: [
-      { title: "Activate Altar", detail: "In Beast Mode, charge the altar socket in the Canal district." },
-      { title: "Draw Zombie", detail: "Lead a zombie into the ritual circle. The tentacle will grab it." },
-      { title: "Seal Broken", detail: "Watch for the ritual circle to change color. Collect the reward item." }
+      { title: "Read The Train Windows", detail: "Ride Waterfront to Footlight for two symbols, then Footlight to Canal for the last one. The symbols change every game." },
+      { title: "Reveal The Sword Room", detail: "In Beast Mode inside the subway, zap the three matching red symbols on the wall under the stairs." },
+      { title: "Charge The Egg", detail: "Place the egg on the four hidden statues in Rift, Canal, Footlight, and Waterfront, killing nearby zombies until each charge is complete." },
+      { title: "Claim The Sword", detail: "Return the filled egg to the sword room and take the Apothicon Sword." }
     ],
     hints: []
   },
   {
-    id: "ritual-waterfront",
-    title: "Waterfront District Ritual",
-    summary: "Complete the fire ritual near the docks.",
-    category: "Ritual",
-    risk: "Medium",
-    tags: ["Required", "Ritual"],
-    prerequisites: ["beast-pylons"],
-    details: "The Waterfront ritual uses a fire glyph. Activate in Beast Mode and feed the altar.",
+    id: "upgraded-sword",
+    title: "Upgraded Sword",
+    summary: "Every player must upgrade their sword through their character altar and four Margwa trials.",
+    category: "Quest",
+    risk: "Very High",
+    tags: ["Required", "Execution"],
+    prerequisites: ["apothicon-sword"],
+    details: "Return to the ritual room tied to your character, accept the Arch-Ovum from the ghost Keeper, and complete one red-circle sword ritual per round until all four are done.",
     checkpoints: [
-      "Waterfront altar activated.",
-      "Zombie sacrificed at Waterfront altar.",
-      "Waterfront ritual seal broken."
+      "Arch-Ovum taken.",
+      "Four sword rituals completed.",
+      "Margwas cleared.",
+      "Upgraded sword claimed."
     ],
     subtasks: [
-      { title: "Activate Altar", detail: "Use Beast Mode to charge the Waterfront altar socket near the docks." },
-      { title: "Lure Zombie", detail: "Bring a zombie into the fire circle near the water's edge." },
-      { title: "Seal Broken", detail: "Collect the reward glyph shard after the ritual completes." }
+      { title: "Match Your Character", detail: "Nero upgrades at Easy Street, Jessica at Footlight, Jack Vincent at Canal, and Floyd at Waterfront." },
+      { title: "Take The Arch-Ovum", detail: "Visit your character ritual room and interact with the ghost Keeper on the altar." },
+      { title: "Run The Red Circles", detail: "Place the Arch-Ovum at the four red ritual circles around the map, survive the encounter, and kill the spawned Margwa. Only one circle can be finished each round." },
+      { title: "Claim The Sword Upgrade", detail: "Return the Arch-Ovum to the Keeper in your ritual room to receive the upgraded sword." }
     ],
     hints: []
   },
   {
-    id: "ritual-footlight",
-    title: "Footlight District Ritual",
-    summary: "Complete the fish/squid ritual in the entertainment district.",
-    category: "Ritual",
-    risk: "Medium",
-    tags: ["Required", "Ritual"],
-    prerequisites: ["beast-pylons"],
-    details: "The Footlight ritual is in the theater area and involves the squid altar.",
+    id: "flag-step",
+    title: "Flag Escort Step",
+    summary: "Start the book in Nero's room and escort the flag through all four ritual routes.",
+    category: "Quest",
+    risk: "Very High",
+    tags: ["Required", "Defense"],
+    prerequisites: ["upgraded-sword"],
+    details: "Activate the floating book in Nero's ritual room. The flag appears in the subway, and each area has two street placements plus the ritual altar defense at the end.",
     checkpoints: [
-      "Footlight altar activated.",
-      "Zombie sacrificed at Footlight altar.",
-      "Footlight ritual seal broken."
+      "Book activated.",
+      "Flag taken from subway.",
+      "All defense spots cleared.",
+      "Every ritual altar route finished."
     ],
     subtasks: [
-      { title: "Activate Altar", detail: "Enter Beast Mode and charge the Footlight altar behind the theater stage." },
-      { title: "Feed Altar", detail: "Lead a zombie into the squid ritual circle." },
-      { title: "Seal Broken", detail: "The third glyph shard appears. Collect it." }
+      { title: "Start The Book", detail: "Interact with the open book near the bookshelf in Nero's room above Easy Street." },
+      { title: "Carry The Flag", detail: "Pick the flag up in the subway and place it at the sparking locations that lead toward each ritual room." },
+      { title: "Defend Every Stop", detail: "Protect the flag from Meatballs while Parasites harass the team. When the flag glows red, grab the Max Ammo and move deeper into the route." },
+      { title: "Finish All Four Routes", detail: "Each district path ends at its ritual altar. Use the Civil Protector and Apothicon Servant if you have them." }
     ],
     hints: []
   },
   {
-    id: "civil-protector",
-    title: "Civil Protector",
-    summary: "Summon and upgrade the Civil Protector robot.",
-    category: "Setup",
-    risk: "Medium",
-    tags: ["Optional", "Support"],
-    prerequisites: ["ritual-canal", "ritual-waterfront", "ritual-footlight"],
-    details: "The Civil Protector is an automated defense robot. It can be summoned after all three ritual seals are broken.",
+    id: "shadowman-fight",
+    title: "Trap The Shadowman",
+    summary: "Begin the Pack-a-Punch fight, break his aura, and capture him over the altar.",
+    category: "Boss",
+    risk: "Very High",
+    tags: ["Required", "Boss"],
+    prerequisites: ["flag-step"],
+    details: "All four players need to interact with the Keepers in Pack-a-Punch to begin the boss encounter. Damage the Shadowman only while he has no circular aura.",
     checkpoints: [
-      "Civil Protector summoned.",
-      "Civil Protector upgraded at least once.",
-      "Robot defending Junction area."
+      "Keeper pedestals activated.",
+      "Shadowman vulnerable windows used.",
+      "Shadowman pulled above altar.",
+      "Shadowman trapped in Summoning Key."
     ],
     subtasks: [
-      { title: "Activation", detail: "With all three seals broken, interact with the Civil Protector station in Junction." },
-      { title: "Feed Points", detail: "Insert points into the robot's slot to upgrade it. Four tiers available." },
-      { title: "Defense Value", detail: "The robot clears zombie clusters and provides breathing room during hard steps." }
+      { title: "Start The Encounter", detail: "Go into Pack-a-Punch and interact with the four Keepers near the Gateworm pedestals." },
+      { title: "Watch The Aura", detail: "Ignore him while the circular aura is up. As soon as it drops, all players focus him with automatic fire." },
+      { title: "Force The Capture", detail: "With enough fast damage, the Shadowman moves closer to the altar." },
+      { title: "Trap Him", detail: "When he hovers above the altar, interact immediately to pull him into the Summoning Key." }
     ],
     hints: []
   },
   {
-    id: "pap-unlock",
-    title: "Pack-a-Punch Access",
-    summary: "Complete all three rituals to unlock the portal and access PaP.",
-    category: "Setup",
-    risk: "Low",
-    tags: ["Required", "PaP"],
-    prerequisites: ["ritual-canal", "ritual-waterfront", "ritual-footlight"],
-    details: "After all three district rituals, a portal opens in Junction leading to the PaP chamber.",
-    checkpoints: [
-      "All three ritual seals broken.",
-      "Junction portal open.",
-      "Pack-a-Punch accessed."
-    ],
-    subtasks: [
-      { title: "Portal Opens", detail: "Return to Junction after the third ritual. A glowing portal appears." },
-      { title: "Enter Portal", detail: "Step through to reach the PaP chamber. Upgrade primary weapons now." },
-      { title: "Upgrade Priority", detail: "Upgrade your primary before proceeding. The final ritual is demanding." }
-    ],
-    hints: []
-  },
-  {
-    id: "final-ritual",
-    title: "Final Summoning Ritual",
-    summary: "Perform the final ritual to summon and defeat the Shadow Man.",
+    id: "flaming-basins",
+    title: "Flaming Basins And Beast Setup",
+    summary: "Survive the purple glyph phase, kill Margwas to recharge basins, and ready all four Beast positions.",
     category: "Final prep",
     risk: "Very High",
     tags: ["Required", "Execution"],
-    prerequisites: ["pap-unlock"],
-    details: "Use the three glyph shards to complete the final ritual in Junction and confront the Shadow Man.",
+    prerequisites: ["shadowman-fight"],
+    details: "After trapping the Shadowman, the map fills with purple glyphs and repeated red-screen checks. Kill a Margwa to relight a basin, then get all four players into Beast Mode for the ending setup.",
     checkpoints: [
-      "All three glyph shards deposited.",
-      "Shadow Man summoned.",
-      "Shadow Man defeated.",
-      "Easter egg complete."
+      "Purple glyph hazards managed.",
+      "White orb timing understood.",
+      "Red basins recharged.",
+      "All four players positioned in Beast Mode."
     ],
     subtasks: [
-      { title: "Deposit Shards", detail: "Bring all three glyph shards to the central altar in Junction and place them." },
-      { title: "Shadow Man Phase 1", detail: "The Shadow Man spawns with a shield. Use the Summoning Key to break his immunity phase." },
-      { title: "Shadow Man Phase 2", detail: "Unshielded, the Shadow Man is vulnerable. All players focus fire." },
-      { title: "Completion", detail: "After the Shadow Man falls, interact with the Summoning Key to complete the easter egg." }
+      { title: "Avoid The Glyphs", detail: "Purple glyphs on the ground deal damage. Keep moving and avoid clipping them while rotating the map." },
+      { title: "Hit The White Orbs", detail: "When the screen turns red, touch a floating white orb quickly or you will go down." },
+      { title: "Recharge Beast", detail: "Basins now burn red and cannot be used until at least one Margwa dies." },
+      { title: "Take Final Positions", detail: "Three players should be ready at Canal, Footlight, and Waterfront train stations, while the fourth prepares to work the center of the map." }
+    ],
+    hints: []
+  },
+  {
+    id: "gateworm-finale",
+    title: "Giant Gateworm Finale",
+    summary: "Hold the three rails blue, zap the Keepers in the center, and kill the Giant Gateworm for the ending.",
+    category: "Finale",
+    risk: "Very High",
+    tags: ["Required", "4 Players"],
+    prerequisites: ["flaming-basins"],
+    details: "This last step is the part that truly requires four players. One player calls the train and re-enters Beast Mode, three station players hold the blue rails active, and the center player zaps the Keepers before the train passes.",
+    checkpoints: [
+      "Train called correctly.",
+      "All three station rails glowing blue.",
+      "Center Keepers zapped in time.",
+      "Giant Gateworm killed and cutscene triggered."
+    ],
+    subtasks: [
+      { title: "Call The Train", detail: "A player at one station should return to human form long enough to call the train, then immediately re-enter Beast Mode using a charged basin." },
+      { title: "Hold The Rails", detail: "The three station players must repeatedly zap the train-line box on the top corner of each station to keep every rail blue." },
+      { title: "Zap The Keepers", detail: "Before the train passes through the center, the middle player must zap all three Keepers around the Giant Gateworm." },
+      { title: "Finish The EE", detail: "If the timing is correct, the passing train kills the Giant Gateworm and the final cutscene begins." }
     ],
     hints: []
   }
@@ -186,39 +198,43 @@ const STEP_DATA = [
 const BUILDABLE_GROUPS = [
   {
     id: "gateworm",
-    title: "Gateworm",
-    description: "Ritual reward items used to unlock PaP",
+    title: "Gateworms",
+    description: "Four ritual reward items used to unlock Pack-a-Punch",
     parts: [
-      { id: "gw-canal", code: "G1", name: "Canal Gateworm", meta: "Canal ritual reward", hint: "", shape: "egg" },
-      { id: "gw-waterfront", code: "G2", name: "Waterfront Gateworm", meta: "Waterfront ritual reward", hint: "", shape: "egg" },
-      { id: "gw-footlight", code: "G3", name: "Footlight Gateworm", meta: "Footlight ritual reward", hint: "", shape: "egg" }
+      { id: "gw-easy", code: "G1", name: "Easy Street Gateworm", meta: "Lawyer's Pen ritual reward", hint: "", shape: "egg" },
+      { id: "gw-canal", code: "G2", name: "Canal Gateworm", meta: "Police Badge ritual reward", hint: "", shape: "egg" },
+      { id: "gw-footlight", code: "G3", name: "Footlight Gateworm", meta: "Hair Piece ritual reward", hint: "", shape: "egg" },
+      { id: "gw-waterfront", code: "G4", name: "Waterfront Gateworm", meta: "Championship Belt ritual reward", hint: "", shape: "egg" }
     ]
   },
   {
     id: "glyphs",
-    title: "Glyph Shards",
-    description: "Three shards needed for the final summoning ritual",
+    title: "Sword Quest",
+    description: "Track the train-symbol and sword progression for your run",
     parts: [
-      { id: "glyph-1", code: "S1", name: "Glyph Shard I", meta: "Canal ritual drop", hint: "", shape: "core" },
-      { id: "glyph-2", code: "S2", name: "Glyph Shard II", meta: "Waterfront ritual drop", hint: "", shape: "core" },
-      { id: "glyph-3", code: "S3", name: "Glyph Shard III", meta: "Footlight ritual drop", hint: "", shape: "core" }
+      { id: "sword-symbols", code: "S1", name: "Train Symbols", meta: "All three red cuneiform symbols noted", hint: "", shape: "core" },
+      { id: "sword-egg", code: "S2", name: "Apothicon Egg", meta: "Egg claimed from the sword wall", hint: "", shape: "core" },
+      { id: "sword-base", code: "S3", name: "Base Sword", meta: "Egg fully charged and sword collected", hint: "", shape: "core" },
+      { id: "sword-upgraded", code: "S4", name: "Upgraded Sword", meta: "Arch-Ovum trials complete", hint: "", shape: "core" }
     ]
   }
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-key", code: "A1", name: "Summoning Key", meta: "Final ritual item", hint: "", shape: "core" },
-  { id: "artifact-pap", code: "A2", name: "Pack-a-Punch Access", meta: "Post-ritual unlock", hint: "", shape: "core" },
-  { id: "artifact-protector", code: "A3", name: "Civil Protector", meta: "Junction defense robot", hint: "", shape: "cylinder" }
+  { id: "artifact-key", code: "A1", name: "Summoning Key", meta: "Spawn pickup and ritual anchor", hint: "", shape: "core" },
+  { id: "artifact-pap", code: "A2", name: "Pack-a-Punch Access", meta: "Unlocked after placing all four Gateworms", hint: "", shape: "core" },
+  { id: "artifact-egg", code: "A3", name: "Apothicon Egg", meta: "Used to earn the sword", hint: "", shape: "egg" },
+  { id: "artifact-flag", code: "A4", name: "Flag", meta: "Escorted through every ritual route", hint: "", shape: "cylinder" },
+  { id: "artifact-protector", code: "A5", name: "Civil Protector", meta: "Built from fuses for support during defenses", hint: "", shape: "cylinder" }
 ];
 
 const TROPHIES = [
-  { id: "trophy-margwa", code: "T1", name: "Margwa Trophy", meta: "Margwa kill", hint: "", shape: "trophy" },
-  { id: "trophy-beast", code: "T2", name: "Beast Skull", meta: "Beast Mode kill streak", hint: "", shape: "trophy" },
-  { id: "trophy-ritual", code: "T3", name: "Ritual Seal Fragment", meta: "All three rituals", hint: "", shape: "trophy" },
-  { id: "trophy-shadow", code: "T4", name: "Shadow Relic", meta: "Shadow Man kill", hint: "", shape: "trophy" },
-  { id: "trophy-protector", code: "T5", name: "Protector Crest", meta: "Civil Protector max tier", hint: "", shape: "trophy" },
-  { id: "trophy-wisp", code: "T6", name: "Wisp Fragment", meta: "Wisp collection", hint: "", shape: "trophy" }
+  { id: "trophy-rituals", code: "T1", name: "Four Rituals Cleared", meta: "Easy Street, Canal, Footlight, Waterfront", hint: "", shape: "trophy" },
+  { id: "trophy-swords", code: "T2", name: "Team Swords Ready", meta: "Every player has an upgraded sword", hint: "", shape: "trophy" },
+  { id: "trophy-flag", code: "T3", name: "Flag Route Complete", meta: "All escort defenses survived", hint: "", shape: "trophy" },
+  { id: "trophy-shadow", code: "T4", name: "Shadowman Trapped", meta: "Captured over the Pack-a-Punch altar", hint: "", shape: "trophy" },
+  { id: "trophy-basins", code: "T5", name: "Basins Recharged", meta: "Post-boss Beast setup ready", hint: "", shape: "trophy" },
+  { id: "trophy-gateworm", code: "T6", name: "Giant Gateworm Down", meta: "Final cutscene triggered", hint: "", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -307,7 +323,7 @@ function renderHero() {
   const progress = Math.round((completed / STEP_DATA.length) * 100);
   const progressTip = completed === STEP_DATA.length
     ? "Quest marked complete."
-    : "Complete all three district rituals to access Pack-a-Punch.";
+    : "Finish the rituals, swords, flag, Shadowman trap, and 4-player finale.";
 
   document.getElementById("progress-text").textContent = `${completed} / ${STEP_DATA.length} complete`;
   document.getElementById("progress-fill").style.width = `${progress}%`;
