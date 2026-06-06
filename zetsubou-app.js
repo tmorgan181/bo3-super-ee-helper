@@ -2,250 +2,252 @@ const STORAGE_KEY = "bo3-super-ee-helper:zns:first-pass";
 
 const RECOMMENDED_GOBBLEGUMS = [
   "Anywhere But Here",
-  "Kill Joy",
+  "In Plain Sight",
   "Perkaholic",
-  "Sword Flay",
+  "Alchemical Antithesis",
   "Aftertaste"
 ];
 
 const RECOMMENDED_WEAPONS = [
   { name: "Masamune", wonder: true },
   { name: "Dingo" },
-  { name: "Haymaker 12" },
+  { name: "Brecci" },
   { name: "HVK-30" }
 ];
 
 const STEP_DATA = [
   {
     id: "power",
-    title: "Restore Power",
-    summary: "Open the map, locate the power switch, and learn the three ritual sites.",
-    category: "Setup",
-    risk: "Low",
-    tags: ["Required", "Early game"],
-    details: "Open the map, locate the power switch, and learn the three ritual sites.",
-    checkpoints: [
-      "Power switch activated.",
-      "Spawn beach, lab, and waterfall areas are accessible.",
-      "Three spore ritual sites located.",
-      "GobbleGum loadout agreed before wave three."
-    ],
-    subtasks: [
-      { title: "Open Routes", detail: "Buy through spawn side toward the lab complex." },
-      { title: "Power", detail: "Activate the power switch in the underground lab." },
-      { title: "Locate Rituals", detail: "Note the three active spore mound sites. They rotate each game." },
-      { title: "Perk Route", detail: "Identify Juggernog and Quick Revive locations." }
-    ],
-    hints: []
-  },
-  {
-    id: "kt4-parts",
-    title: "Collect KT-4 Components",
-    summary: "Gather the three components hidden across the island.",
+    title: "Power, Shield, and Gas Mask",
+    summary: "Open the map, power both labs and the bunker, then build the Zombie Shield and Gas Mask as you move.",
     category: "Setup",
     risk: "Medium",
-    tags: ["Required", "Buildable"],
-    prerequisites: ["power"],
-    details: "Gather the three KT-4 components from the lab, spider lair, and power areas.",
+    tags: ["Required", "Early game"],
+    details: "Zetsubou setup is smoother if you treat power, shield, and gas mask as one route. Most part spawns are directly on the way to the bunker and docks.",
     checkpoints: [
-      "Spore sample retrieved from the testing lab.",
-      "Battery cell found near the power room.",
-      "Test tube set recovered from the spider lair."
+      "Lab A and Lab B generators activated.",
+      "Power switch activated.",
+      "All three Zombie Shield parts collected and built.",
+      "All three Gas Mask parts collected and built."
     ],
     subtasks: [
-      { title: "Spore Sample", detail: "Check the specimen shelf in the underground testing lab. Respawns each round." },
-      { title: "Battery Cell", detail: "Found on the generator platform near the power switch." },
-      { title: "Test Tube Set", detail: "Drops from killing a Banshee inside the spider lair." },
-      { title: "Blue Spore Canister", detail: "Shoot the blue spore mound above the power switch to collect the canister." }
+      { title: "Open Route and Fill Bucket", detail: "Grab a bucket at spawn, fill blue water in Lab A, power Lab A, then cross to Lab B, fill again, and power Lab B to unlock the bunker." },
+      { title: "Turn On Bunker Power", detail: "Open the bunker, clear the power-room lockdown, then flip the power switch." },
+      { title: "Shield Part 1 — Lab A", detail: "Check underneath Lab A: on the pillar by the 115 canister, on the Kuda wall-buy pillar, or on the wall by the zombie barrier." },
+      { title: "Shield Part 2 — Lab B", detail: "Check the three tree spawns around Lab B on the green-water side." },
+      { title: "Shield Part 3 — AA Platform", detail: "Check the bunker AA room: upper-right ledge, by the broken rocks / window, or near the Mystery Box side." },
+      { title: "Gas Mask Parts", detail: "Check the green-water Lab B crates/scaffolding for the mask, the AA / plane-crash platform for the cable, and the docks past power for the filter." },
+      { title: "Build Both", detail: "Build the Shield and Gas Mask at the Lab A or Lab B workbench as soon as you have the full sets." }
     ],
     hints: []
   },
   {
-    id: "kt4-craft",
-    title: "Craft the KT-4",
-    summary: "Assemble the KT-4 at the lab workbench.",
-    category: "Weapon",
-    risk: "Low",
-    tags: ["Required", "Weapon"],
-    prerequisites: ["kt4-parts"],
-    details: "Take all four components to the workbench in the underground lab and assemble the KT-4.",
+    id: "skull",
+    title: "Acquire Skull of Nan Sapwe",
+    summary: "Cleanse the four ritual skulls, survive the chamber lockdown, and unlock mesmerize.",
+    category: "Setup",
+    risk: "Medium",
+    tags: ["Required", "Specialist"],
+    prerequisites: ["power"],
+    details: "Each skull at the altar matches one pedestal symbol somewhere on the map. Finish all four cleanses, then complete the hidden chamber defense to claim the specialist weapon.",
     checkpoints: [
-      "All three KT-4 components in inventory.",
-      "Blue spore canister collected.",
+      "All four ritual skulls returned.",
+      "Temple staircase opened.",
+      "Skull of Nan Sapwe claimed.",
+      "Hidden poster mesmerized in the bunker."
+    ],
+    subtasks: [
+      { title: "Match Symbols", detail: "Read the four skull symbols at the shrine, then carry each matching skull to its pedestal." },
+      { title: "Pedestal Locations", detail: "The four ritual pedestals are at Spawn, the Propeller Trap room, the Docks, and the lower bunker operations room across from Pack-a-Punch." },
+      { title: "Defend Pedestals", detail: "Hold each skull ritual until it finishes, then return the cleansed skull to the shrine." },
+      { title: "Claim Skull", detail: "Enter the revealed chamber, survive the lockdown, and take the Skull of Nan Sapwe." },
+      { title: "Reveal Poster", detail: "Mesmerize the half poster across from purple water in the bunker. This unlocks the Anywhere But Here cog room later." }
+    ],
+    hints: []
+  },
+  {
+    id: "kt4",
+    title: "Build the KT-4",
+    summary: "Collect the three KT-4 parts and build the wonder weapon in the bunker lab.",
+    category: "Weapon",
+    risk: "Medium",
+    tags: ["Required", "Weapon"],
+    prerequisites: ["skull"],
+    details: "None of the KT-4 parts are random once the requirements are met, so this step is mostly about doing them in a clean order.",
+    checkpoints: [
+      "Glowing-zombie vial collected.",
+      "Spider venom collected.",
+      "Underwater plant collected.",
       "KT-4 assembled at the lab workbench."
     ],
     subtasks: [
-      { title: "Workbench", detail: "Find the assembly workbench in the main underground lab room." },
-      { title: "Craft", detail: "Interact to assemble. The KT-4 replaces your secondary slot." }
-    ],
-    hints: []
-  },
-  {
-    id: "spore-rituals",
-    title: "Spore Purification Rituals",
-    summary: "Complete all three spore mound rituals using the KT-4.",
-    category: "Ritual",
-    risk: "High",
-    tags: ["Required", "Ritual", "KT-4"],
-    prerequisites: ["kt4-craft"],
-    details: "Each of the three spore mound sites must be purified with the KT-4 in a set order. Note which site activates first.",
-    checkpoints: [
-      "First spore site purified.",
-      "Second spore site purified.",
-      "Third spore site purified.",
-      "All three ritual flames lit."
-    ],
-    subtasks: [
-      { title: "Identify Active Site", detail: "Watch for the glowing mound at round start. Shoot it with the KT-4." },
-      { title: "Defend the Mound", detail: "Hold the area while the purification completes. Spores will spawn." },
-      { title: "Collect Essence", detail: "Grab the ritual flame token before it despawns." },
-      { title: "Repeat x3", detail: "Each ritual activates at a different site. Track order with the spore tracker below." }
-    ],
-    hints: []
-  },
-  {
-    id: "skull-collect",
-    title: "Skull Collection",
-    summary: "Kill marked enemy types to collect the six ritual skulls.",
-    category: "Collectibles",
-    risk: "Medium",
-    tags: ["Required", "Collectibles"],
-    prerequisites: ["spore-rituals"],
-    details: "Specific enemy kills yield ritual skulls. Each skull type drops from a different enemy.",
-    checkpoints: [
-      "Margwa skull collected.",
-      "Bomber skull collected.",
-      "Banshee skull collected.",
-      "Spore zombie skull collected.",
-      "Parasitic skull collected.",
-      "Keeper skull collected."
-    ],
-    subtasks: [
-      { title: "Margwa", detail: "Kill a Margwa with the KT-4 charged shot to its open head." },
-      { title: "Bomber", detail: "Kill a Bomber while it is mid-charge." },
-      { title: "Banshee", detail: "Headshot a Banshee in the spider lair." },
-      { title: "Parasite", detail: "Kill a Parasite with melee while it is attached." },
-      { title: "Spore Zombie", detail: "Kill a spore-infected zombie while it is still in the plant." },
-      { title: "Keeper", detail: "Kill a Keeper near the waterfall shrine." }
+      { title: "Spider Venom", detail: "During a spider round, lower the Lab A cage, lure a spider inside, raise the cage, and extract the venom." },
+      { title: "Glowing Vial", detail: "After power is on, kill the special glowing green zombie and pick up the dropped vial." },
+      { title: "Underwater Plant", detail: "Swim through the underwater tunnel past Mule Kick, use spores for air if needed, and collect the plant at the bottom." },
+      { title: "Build", detail: "Build the KT-4 at the bunker workbench." }
     ],
     hints: []
   },
   {
     id: "masamune",
     title: "Upgrade to Masamune",
-    summary: "Complete the upgrade ritual to transform the KT-4 into the Masamune.",
+    summary: "Finish the challenge gate, collect the three upgrade parts, and build the Masamune.",
     category: "Weapon",
     risk: "High",
     tags: ["Required", "Upgrade"],
-    prerequisites: ["skull-collect"],
-    details: "The Masamune upgrade requires placing all six skulls and completing a defense ritual at the waterfall shrine.",
+    prerequisites: ["kt4"],
+    details: "This is the main midgame hurdle. Every player must finish their altar challenges before the electric-shield vial can be taken.",
     checkpoints: [
-      "All six skulls deposited at the shrine.",
-      "Waterfall ritual defense survived.",
-      "Masamune claimed from the shrine."
+      "Skeleton vial collected from the hidden cage room.",
+      "Spider fang collected after the boss fight.",
+      "Rainbow-water plant grown and harvested.",
+      "Masamune crafted."
     ],
     subtasks: [
-      { title: "Shrine Deposit", detail: "Take all six skulls to the waterfall shrine. Deposit in order displayed." },
-      { title: "Ritual Defense", detail: "A lockdown begins. Hold the shrine against three waves of infected zombies." },
-      { title: "Claim Masamune", detail: "Pick up the upgraded weapon from the altar after the lockdown clears." }
+      { title: "Finish Challenges", detail: "Complete all three shrine challenges for every player. Once done, lightning will start striking the altar." },
+      { title: "Skeleton Vial", detail: "Charge the shield with lightning at the shrine, bash the Lab B cage panel, ride down, and take the vial from the skeleton." },
+      { title: "Rainbow Plant", detail: "Ride the sewer pipe from the bunker and hold interact at the glowing 115 rocks to collect Rainbow Water. Mesmerize the hidden wall in the underwater tunnel, plant a seed, and water it with Rainbow Water for three consecutive rounds." },
+      { title: "Spider Fang", detail: "Use the KT-4 to open the webbed cave near Lab A, beat the giant spider by shooting its glowing mouth, then collect the fang." },
+      { title: "Build", detail: "Build the Masamune at the upgrade bench." }
     ],
     hints: []
   },
   {
-    id: "margwa-heart",
-    title: "Margwa Heart Ritual",
-    summary: "Lure and kill a Margwa at the altar. Extract and place its heart.",
-    category: "Ritual",
+    id: "cogs",
+    title: "Recover the Three Cogs",
+    summary: "Use the three hidden mechanics to recover the elevator cogs.",
+    category: "Collectibles",
+    risk: "High",
+    tags: ["Required", "Collectibles"],
+    prerequisites: ["masamune"],
+    details: "The first cog is guaranteed if you have Anywhere But Here. The second is the risky zipline drop. The third depends on getting an AA shell plant and shooting the plane.",
+    checkpoints: [
+      "Anywhere But Here cog collected.",
+      "Zipline dock cog collected.",
+      "Plane-shot cog collected.",
+      "All three cogs ready for the elevator."
+    ],
+    subtasks: [
+      { title: "Cog 1 — Anywhere But Here", detail: "After the bunker poster has been revealed, use Anywhere But Here and grab the cog from the hidden egg room." },
+      { title: "Cog 2 — Zipline Dock", detail: "Electrify the zipline panel with the shield. In solo, hit the panel and knife/melee while crossing over the dock to drop down. In co-op, have a teammate activate it for you." },
+      { title: "Cog 3 — AA Shell", detail: "Plant a seed, water it with Blue Water, and shoot it with the KT-4 or Masamune for three rounds until you get an AA shell. Load the AA gun and shoot the passing plane." },
+      { title: "Crash Locations", detail: "After the plane is shot down, the smoking cog lands near the bunker, near the zipline / blue-water side, or near green water." }
+    ],
+    hints: []
+  },
+  {
+    id: "elevator",
+    title: "Repair the Elevator",
+    summary: "Reveal the hidden cog machine and use it to unlock the final elevator.",
+    category: "Final prep",
+    risk: "High",
+    tags: ["Required", "Execution"],
+    prerequisites: ["cogs"],
+    details: "The elevator machine is hidden behind a mesmerize wall just inside the bunker entrance on the left side.",
+    checkpoints: [
+      "Hidden cog alcove revealed.",
+      "Three cogs installed.",
+      "Elevator ready."
+    ],
+    subtasks: [
+      { title: "Reveal Panel", detail: "At the bunker entrance, mesmerize the wall beside the elevator with the Skull of Nan Sapwe." },
+      { title: "Install Cogs", detail: "Place all three cogs into the mechanism." },
+      { title: "Final Prep", detail: "Before going down, make sure you have the Masamune, a fresh Gas Mask, and the perks / ammo you want for the fight." }
+    ],
+    hints: []
+  },
+  {
+    id: "boss",
+    title: "Defeat Takeo",
+    summary: "Enter the boss arena, clear the vines, and destroy the glowing weak points with the Masamune.",
+    category: "Boss fight",
     risk: "Very High",
     tags: ["Required", "Boss kill"],
-    prerequisites: ["masamune"],
-    details: "A special Margwa spawns and must be led to the altar. Kill it there and extract the heart before it decays.",
+    prerequisites: ["elevator"],
+    details: "Stay around the outside of the room, avoid the center slams, and wait for the orange weak points to appear before firing the Masamune.",
     checkpoints: [
-      "Special Margwa appeared.",
-      "Margwa lured to the altar platform.",
-      "Margwa killed at the altar.",
-      "Margwa heart extracted.",
-      "Heart placed in the altar vessel."
+      "Boss room entered.",
+      "First glowing arm destroyed.",
+      "Second glowing arm destroyed.",
+      "Third glowing arm destroyed.",
+      "Cutscene triggered."
     ],
     subtasks: [
-      { title: "Lure", detail: "Shoot the special Margwa (glowing orange core) toward the altar. Do not kill it away from the altar." },
-      { title: "Kill at Altar", detail: "Finish the Margwa on the platform. Use the Masamune charged shot for the final hit." },
-      { title: "Extract", detail: "Interact with the Margwa body to pull the heart. Timer starts immediately." },
-      { title: "Place", detail: "Run to the altar vessel and deposit the heart before the timer expires." }
-    ],
-    hints: []
-  },
-  {
-    id: "final",
-    title: "Final Escape Sequence",
-    summary: "Activate the gate, survive the final ritual, escape the island.",
-    category: "Final prep",
-    risk: "Very High",
-    tags: ["Required", "Execution"],
-    prerequisites: ["margwa-heart"],
-    details: "Activate the teleporter sequence, survive the final zombie onslaught, and escape Zetsubou no Shima.",
-    checkpoints: [
-      "Gate sigil activated.",
-      "Final ritual wave survived.",
-      "Teleporter charged.",
-      "Easter egg complete."
-    ],
-    subtasks: [
-      { title: "Sigil Activation", detail: "Interact with the altar with the charged heart. All three flames must be lit." },
-      { title: "Final Defense", detail: "Hold the altar area through the last wave. Margwas and spore zombies spawn simultaneously." },
-      { title: "Teleport", detail: "All players interact with the teleporter gate to complete the easter egg." }
+      { title: "Open the Room", detail: "Use the Masamune to clear the vines after the elevator ride." },
+      { title: "Damage Weak Point", detail: "When a tentacle or arm shows a glowing orange weak point, hit it with the Masamune." },
+      { title: "Survive", detail: "Keep circling the arena while spiders and Thrashers spawn, and use the Skull if you get trapped." },
+      { title: "Repeat", detail: "Repeat the damage cycle until all weak points are destroyed and the cutscene starts." }
     ],
     hints: []
   }
 ];
 
 const SPORE_LOCATIONS = [
-  "Spawn Beach",
-  "Lab Testing",
-  "Spider Lair",
-  "Waterfall",
-  "Underground",
-  "Bunker East"
+  "Anywhere But Here Room",
+  "Zipline Dock",
+  "AA Gun / Plane Crash"
 ];
 
 const BUILDABLE_GROUPS = [
   {
-    id: "kt4",
-    title: "KT-4",
-    description: "Lab-crafted wonder weapon",
+    id: "shield",
+    panel: "buildables",
+    title: "Zombie Shield",
+    description: "Three setup parts, built at Lab A or Lab B",
     parts: [
-      { id: "kt4-spore", code: "K1", name: "Spore Sample", meta: "Testing lab shelf", hint: "", shape: "egg" },
-      { id: "kt4-battery", code: "K2", name: "Battery Cell", meta: "Power room platform", hint: "", shape: "circuit" },
-      { id: "kt4-tubes", code: "K3", name: "Test Tube Set", meta: "Spider lair drop", hint: "", shape: "cylinder" }
+      { id: "shield-a", code: "S1", name: "Lab A Part", meta: "Under Lab A", hint: "Pillar by 115 canister, Kuda pillar, or wall by the barrier.", shape: "shield" },
+      { id: "shield-b", code: "S2", name: "Lab B Part", meta: "Trees around green water", hint: "Always attached to one of the three trees around Lab B.", shape: "shield" },
+      { id: "shield-c", code: "S3", name: "AA Platform Part", meta: "Bunker AA room", hint: "Upper-right ledge, by the broken rocks / window, or near the Mystery Box side.", shape: "shield" }
     ]
   },
   {
-    id: "spore-canister",
-    title: "Blue Spore Canister",
-    description: "Required for KT-4 assembly",
+    id: "gasmask",
+    panel: "buildables",
+    title: "Gas Mask",
+    description: "Needed for underwater routes and spore protection",
     parts: [
-      { id: "canister-blue", code: "B1", name: "Blue Canister", meta: "Power room ceiling", hint: "", shape: "core" },
-      { id: "canister-seal", code: "B2", name: "Seal the Sample", meta: "Lab workbench", hint: "", shape: "core" }
+      { id: "mask-green", code: "G1", name: "Mask", meta: "Lab B / green water", hint: "Wooden crates by the rocks, scaffolding by the water, or crates near Double Tap.", shape: "core" },
+      { id: "mask-cable", code: "G2", name: "Cable", meta: "AA / plane-crash platform", hint: "Rock left of the Mystery Box, beside the crashed fuselage, or nearby on the platform path.", shape: "circuit" },
+      { id: "mask-filter", code: "G3", name: "Filter", meta: "Docks past power", hint: "By the zipline, on the rock near the wall-buy, or near the Mystery Box.", shape: "core" }
+    ]
+  },
+  {
+    id: "kt4",
+    panel: "buildables",
+    title: "KT-4",
+    description: "Lab-crafted wonder weapon",
+    parts: [
+      { id: "kt4-vial", code: "K1", name: "Glowing-Zombie Vial", meta: "Drops after power is on", hint: "Kill the glowing green zombie when it appears.", shape: "cylinder" },
+      { id: "kt4-venom", code: "K2", name: "Spider Venom", meta: "Lab A cage extraction", hint: "Lower the cage during a spider round and trap one spider inside.", shape: "core" },
+      { id: "kt4-plant", code: "K3", name: "Underwater Plant", meta: "Bottom of the Mule Kick tunnel", hint: "Deep in the underwater cave past Mule Kick.", shape: "egg" }
+    ]
+  },
+  {
+    id: "masamune-kit",
+    panel: "dragon-control",
+    title: "Masamune Parts",
+    description: "KT-4 upgrade ingredients",
+    parts: [
+      { id: "masa-vial", code: "M1", name: "Skeleton Vial", meta: "Hidden cage room under Lab B", hint: "Requires all player challenges complete and an electrified shield.", shape: "cylinder" },
+      { id: "masa-fang", code: "M2", name: "Spider Fang", meta: "Spider boss reward", hint: "Open the webbed cave with the KT-4 and beat the giant spider.", shape: "core" },
+      { id: "masa-plant", code: "M3", name: "Rainbow-Water Plant", meta: "Hidden underwater planter", hint: "Water a planted seed with Rainbow Water for three consecutive rounds.", shape: "egg" }
     ]
   }
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-kt4", code: "A1", name: "KT-4", meta: "Wonder weapon", hint: "", shape: "cylinder" },
-  { id: "artifact-masamune", code: "A2", name: "Masamune", meta: "KT-4 upgrade", hint: "", shape: "core" },
-  { id: "artifact-heart", code: "A3", name: "Margwa Heart", meta: "Altar ritual item", hint: "", shape: "egg" },
-  { id: "artifact-flame1", code: "F1", name: "Flame Token I", meta: "First spore ritual", hint: "", shape: "core" },
-  { id: "artifact-flame2", code: "F2", name: "Flame Token II", meta: "Second spore ritual", hint: "", shape: "core" },
-  { id: "artifact-flame3", code: "F3", name: "Flame Token III", meta: "Third spore ritual", hint: "", shape: "core" }
+  { id: "artifact-skull", code: "A1", name: "Skull of Nan Sapwe", meta: "Specialist weapon and mesmerize tool", hint: "Earned after cleansing all four skull rituals.", shape: "trophy" },
+  { id: "artifact-kt4", code: "A2", name: "KT-4", meta: "Base wonder weapon", hint: "", shape: "cylinder" },
+  { id: "artifact-masamune", code: "A3", name: "Masamune", meta: "Required boss-fight upgrade", hint: "", shape: "core" },
+  { id: "artifact-shield", code: "A4", name: "Zombie Shield", meta: "Needed for electric cage and zipline steps", hint: "Charge it with lightning at the altar after all challenges are done.", shape: "circuit" },
+  { id: "artifact-gasmask", code: "A5", name: "Gas Mask", meta: "Recommended before long underwater routes and boss", hint: "Buildable at Lab A or Lab B.", shape: "core" },
+  { id: "artifact-shell", code: "A6", name: "AA Shell", meta: "Plant reward used to shoot the plane", hint: "Comes from a blue-water seed upgraded over multiple rounds.", shape: "egg" }
 ];
 
 const TROPHIES = [
-  { id: "skull-margwa", code: "S1", name: "Margwa Skull", meta: "KT-4 headshot", hint: "", shape: "trophy" },
-  { id: "skull-bomber", code: "S2", name: "Bomber Skull", meta: "Mid-charge kill", hint: "", shape: "trophy" },
-  { id: "skull-banshee", code: "S3", name: "Banshee Skull", meta: "Spider lair headshot", hint: "", shape: "trophy" },
-  { id: "skull-parasite", code: "S4", name: "Parasite Skull", meta: "Melee while attached", hint: "", shape: "trophy" },
-  { id: "skull-spore", code: "S5", name: "Spore Skull", meta: "Kill in-plant", hint: "", shape: "trophy" },
-  { id: "skull-keeper", code: "S6", name: "Keeper Skull", meta: "Waterfall kill", hint: "", shape: "trophy" }
+  { id: "cog-abh", code: "C1", name: "Anywhere But Here Cog", meta: "Teleported egg room", hint: "Requires the poster mesmerize to be done first.", shape: "trophy" },
+  { id: "cog-zipline", code: "C2", name: "Zipline Cog", meta: "Dock below the electrified zipline", hint: "Solo: hit the panel, ride, then melee above the dock.", shape: "trophy" },
+  { id: "cog-plane", code: "C3", name: "Plane Cog", meta: "Recovered after AA gun plane shot", hint: "Lands near bunker, zipline / blue water, or green water.", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -441,7 +443,7 @@ function renderActiveStep() {
         </ol>
       </section>
 
-      ${step.id === "spore-rituals" ? renderSporeTrackerSection() : ""}
+      ${step.id === "cogs" ? renderSporeTrackerSection() : ""}
 
       <footer class="step-detail__footer">
         <div class="step-detail__actions">
@@ -457,7 +459,7 @@ function renderActiveStep() {
     updateState((draft) => { draft.stepStatus[step.id] = !draft.stepStatus[step.id]; });
   });
 
-  if (step.id === "spore-rituals") {
+  if (step.id === "cogs") {
     bindSporeTrackerEvents(container);
   }
 }
@@ -467,12 +469,12 @@ function renderSporeTrackerSection() {
     <section class="step-detail__section utility-card">
       <div class="utility-card__header">
         <div>
-          <p class="panel__eyebrow">Ritual Step</p>
-          <h3>Spore Order Tracker</h3>
+          <p class="panel__eyebrow">Cog Progress</p>
+          <h3>Cog Method Tracker</h3>
         </div>
         <button type="button" class="ghost-button ghost-button--small" id="clear-spores">Clear</button>
       </div>
-      <p class="utility-text">Toggle spore sites in activation order. Sequence runs left to right.</p>
+      <p class="utility-text">Toggle the three cog methods as you finish them. Sequence runs left to right.</p>
       <div class="pill-grid" id="spore-location-buttons"></div>
       <div class="bomb-sequence" id="spore-sequence-list"></div>
     </section>
@@ -502,7 +504,7 @@ function bindSporeTrackerEvents(container) {
   });
 
   if (state.spores.length === 0) {
-    list.innerHTML = '<span class="empty-state">No spore order recorded yet.</span>';
+    list.innerHTML = '<span class="empty-state">No cog methods recorded yet.</span>';
   } else {
     state.spores.forEach((location, index) => {
       if (index > 0) {
@@ -530,61 +532,48 @@ function renderActiveUtility() {
 function renderBuildables() {
   const ktContainer = document.getElementById("buildables-grid");
   const canisterContainer = document.getElementById("dragon-control-grid");
-
   ktContainer.innerHTML = "";
   canisterContainer.innerHTML = "";
+  let buildableCount = 0;
+  let buildableTotal = 0;
+  let upgradeCount = 0;
+  let upgradeTotal = 0;
 
-  const ktGroup = BUILDABLE_GROUPS.find((g) => g.id === "kt4");
-  const caniGroup = BUILDABLE_GROUPS.find((g) => g.id === "spore-canister");
-
-  if (ktGroup) {
+  BUILDABLE_GROUPS.forEach((group) => {
+    const targetContainer = group.panel === "dragon-control" ? canisterContainer : ktContainer;
+    const done = group.parts.filter((p) => state.buildables[p.id]).length;
     const wrap = document.createElement("div");
     wrap.className = "build-group";
-    const done = ktGroup.parts.filter((p) => state.buildables[p.id]).length;
     wrap.innerHTML = `
       <div class="build-group__header">
         <div>
-          <h3 class="build-group__title">${ktGroup.title}</h3>
-          <p class="build-group__progress">${done} / ${ktGroup.parts.length} collected</p>
+          <h3 class="build-group__title">${group.title}</h3>
+          <p class="build-group__progress">${done} / ${group.parts.length} collected</p>
         </div>
       </div>
       <div class="build-group__parts"></div>
     `;
     const partsEl = wrap.querySelector(".build-group__parts");
-    ktGroup.parts.forEach((part) => {
+    group.parts.forEach((part) => {
       partsEl.appendChild(makeBoardCard(part, "buildable", state.buildables[part.id]));
     });
-    ktContainer.appendChild(wrap);
-  }
+    targetContainer.appendChild(wrap);
 
-  if (caniGroup) {
-    const wrap = document.createElement("div");
-    wrap.className = "build-group";
-    const done = caniGroup.parts.filter((p) => state.buildables[p.id]).length;
-    wrap.innerHTML = `
-      <div class="build-group__header">
-        <div>
-          <h3 class="build-group__title">${caniGroup.title}</h3>
-          <p class="build-group__progress">${done} / ${caniGroup.parts.length} collected</p>
-        </div>
-      </div>
-      <div class="build-group__parts"></div>
-    `;
-    const partsEl = wrap.querySelector(".build-group__parts");
-    caniGroup.parts.forEach((part) => {
-      partsEl.appendChild(makeBoardCard(part, "buildable", state.buildables[part.id]));
-    });
-    canisterContainer.appendChild(wrap);
-  }
+    if (group.panel === "dragon-control") {
+      upgradeTotal += group.parts.length;
+      upgradeCount += done;
+    } else {
+      buildableTotal += group.parts.length;
+      buildableCount += done;
+    }
+  });
 
-  const buildableCount = BUILDABLE_GROUPS.flatMap((g) => g.parts).filter((p) => state.buildables[p.id]).length;
-  const buildableTotal = BUILDABLE_GROUPS.flatMap((g) => g.parts).length;
   document.getElementById("buildable-count").textContent = `${buildableCount} / ${buildableTotal} marked`;
-  document.getElementById("dragon-control-count").textContent = "";
+  document.getElementById("dragon-control-count").textContent = `${upgradeCount} / ${upgradeTotal} marked`;
   document.querySelector('[data-inventory-toggle="buildables"]').closest('.inventory-panel')
-    .classList.toggle('is-complete', BUILDABLE_GROUPS[0].parts.every(p => state.buildables[p.id]));
-  if (BUILDABLE_GROUPS[1]) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
-    .classList.toggle('is-complete', BUILDABLE_GROUPS[1].parts.every(p => state.buildables[p.id]));
+    .classList.toggle('is-complete', BUILDABLE_GROUPS.filter((g) => g.panel !== "dragon-control").every((g) => g.parts.every((p) => state.buildables[p.id])));
+  document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', BUILDABLE_GROUPS.filter((g) => g.panel === "dragon-control").every((g) => g.parts.every((p) => state.buildables[p.id])));
 
   bindBoardToggles("buildable", (id, checked, draft) => { draft.buildables[id] = checked; });
 }
