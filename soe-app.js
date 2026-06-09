@@ -35,6 +35,7 @@ const STEP_DATA = [
     subtasks: [
       { title: "Summoning Key", detail: "Use Beast Mode in spawn, smash the crate on the truck, then collect the Summoning Key in human form before leaving spawn." },
       { title: "Fumigator Spawns", detail: "Check spawn and Junction first: box in front of spawn by the Beast fountain, chair by the fountain, stand behind the GobbleGum machine, broken bottle side near Stamin-Up, or the crate near the Footlight entrance." },
+      { title: "Start Pod Cycling", detail: "Open pods whenever you can once you have a fumigator. The Apothicon Servant is optional, but it makes flags and the Shadowman step much safer." },
       { title: "Canal Shield Part", detail: "After opening the Canal perk side, check all three Canal shield spots: leaning against the wall on your right as you enter the Four Lions room, on the outside bridge rail toward the perk room, or directly across from the perk machine by the 1250 door." },
       { title: "Footlight Shield Part", detail: "After opening the Footlight perk side, check next to the perk machine, leaning against the fence left of the perk, or on the chair in the stairs room right of the Mystery Box path." },
       { title: "Waterfront Shield Part", detail: "After opening the Waterfront perk side, check at the top of the powered stairs, inside the perk room under the window across from the Beast fountain, or in the room with the ritual-item crate on the floor left of the outside door." },
@@ -63,9 +64,36 @@ const STEP_DATA = [
       { title: "Open Ritual Doors And Grab Items", detail: "Use Beast in each area to unlock the ritual room and knock down its item: Lawyer's Pen for Easy Street, Police Badge for Canals, Hair Piece for Footlight, and Championship Belt for Waterfront." },
       { title: "Run Every Ritual", detail: "Complete the four rituals and take the Gateworm from each altar. Later rituals can spawn Margwas, so do not linger in cramped rooms." },
       { title: "Open The Sacred Place", detail: "Use the Rift entrance and head into the underground Sacred Place behind the subway wall." },
-      { title: "Unlock Pack-a-Punch", detail: "Place the four Gateworms on the pedestals, wall-run across the gap, then place the Summoning Key on the altar to finish the final ritual and open Pack-a-Punch." }
+      { title: "Unlock Pack-a-Punch", detail: "Place the four Gateworms on the pedestals, wall-run across the gap, then place the Summoning Key on the altar to finish the final ritual and open Pack-a-Punch." },
+      { title: "Keep Pod Pressure", detail: "Keep opening pods during normal rounds if you still want the Apothicon Servant before flags." }
     ],
     hints: []
+  },
+  {
+    id: "apothicon-servant",
+    title: "Build Servant",
+    summary: "Keep opening pods until you pull the Apothicon Servant before the harder defense steps.",
+    category: "Setup",
+    risk: "Medium",
+    tags: ["Recommended", "Wonder Weapon"],
+    prerequisites: ["rituals-pap"],
+    details: "The Apothicon Servant is not hard-required by the quest, but this guide assumes you want it before flags and the Shadowman trap because it makes both steps much safer.",
+    checkpoints: [
+      "Pods opened through normal round flow.",
+      "Margwa Heart collected.",
+      "Margwa Tentacle collected.",
+      "Xenomatter collected.",
+      "Apothicon Servant built."
+    ],
+    subtasks: [
+      { title: "Margwa Heart", detail: "Kill a Margwa and pick up the heart it drops." },
+      { title: "Margwa Tentacle", detail: "Keep opening pods until a high-tier pod gives you the Margwa Tentacle." },
+      { title: "Xenomatter", detail: "After round 12, kill Parasites or Insanity Elementals for a chance at Xenomatter." },
+      { title: "Build It", detail: "Take all three parts to a workbench and build the Apothicon Servant before flags if possible." }
+    ],
+    hints: [
+      "Do not hold rounds just for pods. Fold this into your normal setup so it does not slow the run down."
+    ]
   },
   {
     id: "apothicon-sword",
@@ -74,7 +102,7 @@ const STEP_DATA = [
     category: "Quest",
     risk: "High",
     tags: ["Required", "Sword"],
-    prerequisites: ["rituals-pap"],
+    prerequisites: ["apothicon-servant"],
     details: "Every player needs their own sword. Read the three red tram symbols, zap the matching wall in the Rift, take an egg, and fill it at all four statue spots.",
     checkpoints: [
       "Three train symbols found.",
@@ -253,17 +281,23 @@ const BUILDABLE_GROUPS = [
 ];
 
 const ARTIFACTS = [
-  { id: "artifact-fumigator", code: "A1", name: "Fumigator", meta: "Needed for pods and servant setup", hint: "", shape: "core" },
+  { id: "artifact-fumigator", code: "A1", name: "Fumigator", meta: "For pods", hint: "", shape: "core" },
   { id: "artifact-key", code: "A2", name: "Summoning Key", meta: "Spawn pickup and ritual anchor", hint: "", shape: "core" },
-  { id: "artifact-egg", code: "A3", name: "Apothicon Egg", meta: "Charged through four statue soul boxes", hint: "", shape: "egg" },
-  { id: "artifact-sword", code: "A4", name: "Upgraded Swords", meta: "All players need Reborn Keeper Swords before flags", hint: "", shape: "core" },
-  { id: "artifact-flag", code: "A5", name: "Flag", meta: "Starts after the book in Nero's room and resets to the Rift", hint: "", shape: "cylinder" }
+  { id: "artifact-egg", code: "A3", name: "Apothicon Egg", meta: "Charge at four statues", hint: "", shape: "egg" },
+  { id: "artifact-sword", code: "A4", name: "Upgraded Swords", meta: "Needed before flags", hint: "", shape: "core" },
+  { id: "artifact-flag", code: "A5", name: "Flag", meta: "Used for all four routes", hint: "", shape: "cylinder" }
+];
+
+const SERVANT_PARTS = [
+  { id: "servant-heart", code: "SV1", name: "Margwa Heart", meta: "Drops from a Margwa", hint: "", shape: "core" },
+  { id: "servant-tentacle", code: "SV2", name: "Margwa Tentacle", meta: "From a high-tier pod", hint: "", shape: "core" },
+  { id: "servant-xenomatter", code: "SV3", name: "Xenomatter", meta: "From Parasites or Insanity Elementals after round 12", hint: "", shape: "egg" }
 ];
 
 const TROPHIES = [
-  { id: "cop-canal", code: "C1", name: "Canal Fuse", meta: "Pick up the Canals district fuse before starting flags", hint: "Needed for Civil Protector support.", shape: "trophy" },
-  { id: "cop-footlight", code: "C2", name: "Footlight Fuse", meta: "Pick up the Footlight district fuse before starting flags", hint: "Needed for Civil Protector support.", shape: "trophy" },
-  { id: "cop-waterfront", code: "C3", name: "Waterfront Fuse", meta: "Pick up the Waterfront district fuse before starting flags", hint: "Needed for Civil Protector support.", shape: "trophy" }
+  { id: "cop-canal", code: "C1", name: "Canal Fuse", meta: "Grab before flags", hint: "", shape: "trophy" },
+  { id: "cop-footlight", code: "C2", name: "Footlight Fuse", meta: "Grab before flags", hint: "", shape: "trophy" },
+  { id: "cop-waterfront", code: "C3", name: "Waterfront Fuse", meta: "Grab before flags", hint: "", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -273,11 +307,13 @@ const DEFAULT_STATE = {
   inventoryExpanded: {
     buildables: false,
     "dragon-control": false,
+    servant: false,
     trophies: false,
     artifacts: false
   },
   buildables: Object.fromEntries(BUILDABLE_GROUPS.flatMap((group) => group.parts.map((part) => [part.id, false]))),
   artifacts: Object.fromEntries(ARTIFACTS.map((artifact) => [artifact.id, false])),
+  servantParts: Object.fromEntries(SERVANT_PARTS.map((part) => [part.id, false])),
   trophies: Object.fromEntries(TROPHIES.map((trophy) => [trophy.id, false]))
 };
 
@@ -314,6 +350,9 @@ function mergeState(saved) {
   for (const artifact of ARTIFACTS) {
     next.artifacts[artifact.id] = Boolean(saved.artifacts && saved.artifacts[artifact.id]);
   }
+  for (const part of SERVANT_PARTS) {
+    next.servantParts[part.id] = Boolean(saved.servantParts && saved.servantParts[part.id]);
+  }
   for (const trophy of TROPHIES) {
     next.trophies[trophy.id] = Boolean(saved.trophies && saved.trophies[trophy.id]);
   }
@@ -342,6 +381,7 @@ function render() {
   renderActiveStep();
   renderActiveUtility();
   renderBuildables();
+  renderServant();
   renderArtifacts();
   renderTrophies();
   syncNotes();
@@ -485,23 +525,9 @@ function renderBuildables() {
 
   [{ group: shieldGroup, el: buildContainer }, { group: gwGroup, el: glyphContainer }].forEach(({ group, el }) => {
     if (!group) return;
-    const wrap = document.createElement("div");
-    wrap.className = "build-group";
-    const done = group.parts.filter((p) => state.buildables[p.id]).length;
-    wrap.innerHTML = `
-      <div class="build-group__header">
-        <div>
-          <h3 class="build-group__title">${group.title}</h3>
-          <p class="build-group__progress">${done} / ${group.parts.length} ${group.id === "gateworm" ? "collected" : "built"}</p>
-        </div>
-      </div>
-      <div class="build-group__parts"></div>
-    `;
-    const partsEl = wrap.querySelector(".build-group__parts");
     group.parts.forEach((part) => {
-      partsEl.appendChild(makeBoardCard(part, "buildable", state.buildables[part.id]));
+      el.appendChild(makeBoardCard(part, "buildable", state.buildables[part.id]));
     });
-    el.appendChild(wrap);
   });
 
   const shieldDone = shieldGroup.parts.filter((p) => state.buildables[p.id]).length;
@@ -513,6 +539,19 @@ function renderBuildables() {
   if (gwGroup) document.querySelector('[data-inventory-toggle="dragon-control"]').closest('.inventory-panel')
     .classList.toggle('is-complete', gwGroup.parts.every(p => state.buildables[p.id]));
   bindBoardToggles("buildable", (id, checked, draft) => { draft.buildables[id] = checked; });
+}
+
+function renderServant() {
+  const container = document.getElementById("servant-grid");
+  container.innerHTML = "";
+  SERVANT_PARTS.forEach((part) => {
+    container.appendChild(makeBoardCard(part, "servantpart", state.servantParts[part.id]));
+  });
+  const count = SERVANT_PARTS.filter((part) => state.servantParts[part.id]).length;
+  document.getElementById("servant-count").textContent = `${count} / ${SERVANT_PARTS.length} secured`;
+  document.querySelector('[data-inventory-toggle="servant"]').closest('.inventory-panel')
+    .classList.toggle('is-complete', SERVANT_PARTS.every((part) => state.servantParts[part.id]));
+  bindBoardToggles("servantpart", (id, checked, draft) => { draft.servantParts[id] = checked; });
 }
 
 function renderArtifacts() {
@@ -573,6 +612,7 @@ function bindBoardToggles(kind, updater) {
         let checked = false;
         if (kind === "buildable") checked = !draft.buildables[id];
         else if (kind === "artifact") checked = !draft.artifacts[id];
+        else if (kind === "servantpart") checked = !draft.servantParts[id];
         else checked = !draft.trophies[id];
         updater(id, checked, draft);
       });
