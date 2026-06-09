@@ -23,7 +23,7 @@
 
 body {
   margin: 0;
-  height: 100vh;
+  height: 100dvh;
   font-family: "IBM Plex Sans", sans-serif;
   color: var(--text);
   background:
@@ -77,9 +77,9 @@ body::after {
 
 .app-shell {
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
   margin: 0;
   padding: 8px 10px 8px 8px;
   overflow: hidden;
@@ -118,6 +118,7 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 14px;
   padding: 10px 14px;
   background:
@@ -130,7 +131,7 @@ body::after {
   align-items: center;
   gap: 10px;
   min-width: 0;
-  flex: 0 0 auto;
+  flex: 1 1 320px;
 }
 
 .hero__crest {
@@ -223,7 +224,7 @@ body::after {
   gap: 5px;
   min-width: 0;
   align-items: stretch;
-  flex: 1 1 auto;
+  flex: 999 1 620px;
 }
 
 .stat-card {
@@ -286,27 +287,28 @@ label,
 
 .loadout-row {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
   gap: 4px;
 }
 
 .loadout-row--weapons {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
 }
 
 .loadout-chip {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   padding: 3px 6px;
   border: 1px solid rgba(191, 150, 109, 0.2);
   background: rgba(255, 255, 255, 0.05);
   color: var(--text);
   font-size: 0.64rem;
   font-weight: 600;
-  line-height: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 
 .loadout-chip--wonder {
@@ -517,7 +519,7 @@ label,
 
 .timeline-button {
   width: 100%;
-  min-height: 118px;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -605,10 +607,7 @@ label,
   margin: 0;
   font-size: 0.84rem;
   line-height: 1.38;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  overflow-wrap: anywhere;
 }
 
 .tool-copy {
@@ -1107,6 +1106,10 @@ label,
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
 }
 
+.hud-panel__plate > span:first-child {
+  min-width: 0;
+}
+
 .hud-panel__plate .tool-meta,
 .hud-panel__plate .ghost-button {
   color: inherit;
@@ -1124,7 +1127,7 @@ label,
   margin: 0 6px 8px 0;
   width: calc(100% - 18px);
   box-shadow: none;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .inventory-panel {
@@ -1136,6 +1139,7 @@ label,
   align-items: center;
   gap: 6px;
   flex: 0 0 auto;
+  align-self: flex-start;
 }
 
 .hud-panel__chevron {
@@ -1271,6 +1275,7 @@ label,
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  overflow-wrap: anywhere;
 }
 
 .board-card__hint {
@@ -1403,7 +1408,7 @@ textarea {
   background: rgba(12, 8, 7, 0.92);
   color: var(--text);
   font: inherit;
-  resize: vertical;
+  resize: none;
   font-size: 0.92rem;
 }
 
@@ -1477,44 +1482,54 @@ textarea {
   gap: 8px;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1380px) {
   .workspace {
-    grid-template-columns: 1fr;
-    min-height: 0;
+    grid-template-columns: minmax(0, 1fr) 320px;
   }
 
   .layout {
+    grid-template-columns: minmax(240px, 292px) minmax(0, 1fr);
+  }
+
+  .step-detail__title {
+    font-size: clamp(1.6rem, 2.3vw, 2.4rem);
+  }
+}
+
+@media (max-width: 1180px) {
+  .workspace {
     grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) minmax(240px, 0.7fr);
     min-height: 0;
   }
 
-  .layout__rail {
-    min-height: 0;
-    height: auto;
+  .hud-dock--fixed {
+    height: 100%;
+    max-height: 100%;
   }
 
   .hud-grid {
     grid-template-columns: 1fr;
   }
+}
 
-  .hud-dock--fixed {
-    position: static;
-    height: auto;
-    max-height: none;
-    overflow: visible;
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(230px, 0.82fr) minmax(0, 1.18fr);
+    min-height: 0;
   }
 
-  .panel--flow,
-  .panel--focus {
-    height: auto;
-    max-height: none;
+  .layout__rail {
+    min-height: 0;
+    height: 100%;
   }
 }
 
 @media (max-width: 860px) {
   .app-shell {
-    width: min(100% - 18px, 100%);
-    padding-top: 10px;
+    width: 100%;
+    padding: 8px;
   }
 
   .hero {
@@ -1529,7 +1544,7 @@ textarea {
 
   .hero__stats {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero__headline {
@@ -1543,7 +1558,7 @@ textarea {
   }
 
   .loadout-row {
-    grid-template-columns: repeat(2, minmax(0, max-content));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero__reset {
@@ -1556,9 +1571,13 @@ textarea {
   .step-detail__footer,
   .utility-card__header,
   .build-group__header,
-  .hud-dock__header,
-  .hud-panel__plate {
+  .hud-dock__header {
     flex-direction: column;
+  }
+
+  .hud-panel__plate {
+    flex-direction: row;
+    align-items: flex-start;
   }
 
   .board-card {
@@ -1582,5 +1601,52 @@ textarea {
   .ghost-button,
   .hint-toggle {
     width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .workspace {
+    grid-template-rows: minmax(0, 1fr) minmax(220px, 0.85fr);
+  }
+
+  .inventory-panel .hud-panel__plate {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .hud-panel__plate {
+    padding: 7px 10px;
+  }
+}
+
+@media (max-height: 860px) {
+  .hero {
+    gap: 10px;
+    padding: 8px 12px;
+  }
+
+  .stat-card {
+    padding: 4px 6px;
+  }
+
+  .workspace {
+    padding-top: 10px;
+  }
+
+  .panel,
+  .hud-dock {
+    padding: 12px;
+  }
+
+  .timeline-button {
+    padding: 9px 10px;
+  }
+
+  .step-detail__section {
+    padding: 12px;
   }
 }
