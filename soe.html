@@ -9,127 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* ── SoE gold/noir theme overrides ─────────────────────────────── */
-    :root {
-      --accent:        #c8860a;
-      --accent-bright: #f5b732;
-      --warning:       #ffe082;
-      --success:       #a06208;
-      --danger:        #b71c1c;
-      --bg:            #0f0900;
-      --bg-soft:       #1a1000;
-      --panel:         rgba(18, 11, 0, 0.93);
-      --panel-strong:  rgba(24, 14, 0, 0.97);
-      --panel-weak:    rgba(42, 24, 0, 0.72);
-      --border:        rgba(200, 150, 20, 0.22);
-      --border-strong: rgba(200, 150, 20, 0.5);
-      --text:          #f5e8c8;
-      --muted:         #b89860;
-      --steel:         #7a6230;
-    }
-
-    body {
-      background:
-        radial-gradient(circle at top left,  rgba(200, 134, 10, 0.18), transparent 28%),
-        radial-gradient(circle at 85% 22%,   rgba(245, 183, 50, 0.07), transparent 22%),
-        linear-gradient(180deg, #180e00 0%, #0f0900 55%, #070500 100%);
-    }
-
-    .hero {
-      background:
-        linear-gradient(180deg, rgba(50, 28, 0, 0.95), rgba(22, 12, 0, 0.97)),
-        linear-gradient(90deg, transparent, rgba(200, 134, 10, 0.1));
-    }
-
-    .step-detail__hero {
-      background:
-        linear-gradient(180deg, rgba(64, 34, 0, 0.66), rgba(24, 12, 0, 0.45)),
-        linear-gradient(120deg, rgba(200, 134, 10, 0.18), transparent 44%);
-    }
-
-    .timeline-button.is-active {
-      background: linear-gradient(135deg, rgba(200, 134, 10, 0.22), rgba(245, 183, 50, 0.08));
-      border-color: var(--border-strong);
-    }
-
-    .hud-panel__plate {
-      background: linear-gradient(180deg, rgba(255, 220, 100, 0.92), rgba(200, 130, 20, 0.92));
-      color: #1a0a00;
-      border-color: rgba(200, 150, 20, 0.32);
-    }
-
-    .action-button--success {
-      background: linear-gradient(135deg, rgba(200, 134, 10, 0.5), rgba(245, 183, 50, 0.2));
-    }
-
-    .action-button--primary {
-      background: linear-gradient(135deg, rgba(200, 134, 10, 0.38), rgba(245, 183, 50, 0.15));
-    }
-
-    .progress-bar__fill {
-      background: linear-gradient(90deg, var(--success), var(--warning));
-    }
-
-    /* ── Art deco line decorations ──────────────────────────────────── */
-    .deco-layer {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    /* Vertical art deco stripes */
-    .deco-stripe {
-      position: absolute;
-      background: rgba(200, 150, 20, 0.042);
-    }
-
-    .deco-stripe--a { width: 2px; height: 100%; top: 0; left: 14px; }
-    .deco-stripe--b { width: 1px; height: 100%; top: 0; left: 22px; opacity: 0.6; }
-    .deco-stripe--c { width: 2px; height: 100%; top: 0; right: 14px; }
-    .deco-stripe--d { width: 1px; height: 100%; top: 0; right: 22px; opacity: 0.6; }
-
-    /* Art deco diamonds */
-    .deco-diamond {
-      position: absolute;
-      background: rgba(245, 183, 50, 0.07);
-      clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-    }
-
-    .deco-diamond--a { width: 14px; height: 14px; top: 12%; left: 10px; }
-    .deco-diamond--b { width: 8px;  height: 8px;  top: 30%; left: 16px; opacity: 0.7; }
-    .deco-diamond--c { width: 12px; height: 12px; top: 55%; left: 10px; }
-    .deco-diamond--d { width: 8px;  height: 8px;  top: 75%; left: 16px; opacity: 0.7; }
-    .deco-diamond--e { width: 14px; height: 14px; top: 12%; right: 10px; }
-    .deco-diamond--f { width: 8px;  height: 8px;  top: 30%; right: 16px; opacity: 0.7; }
-    .deco-diamond--g { width: 12px; height: 12px; top: 55%; right: 10px; }
-    .deco-diamond--h { width: 8px;  height: 8px;  top: 75%; right: 16px; opacity: 0.7; }
-
-    .app-shell {
-      position: relative;
-      z-index: 1;
-    }
-  </style>
 </head>
 <body>
-  <!-- Art deco layer sits behind everything -->
-  <div class="deco-layer" aria-hidden="true">
-    <div class="deco-stripe deco-stripe--a"></div>
-    <div class="deco-stripe deco-stripe--b"></div>
-    <div class="deco-stripe deco-stripe--c"></div>
-    <div class="deco-stripe deco-stripe--d"></div>
-    <div class="deco-diamond deco-diamond--a"></div>
-    <div class="deco-diamond deco-diamond--b"></div>
-    <div class="deco-diamond deco-diamond--c"></div>
-    <div class="deco-diamond deco-diamond--d"></div>
-    <div class="deco-diamond deco-diamond--e"></div>
-    <div class="deco-diamond deco-diamond--f"></div>
-    <div class="deco-diamond deco-diamond--g"></div>
-    <div class="deco-diamond deco-diamond--h"></div>
-  </div>
-
   <div class="app-shell">
     <header class="hero">
       <div class="hero__main">
@@ -151,7 +32,7 @@
         <section class="stat-card">
           <p class="stat-card__label">Theater</p>
           <p class="stat-card__value">Morg City</p>
-          <p class="stat-card__meta">SoE main quest</p>
+          <p class="stat-card__meta">SoE main quest • 4 players for ending</p>
         </section>
         <section class="stat-card stat-card--progress">
           <p class="stat-card__label">Quest Progress</p>

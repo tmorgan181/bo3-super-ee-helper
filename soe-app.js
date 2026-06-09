@@ -18,12 +18,12 @@ const RECOMMENDED_WEAPONS = [
 const STEP_DATA = [
   {
     id: "spawn-setup",
-    title: "Summoning Key, Fumigator, And Shield Setup",
-    summary: "Grab the Summoning Key, pick up a fumigator, and check all three Rocket Shield district spawns as you open the map.",
+    title: "Open And Prep",
+    summary: "Grab the Summoning Key, a fumigator, and all three shield checks while opening the map.",
     category: "Setup",
     risk: "Medium",
     tags: ["Required", "Early game"],
-    details: "Use the Gorod-style approach here: tie the item hunt to your opening route so you collect the Summoning Key, lock down a fumigator, and clear each district's shield checks while the map is still compact.",
+    details: "Open toward Junction early, grab a fumigator for pods, and check each district's shield part while the doors are still fresh in your head. This front-loads the two biggest quality-of-life items for the rest of the run.",
     checkpoints: [
       "Summoning Key collected.",
       "Core route to the first districts opened.",
@@ -33,24 +33,24 @@ const STEP_DATA = [
       "Waterfront shield part checked."
     ],
     subtasks: [
-      { title: "Summoning Key", detail: "Use Beast Mode in spawn, smash the crate on the truck, then collect the Summoning Key in human form." },
-      { title: "Fumigator Spawns", detail: "Early fumigator spots are all around spawn and Junction: on the box in front of spawn by the Beast fountain, on the chair next to the Beast fountain, on the stand behind the GobbleGum machine near the fruit, on the far-left side near the broken Stamin-Up bottle, or on a crate near the Footlight entrance." },
+      { title: "Summoning Key", detail: "Use Beast Mode in spawn, smash the crate on the truck, then collect the Summoning Key in human form before leaving spawn." },
+      { title: "Fumigator Spawns", detail: "Check spawn and Junction first: box in front of spawn by the Beast fountain, chair by the fountain, stand behind the GobbleGum machine, broken bottle side near Stamin-Up, or the crate near the Footlight entrance." },
       { title: "Canal Shield Part", detail: "After opening the Canal perk side, check all three Canal shield spots: leaning against the wall on your right as you enter the Four Lions room, on the outside bridge rail toward the perk room, or directly across from the perk machine by the 1250 door." },
       { title: "Footlight Shield Part", detail: "After opening the Footlight perk side, check next to the perk machine, leaning against the fence left of the perk, or on the chair in the stairs room right of the Mystery Box path." },
       { title: "Waterfront Shield Part", detail: "After opening the Waterfront perk side, check at the top of the powered stairs, inside the perk room under the window across from the Beast fountain, or in the room with the ritual-item crate on the floor left of the outside door." },
-      { title: "Build Shield", detail: "Once all three parts are found, build the Rocket Shield at the workbench in Waterfront behind the gym, in Canals in front of the Ruby Rabbit, or in Footlight below the train station." }
+      { title: "Build Shield", detail: "Once all three parts are found, build the Rocket Shield at Waterfront behind the gym, Canals in front of the Ruby Rabbit, or Footlight below the train station." }
     ],
     hints: []
   },
   {
     id: "rituals-pap",
-    title: "All Four Rituals And Pack-a-Punch",
-    summary: "Finish Easy Street, Canal, Footlight, and Waterfront, then use the four gateworms in the Rift.",
+    title: "Rituals And PaP",
+    summary: "Complete all four rituals and unlock Pack-a-Punch in the Rift.",
     category: "Quest",
     risk: "High",
     tags: ["Required", "Rituals"],
     prerequisites: ["spawn-setup"],
-    details: "Each ritual uses the Summoning Key plus its district item. Survive the ritual, collect the Gateworm, then place all four Gateworms in the Rift to unlock Pack-a-Punch.",
+    details: "Every ritual needs the Summoning Key, the district item knocked down in Beast Mode, and the ritual door opened in Beast. After all four Gateworms are collected, use them in the Sacred Place to unlock Pack-a-Punch.",
     checkpoints: [
       "District ritual items collected.",
       "Easy Street ritual complete.",
@@ -60,23 +60,22 @@ const STEP_DATA = [
       "Pack-a-Punch unlocked."
     ],
     subtasks: [
-      { title: "Collect Ritual Items", detail: "Pick up the Lawyer's Pen, Police Badge, Hair Piece, and Championship Belt after knocking their crates down in Beast Mode." },
-      { title: "Run Every Ritual", detail: "Easy Street uses the Lawyer's Pen, Canal uses the Police Badge, Footlight uses the Hair Piece, and Waterfront uses the Championship Belt." },
-      { title: "Collect Gateworms", detail: "Take the Gateworm from each altar after the ritual finishes. Expect Margwas after later ritual completions." },
-      { title: "Open The Rift", detail: "Use a Beast doorway into the underground Rift, then wait for the back wall to open in the subway area." },
-      { title: "Unlock PaP", detail: "Place the four Gateworms on the pedestals, wall-run across, then place the Summoning Key on the altar to finish Pack-a-Punch access." }
+      { title: "Open Ritual Doors And Grab Items", detail: "Use Beast in each area to unlock the ritual room and knock down its item: Lawyer's Pen for Easy Street, Police Badge for Canals, Hair Piece for Footlight, and Championship Belt for Waterfront." },
+      { title: "Run Every Ritual", detail: "Complete the four rituals and take the Gateworm from each altar. Later rituals can spawn Margwas, so do not linger in cramped rooms." },
+      { title: "Open The Sacred Place", detail: "Use the Rift entrance and head into the underground Sacred Place behind the subway wall." },
+      { title: "Unlock Pack-a-Punch", detail: "Place the four Gateworms on the pedestals, wall-run across the gap, then place the Summoning Key on the altar to finish the final ritual and open Pack-a-Punch." }
     ],
     hints: []
   },
   {
     id: "apothicon-sword",
     title: "Apothicon Sword",
-    summary: "Ride the trains for symbols, reveal the sword room, then charge the egg at four hidden statues.",
+    summary: "Read the train symbols, open the wall, and charge the egg at all four statues.",
     category: "Quest",
     risk: "High",
     tags: ["Required", "Sword"],
     prerequisites: ["rituals-pap"],
-    details: "Every player must complete the sword sequence. Learn the three red train symbols, zap the matching wall in the subway, claim the egg, and charge it at the four Cthulhu statues.",
+    details: "Every player needs their own sword. Read the three red tram symbols, zap the matching wall in the Rift, take an egg, and fill it at all four statue spots.",
     checkpoints: [
       "Three train symbols found.",
       "Sword wall opened.",
@@ -84,10 +83,10 @@ const STEP_DATA = [
       "Base sword claimed."
     ],
     subtasks: [
-      { title: "Read The Train Windows", detail: "Ride Waterfront to Footlight for two symbols, then Footlight to Canal for the last one. The symbols change every game." },
-      { title: "Reveal The Sword Room", detail: "In Beast Mode inside the subway, zap the three matching red symbols on the wall under the stairs." },
-      { title: "Charge The Egg", detail: "Place the egg on the four hidden statues in Rift, Canal, Footlight, and Waterfront, killing nearby zombies until each charge is complete." },
-      { title: "Claim The Sword", detail: "Return the filled egg to the sword room and take the Apothicon Sword." }
+      { title: "Read The Train Windows", detail: "Best route is Waterfront to Footlight for two symbols, then Footlight to Canals for the third. The symbols randomize every game." },
+      { title: "Reveal The Sword Room", detail: "In Beast Mode in the Rift, zap the three matching symbols on the wall under the stairs near the Mystery Box side." },
+      { title: "Charge The Egg", detail: "Place the egg at all four statue crates: the Rift, behind the Ruby Rabbit stairs in Canals, under the perk alley in Footlight, and in the destroyed building past the perk room in Waterfront. Each statue needs 12 nearby zombie souls." },
+      { title: "Claim The Sword", detail: "After the fourth statue, return the blue egg to the sword room and claim the Apothicon Sword. Every player must finish their own egg, but teammates can charge eggs at the same statue together." }
     ],
     hints: [
       "Fast symbol method: use a 1-9 symbol cheat sheet and translate each train symbol into a number so you only remember three numbers instead of three shapes.",
@@ -97,13 +96,13 @@ const STEP_DATA = [
   },
   {
     id: "upgraded-sword",
-    title: "Upgraded Sword",
-    summary: "Every player must upgrade their sword through their character altar and four Margwa trials.",
+    title: "Upgrade Swords",
+    summary: "Take the Arch-Ovum and clear the four Margwa circles for the Reborn Keeper Sword.",
     category: "Quest",
     risk: "Very High",
     tags: ["Required", "Execution"],
     prerequisites: ["apothicon-sword"],
-    details: "Return to the ritual room tied to your character, accept the Arch-Ovum from the ghost Keeper, and complete one red-circle sword ritual per round until all four are done.",
+    details: "Each player upgrades at their own ritual room, then completes all four red-circle Margwa trials. This is required before the flag step.",
     checkpoints: [
       "Arch-Ovum taken.",
       "Four sword rituals completed.",
@@ -112,21 +111,22 @@ const STEP_DATA = [
     ],
     subtasks: [
       { title: "Match Your Character", detail: "Nero upgrades at Easy Street, Jessica at Footlight, Jack Vincent at Canal, and Floyd at Waterfront." },
-      { title: "Take The Arch-Ovum", detail: "Visit your character ritual room and interact with the ghost Keeper on the altar." },
-      { title: "Run The Red Circles", detail: "Place the Arch-Ovum at the four red ritual circles around the map, survive the encounter, and kill the spawned Margwa. Only one circle can be finished each round." },
-      { title: "Claim The Sword Upgrade", detail: "Return the Arch-Ovum to the Keeper in your ritual room to receive the upgraded sword." }
+      { title: "Take The Arch-Ovum", detail: "Visit your character ritual room and interact with the Keeper spirit above the altar to receive the Arch-Ovum." },
+      { title: "Run The Red Circles", detail: "Complete the four red circles at Easy Street, in front of the Black Lace Burlesque in Footlight, by the Ruby Rabbit workbench in Canals, and in front of The Anvil in Waterfront. Kill the spawned Margwas to finish each circle." },
+      { title: "Know The Round Limit", detail: "Each player can only finish one circle per round, but teammates can do the same circle in the same round if no other Arch-Ovum Margwas are still alive." },
+      { title: "Claim The Sword Upgrade", detail: "Return the finished Arch-Ovum to your ritual room to receive the Reborn Keeper Sword." }
     ],
     hints: []
   },
   {
     id: "flag-step",
-    title: "Flag Escort Step",
-    summary: "Start the book in Nero's room and escort the flag through all four ritual routes.",
+    title: "Flag Step",
+    summary: "Start the book, then complete each district's two flag plants and altar finish.",
     category: "Quest",
     risk: "Very High",
     tags: ["Required", "Defense"],
     prerequisites: ["upgraded-sword"],
-    details: "Activate the floating book in Nero's ritual room. The flag appears in the subway, and each area has two street placements plus the ritual altar defense at the end.",
+    details: "After the book is activated in Nero's ritual room, the flag drops by Widow's Wine and resets to the Rift after each success. For each character route, you defend two purple street plants, then carry it to that ritual altar to turn the spirit into a Keeper.",
     checkpoints: [
       "Book activated.",
       "Flag taken from subway.",
@@ -134,14 +134,15 @@ const STEP_DATA = [
       "Every ritual altar route finished."
     ],
     subtasks: [
-      { title: "Start The Book", detail: "Interact with the open book near the bookshelf in Nero's room above Easy Street." },
-      { title: "Carry The Flag", detail: "Pick the flag up in the subway and place it at the sparking locations that lead toward each ritual room." },
-      { title: "Defend Every Stop", detail: "Protect the flag from Meatballs while Parasites harass the team. When the flag glows red, grab the Max Ammo and move deeper into the route." },
-      { title: "Finish All Four Routes", detail: "Each district path ends at its ritual altar. Use the Civil Protector and Apothicon Servant if you have them." }
+      { title: "Start The Book", detail: "Interact with the open book next to the shelves in Nero's ritual room above Easy Street. The flag drops near Widow's Wine and can then be taken from the Rift." },
+      { title: "Do One Full District Route", detail: "Carry the flag from the Rift to the two purple street plants leading toward a ritual room, defend both, then bring it to that ritual altar. Example: Junction route goes near Stamin-Up by the Footlight entrance, then to the Easy Street entrance, then back to Nero's altar." },
+      { title: "Repeat For All Four Characters", detail: "Each successful route ends at a ritual altar and turns that spirit into a Keeper. After success, expect a Margwa and normal rounds to resume before you start the next route." },
+      { title: "Retry If Needed", detail: "If the flag breaks or the carrier goes down, the flag returns underground and can be picked up again immediately, but only one successful district route can be completed per round." }
     ],
     hints: [
-      "The Rocket Shield is real on Shadows and is highly recommended here. Build it before the flag step if possible.",
+      "Build the Rocket Shield and, if possible, the Civil Protector before starting flags.",
       "Best support setup: one player with Apothicon Servant protects the flag, everyone else watches Meatballs and instantly shoots the Shadowman when he appears.",
+      "Each successful street plant drops a Max Ammo, so commit to finishing both plants in the same district route.",
       "Pre-position the team in the district before the carrier plants the flag. That cuts the most dangerous transition time out of the step.",
       "Fear in Headlights makes the hardest flag plants dramatically safer if you have it."
     ]
@@ -149,12 +150,12 @@ const STEP_DATA = [
   {
     id: "shadowman-fight",
     title: "Trap The Shadowman",
-    summary: "Begin the Pack-a-Punch fight, break his aura, and capture him over the altar.",
+    summary: "Start the Pack-a-Punch fight and trap him over the altar.",
     category: "Boss",
     risk: "Very High",
     tags: ["Required", "Boss"],
     prerequisites: ["flag-step"],
-    details: "All four players need to interact with the Keepers in Pack-a-Punch to begin the boss encounter. Damage the Shadowman only while he has no circular aura.",
+    details: "All four players must interact with the Keepers in Pack-a-Punch to remove the Shadowman's shield. This is also the furthest point a team below four players can reach.",
     checkpoints: [
       "Keeper pedestals activated.",
       "Shadowman vulnerable windows used.",
@@ -163,25 +164,25 @@ const STEP_DATA = [
     ],
     subtasks: [
       { title: "Start The Encounter", detail: "Go into Pack-a-Punch and interact with the four Keepers near the Gateworm pedestals." },
-      { title: "Watch The Aura", detail: "Ignore him while the circular aura is up. As soon as it drops, all players focus him with automatic fire." },
-      { title: "Force The Capture", detail: "With enough fast damage, the Shadowman moves closer to the altar." },
-      { title: "Trap Him", detail: "When he hovers above the altar, interact immediately to pull him into the Summoning Key." }
+      { title: "Break The Shield", detail: "Once every Keeper is active, the Shadowman's shield drops. If you fail the capture, reactivate the Keepers and try again." },
+      { title: "Force The Capture", detail: "As soon as he is vulnerable, everyone unloads on him with high-DPS weapons to drag him toward the altar." },
+      { title: "Trap Him", detail: "When he hovers directly above the altar, interact immediately to trap him in the Summoning Key." }
     ],
     hints: [
       "Go in with fresh ammo and high-DPS weapons. Fast automatic damage matters more here than general-round comfort.",
-      "If the Shadowman starts charging his purple Summoning Key attack, get the Keepers reactivated immediately so the setup does not fall apart.",
+      "Every failed damage cycle spawns a Margwa, so clean adds quickly before trying again.",
       "As soon as the shield breaks, everyone should commit to dragging him to the altar instead of splitting damage across the room."
     ]
   },
   {
     id: "flaming-basins",
-    title: "Flaming Basins And Beast Setup",
-    summary: "Survive the purple glyph phase, kill Margwas to recharge basins, and ready all four Beast positions.",
+    title: "Infection Phase",
+    summary: "Cleanse with white orbs and kill Margwas to relight Beast pedestals.",
     category: "Final prep",
     risk: "Very High",
     tags: ["Required", "Execution"],
     prerequisites: ["shadowman-fight"],
-    details: "After trapping the Shadowman, the map fills with purple glyphs and repeated red-screen checks. Kill a Margwa to relight a basin, then get all four players into Beast Mode for the ending setup.",
+    details: "After the Shadowman is trapped, the round pauses, purple Margwas keep spawning, Beast pedestals shut off, and the team gets periodic infection pulses that must be cleansed with white orbs.",
     checkpoints: [
       "Purple glyph hazards managed.",
       "White orb timing understood.",
@@ -189,25 +190,25 @@ const STEP_DATA = [
       "All four players positioned in Beast Mode."
     ],
     subtasks: [
-      { title: "Avoid The Glyphs", detail: "Purple glyphs on the ground deal damage. Keep moving and avoid clipping them while rotating the map." },
-      { title: "Hit The White Orbs", detail: "When the screen turns red, touch a floating white orb quickly or you will go down." },
-      { title: "Recharge Beast", detail: "Basins now burn red and cannot be used until at least one Margwa dies." },
-      { title: "Take Final Positions", detail: "Three players should be ready at Canal, Footlight, and Waterfront train stations, while the fourth prepares to work the center of the map." }
+      { title: "Avoid The Purple Hazards", detail: "Keep moving around the map and stay off the purple circles on the ground while clearing Margwas." },
+      { title: "Cleanse Infection", detail: "Whenever the screen gains the magenta infection effect, pass through a glowing white orb in a district before the damage downs you." },
+      { title: "Relight Beast Pedestals", detail: "Every time a purple Margwa dies, another Beast pedestal reactivates. Plan your kills so the next pedestal is near the player who needs it." },
+      { title: "Prep The Finale", detail: "You usually need at least four Margwa kills to get enough pedestal access for the full ending attempt." }
     ],
     hints: [
-      "Always know where your next white orb is before the red screen starts. The free cleanse at the ritual table is the easiest emergency reset.",
+      "Always know where your next white orb is before the infection becomes dangerous.",
       "Kill a Margwa near the part of the map you want to use next so the newly lit Beast basins help your rotation instead of forcing one."
     ]
   },
   {
     id: "gateworm-finale",
-    title: "Giant Gateworm Finale",
-    summary: "Hold the three rails blue, zap the Keepers in the center, and kill the Giant Gateworm for the ending.",
+    title: "Final Tram Step",
+    summary: "With four players, light all three rails and shock the center Keepers after the tram moves the worm.",
     category: "Finale",
     risk: "Very High",
     tags: ["Required", "4 Players"],
     prerequisites: ["flaming-basins"],
-    details: "This last step is the part that truly requires four players. One player calls the train and re-enters Beast Mode, three station players hold the blue rails active, and the center player zaps the Keepers before the train passes.",
+    details: "This is the true four-player-only finish. The reliable first-clear method is two players at station boxes, one player waiting in center Beast, and one player in human form to call the tram and then shock the third station box.",
     checkpoints: [
       "Train called correctly.",
       "All three station rails glowing blue.",
@@ -215,14 +216,14 @@ const STEP_DATA = [
       "Giant Gateworm killed and cutscene triggered."
     ],
     subtasks: [
-      { title: "Call The Train", detail: "A player at one station should return to human form long enough to call the train, then immediately re-enter Beast Mode using a charged basin." },
-      { title: "Hold The Rails", detail: "The three station players must repeatedly zap the train-line box on the top corner of each station to keep every rail blue." },
-      { title: "Zap The Keepers", detail: "Before the train passes through the center, the middle player must zap all three Keepers around the Giant Gateworm." },
-      { title: "Finish The EE", detail: "If the timing is correct, the passing train kills the Giant Gateworm and the final cutscene begins." }
+      { title: "Assign Fixed Roles", detail: "Put one Beast player at Canal station, one at Footlight station, one in center Beast by the Keepers, and one human player at Waterfront station ready to call the tram." },
+      { title: "Light All Three Rails", detail: "After the tram is called, shock the electrical box high on the wall at each tram station so all three rails glow blue." },
+      { title: "Shock Center Keepers", detail: "Once the tram knocks the giant Gateworm out of center, the player already waiting in Beast at the middle must immediately shock all three Keepers." },
+      { title: "Finish The EE", detail: "If the timing is correct, the Keeper beams fire into the sky and the final cutscene begins. If the worm reappears first, kill more Margwas, relight pedestals, and retry." }
     ],
     hints: [
-      "Use fixed roles: three rail players and one center Keeper player. Do not improvise this step mid-attempt.",
-      "The train caller should be the only player briefly leaving Beast to summon the train; everyone else stays on their assignment and spams their shocks."
+      "Do not improvise this step mid-attempt. Call out roles before anyone enters Beast.",
+      "The station boxes sit high on the wall near the ceiling, so line up where each player needs to aim before starting the run."
     ]
   }
 ];
@@ -255,14 +256,14 @@ const ARTIFACTS = [
   { id: "artifact-fumigator", code: "A1", name: "Fumigator", meta: "Needed for pods and servant setup", hint: "", shape: "core" },
   { id: "artifact-key", code: "A2", name: "Summoning Key", meta: "Spawn pickup and ritual anchor", hint: "", shape: "core" },
   { id: "artifact-egg", code: "A3", name: "Apothicon Egg", meta: "Charged through four statue soul boxes", hint: "", shape: "egg" },
-  { id: "artifact-sword", code: "A4", name: "Upgraded Swords", meta: "All players ready for book, flags, and boss", hint: "", shape: "core" },
-  { id: "artifact-flag", code: "A5", name: "Flag", meta: "Book step item for all four district routes", hint: "", shape: "cylinder" }
+  { id: "artifact-sword", code: "A4", name: "Upgraded Swords", meta: "All players need Reborn Keeper Swords before flags", hint: "", shape: "core" },
+  { id: "artifact-flag", code: "A5", name: "Flag", meta: "Starts after the book in Nero's room and resets to the Rift", hint: "", shape: "cylinder" }
 ];
 
 const TROPHIES = [
-  { id: "cop-canal", code: "C1", name: "Canal Fuse", meta: "One of the Civil Protector fuse spawns", hint: "", shape: "trophy" },
-  { id: "cop-footlight", code: "C2", name: "Footlight Fuse", meta: "One of the Civil Protector fuse spawns", hint: "", shape: "trophy" },
-  { id: "cop-waterfront", code: "C3", name: "Waterfront Fuse", meta: "One of the Civil Protector fuse spawns", hint: "", shape: "trophy" }
+  { id: "cop-canal", code: "C1", name: "Canal Fuse", meta: "Pick up the Canals district fuse before starting flags", hint: "Needed for Civil Protector support.", shape: "trophy" },
+  { id: "cop-footlight", code: "C2", name: "Footlight Fuse", meta: "Pick up the Footlight district fuse before starting flags", hint: "Needed for Civil Protector support.", shape: "trophy" },
+  { id: "cop-waterfront", code: "C3", name: "Waterfront Fuse", meta: "Pick up the Waterfront district fuse before starting flags", hint: "Needed for Civil Protector support.", shape: "trophy" }
 ];
 
 const DEFAULT_STATE = {
@@ -351,7 +352,7 @@ function renderHero() {
   const progress = Math.round((completed / STEP_DATA.length) * 100);
   const progressTip = completed === STEP_DATA.length
     ? "Quest marked complete."
-    : "Finish the rituals, swords, flag, Shadowman trap, and 4-player finale.";
+    : "Finish rituals, swords, flags, the Shadowman trap, then the 4-player tram finale.";
 
   document.getElementById("progress-text").textContent = `${completed} / ${STEP_DATA.length} complete`;
   document.getElementById("progress-fill").style.width = `${progress}%`;
